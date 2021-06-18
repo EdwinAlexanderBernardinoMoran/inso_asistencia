@@ -1,0 +1,34 @@
+<?php echo View::content() ?>
+
+<h3>Registro de matriculas</h3>
+
+<table>
+    <tr>
+        <thead>
+            <th>Id</th>
+            <th>Id alumno</th>
+            <th>Id especialidad</th>
+            <th>Id seccion</th>
+            <th>Año</th>
+            <th>Estado</th>
+            <th>Egresado</th>
+        </thead>
+
+        <?php foreach ($ListaMatriculas->items as $item) :  ?>
+            <tr>
+                <td><?php echo $item->id ?></td>
+                <td><?php echo $item->id_alumno ?></td>
+                <td><?php echo $item->id_especialidad ?></td>
+                <td><?php echo $item->id_seccion ?></td>
+                <td><?php echo $item->anio ?></td>
+                <td><?php echo $item->estado ?></td>
+                <td><?php echo $item->egresado ?></td>
+                <td>
+                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                    <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
+                </td>
+            </tr>
+            </tr>
+        <?php endforeach;  ?>
+    </tr>
+</table>
