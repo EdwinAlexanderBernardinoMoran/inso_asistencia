@@ -7,6 +7,7 @@ class MatriculasController extends AppController
 {
     public function index($page=1)
     {
+        View::template('principal');
         $this->titulo = "Matriculas";
         $matricula = new Matriculas();
         $this->ListaMatriculas = $matricula->getMatriculas($page);
@@ -16,6 +17,7 @@ class MatriculasController extends AppController
 
     public function create()
     {
+        View::template('principal');
         $this->titulo = "Registro matriculas";
         if (Input::hasPost('matriculas')){
             $matricula = new Matriculas(Input::post('matriculas'));
@@ -31,6 +33,7 @@ class MatriculasController extends AppController
     //edit
 
     public function edit($id){
+        View::template('principal');
         $this->titulo = "Editando matricula";
         $matricula = new Matriculas();
         if (Input::hasPost('matriculas')){
