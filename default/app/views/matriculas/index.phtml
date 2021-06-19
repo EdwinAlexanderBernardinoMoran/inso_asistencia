@@ -1,7 +1,7 @@
 <?php echo View::content() ?>
 <h3 class="center"><b>Registro de matriculas</b></h3>
 
-<table>
+<table class="centered">
     <tr>
         <thead class="blue">
             <th>Id</th>
@@ -11,6 +11,7 @@
             <th>Año</th>
             <th>Estado</th>
             <th>Egresado</th>
+            <th>Acciones</th>
         </thead>
 
         <?php foreach ($ListaMatriculas->items as $item) :  ?>
