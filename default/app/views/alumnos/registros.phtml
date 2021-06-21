@@ -1,0 +1,556 @@
+<div class="row">
+    <?php View::content() ?>
+        <h3 class="center-align">Ministerio De Educacion</h3>
+        <h3 class="center-align">Instituto Nacional De Sonzacate</h3>
+        <h4 class="center-align">Ficha De Matricula 2022</h4>
+</div>
+
+<div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#test1">Identificacion del estudiante</a></li>
+        <li class="tab col s3"><a href="#test2">Informacion Del Estudiante</a></li>
+        <li class="tab col s3"><a href="#test3">Identificacion Del Responsable</a></li>
+        <li class="tab col s3"><a href="#test4">Profesor Que Realizo La Matricula</a></li>
+      </ul>
+    </div>
+</div>
+<!-- <div id="test1" class="col s6">Test 1</div>
+    <div id="test2" class="col s12">Test 2</div>
+    <div id="test3" class="col s12">Test 3</div>
+    <div id="test4" class="col s12">Test 4</div> -->
+
+
+    <!-- IDENTIFICACION DEL ESTUDIANTE -->
+    <div id="test1" class="col s6">
+        <div class="section">
+            <h5>Identificacion del estudiante:</h5>
+            <?= Form::open(); ?>
+            <!-- CAMPOS DE NOMBRES -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Primer_nombre">Primer Nombre:
+                    <?= Form::text('alumnos.primer_nombre'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Segundo_nombre">Segundo Nombre:
+                    <?= Form::text('alumnos.segundo_nombre'); ?></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Primer_apellido">Primer Apellido:
+                    <?= Form::text('alumnos.primer_apellido'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Segundo_nombre">Segundo Apellido:
+                    <?= Form::text('alumnos.segundo_apellido'); ?></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <!-- CAMPOS DE FECHA -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">date_range</i>
+                    <label for="Fecha_nacimiento">Fecha de nacimiento:
+                    <?= Form::date('alumnos.fecha_nacimiento');?></label>
+                </div>
+                <!-- CAMPOS DE NACIONALIDAD -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">people</i>
+                    <label for="Nacionalidad">Nacionalidad:
+                    <?= Form::text('nacionalidad.nacionalidad'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <label for="Departamento_nacimiento">Departamento de nacimiento:
+                    <?= Form::text('departamentos.departamento');?></label>
+                </div>
+                <!-- CAMPOS DE MUNICIPIO_DE_NACIMIENTO -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <label for="Municipio_nacimiento">Municipio de nacimiento::
+                    <?= Form::text('municipios.municipio'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">local_library</i>
+                    <label for="Año_de_bachillerato">Año de bachillerato:
+                    <?= Form::text('alumnos.anio_bachillerto');?></label>
+                </div>
+                <!-- CAMPOS DE NIE -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">person_pin</i>
+                    <label for="Nie">NIE:
+                    <?= Form::text('alumnos.nie');?></label>
+                </div>       
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="Numero_de_partida">Numero de partida de nacimiento:
+                    <?= Form::text('alumnos.numero_partida');?></label>
+                </div> 
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="Numero_de_partida">Folio de la partida de nacimiento:
+                    <?= Form::text('alumnos.numero_folio');?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">library_books</i>
+                    <label for="Numero_de_partida">libro de la partida de nacimiento:
+                    <?= Form::text('alumnos.libro_partida');?></label>
+                </div> 
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">portrait</i>
+                    <label for="Otro_documento_identificacion">Otro documento identificacion:
+                    <?= Form::text('alumnos.otro_documento_identificacion');?></label>   
+                </div>
+                <!-- CAMPO DE SALVADOREÑO POR -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">person</i>
+                    <label for="Salvadoreño_por">Salvadoreño por:
+                    <?= Form::text('alumnos.salvadoreño_por');?></label>   
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">reorder</i>
+                    <label for="Especialidad">Especialidad:
+                    <?= Form::text('alumnos.id_especialidad_ingreso', 'especialidades');?></label>   
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">account_box</i>
+                    <label for="Estudio_parvularia">Estudio parvularia:
+                    <?= Form::text('alumnos.estudio_parvularia');?></label>   
+                </div>
+                <!-- CAMPO REPITE GRADO -->
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">account_box</i>
+                    <label for="Repite_grado">Repite grado:
+                    <?= Form::text('alumnos.repite_grado');?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_box</i>
+                    <label for="Centro_procedencia">Centro de procedencia:
+                    <?= Form::text('alumnos.centro_escolar_proceddencia');?></label>
+                </div>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_box</i>
+                    <label for="Año_que_estudio_anteriormente">Año que estudio anteriormente:
+                    <?= Form::text('alumnos.anio_anterior');?></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- INFORMACION DEL ESTUDIANTE -->
+    <div id="test2" class="col s12">
+        <div class="section">
+            <h5>Informacion del estudiante:</h5>
+            <!-- CAMPOS DE NOMBRES -->
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">person</i>
+                    <label for="Tipo_sangre">Tipo de sangre:
+                    <?= Form::text('alumnos.tipo_sangre'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Estado_familiar">Estado Familiar:
+                    <?= Form::text('alumnos.estadio_familiar'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">account_box</i>
+                    <label for="Discapacidad">Discapacidad:
+                    <?= Form::text('alumnos.discapacidad');?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h5>Datos de contacto.</h5>
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">mail</i>
+                    <label for="Correo_electronico">Correo electronico:
+                    <?= Form::text('alumnos.email'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">call</i>
+                    <label for="Telefono_fijo">Tel. Fijo:
+                    <?= Form::text('alumnos.telefono_fijo'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">stay_current_portrait</i>
+                    <label for="Telefono_fijo">Celular:
+                    <?= Form::text('alumnos.telefono_celular'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h5>Residencia:</h5>
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">list</i>
+                    <label for="Zona">Zona:
+                    <?= Form::text('zonas.nombre_zona'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <label for="Departamento">Departamento:
+                    <?= Form::text('departamentos.departamento'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <label for="Municipio">Municipio:
+                    <?= Form::text('municipios.municipio'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">lens</i>
+                    <label for="Canton">Cánton:
+                    <?= Form::text('cantones.nombre_canton'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">lens</i>
+                    <label for="Caserio">Caserio:
+                    <?= Form::text('caserios.nombre_caserio'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">chevron_right</i>
+                    <label for="Canton">Tipo de calle:
+                    <?= Form::text('alumnos.tipo_calle'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">directions_walk</i>
+                    <label for="Caserio">Dirección completa del estudiante:
+                    <?= Form::text('alumnos.direccion_completa'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h5>Otros Datos.</h5>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">directions_bus</i>
+                    <label for="Medio_de_transpote">Medio de transporte para llegar al centro educativo:
+                    <?= Form::text('alumnos.medio_transporte'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">compare_arrows</i>
+                    <label for="Distancia">kilometros de distacia entre el instituto y su residencia:
+                    <?= Form::text('alumnos.distancia_entre_casa_y_centroeducativo'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">add_alert</i>
+                    <label for="Factor_de_riesgo">Factor de riesgo:
+                    <?= Form::text('alumnos.factor_de_riesgo'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h5>Grupo familiar:</h5>
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">wc</i>
+                    <label for="Numero_integrantes_familia">Numero de integrantes de la familia:
+                    <?= Form::text('alumnos.numero_integrantes_familia'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">wc</i>
+                    <label for="Integrados">Integrados:
+                    <?= Form::text('alumnos.integrados'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">attach_money</i>
+                    <label for="Depende_economicamente">Depende economicamente de:
+                    <?= Form::text('alumnos.depende_economicamente_de'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">group</i>
+                    <label for="Tiene_hijos">Tiene hijos:
+                    <?= Form::text('alumnos.tiene_hijos'); ?></label>
+                </div>
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">group</i>
+                    <label for="Cuantos_tiene_hijos">Cuantos hijos tiene:
+                    <?= Form::text('alumnos.numero_hijos'); ?></label>
+                </div>
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">build</i>
+                    <label for="Trabaja">Trabaja:
+                    <?= Form::text('alumnos.trabaja'); ?></label>
+                </div>
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">wc</i>
+                    <label for="Convivenicia_con">Convivencia con:
+                    <?= Form::text('alumnos.convivencia'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Nombre_de_la_madre">Nombre de la madre:
+                    <?= Form::text('alumnos.nombre_madre'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">assignment_turned_in</i>
+                    <label for="Nombre_de_la_madre">Ocupación:
+                    <?= Form::text('alumnos.ocupacion'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">accessibility</i>
+                    <label for="Lugar_de_trabajo">Lugar de trabajo (madre):
+                    <?= Form::text('alumnos.lugar_trabajo_madre'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">call</i>
+                    <label for="Lugar_de_trabajo">Telefono (madre):
+                    <?= Form::text('alumnos.telefono_madre'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Nombre_del_padre">Nombre del padre:
+                    <?= Form::text('alumnos.nombre_padre'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">assignment_turned_in</i>
+                    <label for="Ocupacion_del_padre">Ocupación:
+                    <?= Form::text('alumnos.ocupacion_padre'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">accessibility</i>
+                    <label for="Lugar_de_trabajo">Lugar de trabajo (padre):
+                    <?= Form::text('alumnos.lugar_trabajo_padre'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">call</i>
+                    <label for="Lugar_de_trabajo">Telefono (padre):
+                    <?= Form::text('alumnos.telefono_padre'); ?></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- IDENTIFICACION DEL RESPONSABLE -->
+    <div id="test3" class="col s12">
+        <div class="section">
+            <h5>Identificacion Del Responsable:</h5>
+            <!-- CAMPOS DE NOMBRES ENCARGADOS -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Primer_nombre_encargado">Primer Nombre:
+                    <?= Form::text('alumnos.primer_nombre_encargado'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Segundo_nombre_encargado">Segundo Nombre:
+                    <?= Form::text('alumnos.segundo_nombre_encargado'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <!-- CAMPOS DE APELLIDOS ENCARGADOS -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Primer_apellido_encargado">Primer Apellido:
+                    <?= Form::text('alumnos.primer_apellido_encargado'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Segundo_nombre_encargado">Segundo Apellido:
+                    <?= Form::text('alumnos.segundo_apellido_encargado'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Estado_familiar_encargado">Estado familiar:
+                    <?= Form::text('alumnos.estado_familiar_encargado'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h5>Datos de contacto.</h5>
+            <!-- DATOS DE CONTACTO DEL ENCARGADO -->
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">mail</i>
+                    <label for="Correo_electronico_encargado">Correo electronico:
+                    <?= Form::text('alumnos.email_encargado'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">call</i>
+                    <label for="Telefono_fijo_encargado">Tel. Fijo:
+                    <?= Form::text('alumnos.telefono_fijo_encargado'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">stay_current_portrait</i>
+                    <label for="Telefono_fijo_encargado">Celular:
+                    <?= Form::text('alumnos.telefono_celular_encargado'); ?></label>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESIDENCIA DEL ENCARGADO -->
+        <div class="section">
+            <h5>Residencia:</h5>
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">list</i>
+                    <label for="Zona_encargado">Zona:
+                    <?= Form::text('zonas.nombre_zona'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <label for="Departamento_encargado">Departamento:
+                    <?= Form::text('departamentos.departamento'); ?></label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <label for="Municipio_encargado">Municipio:
+                    <?= Form::text('municipios.municipio'); ?></label>
+                </div>
+            </div>
+        </div>
+
+        <!-- CANTON, CASERIO DEL ENCARGADO -->
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">lens</i>
+                    <label for="Canton_encargado">Cánton:
+                    <?= Form::text('cantones.nombre_canton'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">lens</i>
+                    <label for="Caserio_encargado">Caserio:
+                    <?= Form::text('caserios.nombre_caserio'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">chevron_right</i>
+                    <label for="tipo_de_calle_encargado">Tipo de calle:
+                    <?= Form::text('alumnos.tipo_calle_encargado'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">directions_walk</i>
+                    <label for="direccion_encargado">Dirección completa del encargado:
+                    <?= Form::text('alumnos.direccion_completa_encargado'); ?></label>
+                </div>
+            </div>
+        </div>
+
+        <!-- OTROS DATOS DEL RESPONSABLE -->
+        <div class="section">
+            <h5>Otros datos del responsable:</h5>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">build</i>
+                    <label for="profesion_encargado">Profesion u oficio (padre):
+                    <?= Form::text('alumnos.profesion_oficio_responsable'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">call</i>
+                    <label for="profesion_encargado">Telefono o celular:
+                    <?= Form::text('alumnos.telefono_celular_responsable'); ?></label>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="Escolaridad_encargado">Escolaridad:
+                    <?= Form::text('alumnos.escolaridad_responsable'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">add_alert</i>
+                    <label for="Escolaridad_encargado">Factor de riesgo:
+                    <?= Form::text('alumnos.factor_riesgo_responsable'); ?></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- RESERVADO PARA EL PROFESOR -->
+    <div id="test4" class="col s12">
+        <div class="section">
+            <h5>Reservado para el profesor que realizo la Matricula:</h5>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">insert_invitation</i>
+                    <label for="Fecha_revision_formulario">Fecha en que fue revisado este formulario:
+                    <?= Form::date('alumnos.fecha_revision_formulario'); ?></label>
+                </div>
+            </div>
+        </div>
+    </div      
