@@ -34,6 +34,7 @@
 
         public function edit($id){
             View::template('principal');
+            $this->titulo = "";
         }
     }
 
