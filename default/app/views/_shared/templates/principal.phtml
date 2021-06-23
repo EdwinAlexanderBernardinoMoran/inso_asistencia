@@ -14,17 +14,13 @@
     <nav class="teal lighten-2">
         <div class="nav-wrapper container">
             <ul class="right hide-on-med-and-down">
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Profesores<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><?php echo Html::Link('matriculas', 'Matriculas') ?></li>
                 <li><?php echo Html::Link('zonas/create', 'Zonas') ?></li>
             </ul>
 
         </div>
     </nav>
-    <ul id="dropdown1" class="dropdown-content">
-        <li><?php echo Html::Link('profesores/create', 'Registro profesores') ?></li>
-        <li><?php echo Html::Link('profesores', 'Lista profesores') ?></li>
-    </ul>
+
 
     <div class="container">
         <?php View::content() ?>
@@ -46,9 +42,6 @@
         });
     </script>
 
-    <script>
-        $(".dropdown-trigger").dropdown();
-    </script>
 
 </body>
 
