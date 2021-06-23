@@ -13,10 +13,11 @@
 <body>
     <nav class="teal lighten-2">
         <ul>
+            <li><?php echo Html::Link('alumnos/registros','Registro Alumnos') ?></li>
             <li><?php echo Html::Link('matriculas','Matriculas') ?></li>
-            <li><a href="http://localhost:8081/inso_asistencia/profesores/create">Formulario Profesores</a></li>
-            <li><a href="http://localhost:8081/inso_asistencia/profesores">Profesores</a></li>
-            <li><a href="http://localhost:8081/inso_asistencia/zonas/create">zonas</a></li>
+            <li><?php echo Html::LInk('profesores/create', 'Registro Profesores') ?></li>
+            <li><?php echo Html::Link('profesores','Profesores') ?></li>
+            <li><?php echo Html::Link('zonas/create', 'Registro de Zonas') ?></li>
         </ul>
     </nav>
 
