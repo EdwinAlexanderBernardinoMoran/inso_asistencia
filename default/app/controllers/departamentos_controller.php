@@ -24,7 +24,7 @@
                 if ($departamento->create()){
                     Flash::valid("Departamento agregado exitosamente");
                     Input::delete();
-                    return;
+                    return Redirect::to();
                 }
                 Flash::error("Fallo  al agregar el departamento");
             }

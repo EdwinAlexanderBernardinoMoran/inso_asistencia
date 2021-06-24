@@ -1,158 +1,41 @@
-<div class="row">
-    <?php View::content() ?>
-        <h3 class="center-align">Ministerio De Educacion</h3>
-        <h3 class="center-align">Instituto Nacional De Sonzacate</h3>
-        <h4 class="center-align">Ficha De Matricula 2022</h4>
-</div>
+<?php echo View::content() ?>
 
-<div class="container">
-    <ul class="tabs">
-        <li class="tab col l3"><a href="#contenido1">Identificacion del estudiante</a></li>
-        <li class="tab col l3"><a href="#contenido2">Informacion Del Estudiante:</a></li>
-        <li class="tab col l3"><a href="#contenido3">Identificacion Del Responsable:</a></li>
-        <li class="tab col l3"><a href="#contenido4">Profesor Que Realizo La Matricula:</a></li>
-    </ul>
+<h3 class="center-align">Registro de alumnos</h3>
+<table>
+    <thead>
+        <th>ID</th>
+        <th>PRIMER NOMBRE</th>
+        <th>SEGUNDO NOMBRE</th>
+        <th>PRIMER APELLIDO</th>
+        <th>SEGUNDO APELLIDO</th>
+        <th>FECHA NACIMIENTO</th>
+        <!-- <th>NACIONALIDAD</th>
+        <th>DEPARTAMENTO DE NACIMIENTO</th>
+        <th>MUNICIPIO DE NACIMIENTO</th>
+        <th>AÑO DE BACHILLERATO</th>
+        <th>NIE</th>
+        <th>NUMERO DE PARTIDA</th>
+        <th>NUMERO DE FOLIO</th>
+        <th>LIBRO DE LA PARTIDA</th>
+        <th>OTRO DOCUMENTO DE IDENTIFICACION</th>
+        <th>SALVADOREÑO POR</th>
+        <th>ESPECIALIDAD</th>
+        <th>ESTUDIO PARVULARIA</th>
+        <th>REPITE GRADO</th>
+        <th>CENTRO DE PROCEDENCIA</th>
+        <th>AÑO QUE ESTUDIO EL AÑO ANTERIOR</th> -->
+    </thead>
+    <?php foreach ($listaAlumnos->items as $item): ?>
 
-    <div id="contenido1">
-        <h5>Identificacion del estudiante:</h5>
-        <?= Form::open(); ?>
-            <!-- CAMPOS DE NOMBRES -->
-            <div class="row">
-                <div class="col s6">
-                    <label for="Primer_nombre">Primer Nombre:
-                    <?= Form::text('alumnos.primer_nombre'); ?></label>
-                </div>
-                <div class="col s6">
-                    <label for="Segundo_nombre">Segundo Nombre:
-                    <?= Form::text('alumnos.segundo_apellido'); ?></label>
-                </div>
-            </div>
-
-            <!-- CAMPOS DE APELLIDOS -->
-            <div class="row">
-                <div class="col s6">
-                    <label for="Primer_apellido">Primer apellido:
-                    <?= Form::text('alumnos.primer_apellido');?></label>
-                </div>
-                <div class="col s6">
-                    <label for="Segundo_apellido">Segundo apellido:
-                    <?= Form::text('alumnos.segundo_apellido'); ?></label>
-                </div>
-            </div>
-
-            <!-- CAMPOS DE FECHA -->
-            <div class="row">
-                <div class="col s6">
-                    <label for="Fecha_nacimiento">Fecha de nacimiento:
-                    <?= Form::date('alumnos.fecha_nacimiento');?></label>
-                </div>
-                <!-- CAMPOS DE NACIONALIDAD -->
-                <div class="col s6">
-                    <label for="Nacionalidad">Nacionalidad:
-                    <?= Form::text('nacionalidad.nacionalidad'); ?></label>
-                </div>
-            </div>
-
-            <!-- CAMPOS DE DEPARTAMENTO_DE_NACIMIENTO -->
-            <div class="row">
-                <div class="col s6">
-                    <label for="Departamento_nacimiento">Departamento de nacimiento:
-                    <?= Form::text('departamentos.departamento');?></label>
-                </div>
-
-                <!-- CAMPOS DE MUNICIPIO_DE_NACIMIENTO -->
-                <div class="col s6">
-                    <label for="Municipio_nacimiento">Municipio de nacimiento::
-                    <?= Form::text('municipios.municipio'); ?></label>
-                </div>
-            </div>
-
-            <!-- CAMPOS DE AÑO DE BACHILLERATO -->
-            <div class="row">
-                <div class="col s6">
-                    <label for="Año_de_bachillerato">Año de bachillerato:
-                    <?= Form::text('alumnos.anio_bachillerto');?></label>
-                </div>
-                <!-- CAMPOS DE NIE -->
-                <div class="col s6">
-                    <label for="Nie">NIE:
-                    <?= Form::text('alumnos.nie');?></label>
-                </div>       
-            </div>
-
-            <!-- CAMPOS DE AÑO DE BACHILLERATO -->
-            <div class="row">
-                <div class="col s6">
-                    <label for="Año_de_bachillerato">Año de bachillerato:
-                    <?= Form::text('alumnos.anio_bachillerto');?></label>
-                </div>
-                <!-- CAMPOS DE NIE -->
-                <div class="col s6">
-                    <label for="Nie">NIE:
-                    <?= Form::text('alumnos.nie');?></label>
-                </div>       
-            </div>
-
-            <!-- CAMPOS DE PARTIDAS DE NACIMIENTO -->
-            <div class="row">
-                <div class="col s4">
-                    <label for="Numero_de_partida">Numero de partida de nacimiento:
-                    <?= Form::text('alumnos.numero_partida');?></label>
-                </div> 
-                <div class="col s4">
-                    <label for="Numero_de_partida">Numero de folio de la partida de nacimiento:
-                    <?= Form::text('alumnos.numero_folio');?></label>
-                </div>
-                <div class="col s4">
-                    <label for="Numero_de_partida">libro de la partida de nacimiento:
-                    <?= Form::text('alumnos.libro_partida');?></label>
-                </div> 
-            </div>
-
-            <!-- CAMPO DE OTRO DOCUMENTO DE IDENTIFICACION -->
-            <div class="row">
-                <div class="col s6">
-                    <label for="Otro_documento_identificacion">Otro documento identificacion:
-                    <?= Form::text('alumnos.otro_documento_identificacion');?></label>   
-                </div>
-                <!-- CAMPO DE SALVADOREÑO POR -->
-                <div class="col s6">
-                    <label for="Salvadoreño_por">Salvadoreño por:
-                    <?= Form::text('alumnos.salvadoreño_por');?></label>   
-                </div>
-            </div>
-
-            <!-- CAMPO DE ESPECIALIDAD -->
-            <div class="row">
-                <div class="col s4">
-                    <label for="Especialidad">Especialidad:
-                    <?= Form::text('especialidades.nombre_especialidad');?></label>   
-                </div>
-                <div class="col s4">
-                    <label for="Estudio_parvularia">Estudio parvularia:
-                    <?= Form::text('alumnos.estudio_parvularia');?></label>   
-                </div>
-                <!-- CAMPO REPITE GRADO -->
-                <div class="col s4">
-                    <label for="Repite_grado">Repite grado:
-                    <?= Form::text('alumnos.repite_grado');?></label>
-                </div>
-            </div>
-
-            <!-- CAMPO CENTRO DE PROCEDENCIA-->
-            <div class="row">
-                <div class="col s7">
-                    <label for="Centro_procedencia">Centro de procedencia:
-                    <?= Form::text('alumnos.centro_escolar_proceddencia');?></label>
-                </div>
-
-                <div class="col s5">
-                    <label for="Año_que_estudio_anteriormente">Año que estudio anteriormente:
-                    <?= Form::text('alumnos.anio_anterior');?></label>
-                </div>
-            </div>
-        <?= Form::close(); ?>
-    </div>
-</div>
+        <tr>
+            <td><?php echo $item->id_alumnos?></td>
+            <td><?php echo $item->primer_nombre?></td>
+            <td><?php echo $item->segundo_nombre?></td>
+            <td><?php echo $item->primer_apellido?></td>
+            <td><?php echo $item->segundo_apellido?></td>
+            <td><?php echo $item->fecha_nacimiento?></td>
+        </tr>
+        <?php endforeach;  ?>
+</table>
     
 

@@ -7,7 +7,7 @@
     </thead>
     <?php foreach($listaZonas->items as $item) : ?>
         <tr>
-            <td><?php echo $item->id ?></td>
+            <td><?php echo $item->id_zona?></td>
             <td><?php echo $item->nombre_zona ?></td>
             <td>
             <?php echo html::LinkAction("edit/$item->id",'editar','class="btn"') ?>
