@@ -5,4 +5,4 @@
             return $this->paginate("page:$page","per_page: $ppage", 'order: id_canton desc');
         }
     }
-?>s
+?>
