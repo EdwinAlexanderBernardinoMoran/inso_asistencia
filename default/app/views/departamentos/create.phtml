@@ -1,0 +1,21 @@
+<div class="row">
+
+    <?php View::content(); ?>
+    <h3 class="center"><b>Departamentos</b></h3>
+
+    <?php echo Form::open(); ?>
+
+    <div class="col s6">
+        <label for="">Ingrese el departamento
+            <?php echo Form::text('departamentos.departamento') ?>
+        </label>
+    </div>
+
+    <div class="col s12">
+        <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
+        <?php echo Form::reset('Limpiar', 'class="btn blue"') ?>
+    </div>
+
+    <?php echo Form::close(); ?>
+
+</div>
