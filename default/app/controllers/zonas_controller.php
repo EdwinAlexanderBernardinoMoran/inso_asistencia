@@ -19,7 +19,7 @@ class ZonasController extends AppController
             if (!$zona->create()) {
             Flash::valid("creado exitosamente");
             Input::delete();
-            return;Redirect::to();
+            return Redirect::to();
             }
            Flash::error("fallo la operacion");
         }
