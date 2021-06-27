@@ -9,14 +9,14 @@
         </thead>
 
         <?php foreach ($ListaDepartamentos->items as $item) : ?>
-    <tr>
-        <td><?php echo $item->id ?></td>
-        <td><?php echo $item->departamento ?></td>
-        <td>
-            <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
-            <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
-        </td>
+            <tr>
+                <td><?php echo $item->id ?></td>
+                <td><?php echo $item->departamento ?></td>
+                <td>
+                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                    <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
+                </td>
+            </tr>
+        <?php endforeach ?>
     </tr>
-<?php endforeach ?>
-</tr>
 </table>

@@ -20,7 +20,7 @@ return [
         /**
          * test: nombre de la base de datos
          */
-        'name'     => 'asistencias',
+        'name'     => 'asistencias_inso',
         /**
          * type: tipo de motor de base de datos (mysql, pgsql, oracle o sqlite)
          */

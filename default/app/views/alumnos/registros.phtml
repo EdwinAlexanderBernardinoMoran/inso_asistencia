@@ -42,6 +42,7 @@
         </div>
 
         <div class="section">
+            <!-- CAMPOS DE APELLIDOS -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
@@ -57,7 +58,7 @@
         </div>
 
         <div class="section">
-            <!-- CAMPOS DE FECHA -->
+            <!-- CAMPOS DE FECHA_NACIMIENTO-->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">date_range</i>
@@ -68,31 +69,33 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">people</i>
                     <label for="Nacionalidad">Nacionalidad:
-                    <?= Form::text('nacionalidad.nacionalidad'); ?></label>
+                    <?= Form::text('nacionalidades.nombre_nacionalidad'); ?></label>
                 </div>
             </div>
         </div>
         <div class="section">
+            <!-- CAMPO MUNICIPIO DE NACIMIENTO -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Departamento_nacimiento">Departamento de nacimiento:
-                    <?= Form::text('departamentos.departamento');?></label>
+                    <?= Form::text('departamentos.nombre_departamento');?></label>
                 </div>
                 <!-- CAMPOS DE MUNICIPIO_DE_NACIMIENTO -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Municipio_nacimiento">Municipio de nacimiento::
-                    <?= Form::text('municipios.municipio'); ?></label>
+                    <?= Form::text('municipios.nombre_municipio'); ?></label>
                 </div>
             </div>
         </div>
         <div class="section">
+            <!-- CAMPO AÑO DE BACHILLERATO -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">local_library</i>
                     <label for="Año_de_bachillerato">Año de bachillerato:
-                    <?= Form::text('alumnos.anio_bachillerto');?></label>
+                    <?= Form::text('matriculas.id_seccion');?></label>
                 </div>
                 <!-- CAMPOS DE NIE -->
                 <div class="input-field col s6">
@@ -103,6 +106,7 @@
             </div>
         </div>
         <div class="section">
+            <!-- CAMPO DE PARTIDAS DE NACIMIENTO -->
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i>
@@ -112,7 +116,7 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i>
                     <label for="Numero_de_partida">Folio de la partida de nacimiento:
-                    <?= Form::text('alumnos.numero_folio');?></label>
+                    <?= Form::text('alumnos.folio_partida');?></label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">library_books</i>
@@ -122,11 +126,12 @@
             </div>
         </div>
         <div class="section">
+            <!-- CAMPO DE OTRO DOCUMENTO DE IDENTIFICACION -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">portrait</i>
                     <label for="Otro_documento_identificacion">Otro documento identificacion:
-                    <?= Form::text('alumnos.otro_documento_identificacion');?></label>   
+                    <?= Form::text('alumnos.otro_documento_de_identificacion');?></label>   
                 </div>
                 <!-- CAMPO DE SALVADOREÑO POR -->
                 <div class="input-field col s6">
@@ -137,12 +142,14 @@
             </div>
         </div>
         <div class="section">
+            <!-- CAMPO NOMBRE ESPECIALIDADES -->
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">reorder</i>
                     <label for="Especialidad">Especialidad:
-                    <?= Form::text('alumnos.id_especialidad_ingreso', 'especialidades');?></label>   
+                    <?= Form::text('especialidades.nombre_especialidad');?></label>   
                 </div>
+                <!-- CAMPO ESTUDIO PARVULARIA -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">account_box</i>
                     <label for="Estudio_parvularia">Estudio parvularia:
@@ -157,13 +164,15 @@
             </div>
         </div>
         <div class="section">
+            <!-- CAMPO CENTROS ESCOLARES PROVIDENCIAS -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_box</i>
                     <label for="Centro_procedencia">Centro de procedencia:
-                    <?= Form::text('alumnos.centro_escolar_proceddencia');?></label>
+                    <?= Form::text('centros_escolares_providencias.nombre_centroescolar_providencia');?></label>
                 </div>
 
+                <!-- CAMPO AÑO ANTERIOR ESTUDIADO -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_box</i>
                     <label for="Año_que_estudio_anteriormente">Año que estudio anteriormente:
@@ -178,19 +187,29 @@
     <div id="test2" class="col s12">
         <div class="section">
             <h5>Informacion del estudiante:</h5>
-            <!-- CAMPOS DE NOMBRES -->
+            <!-- CAMPOS TIPO DE SANGRE -->
             <div class="row">
-                <div class="input-field col s4">
+                <div class="input-field col s3">
                     <i class="material-icons prefix">person</i>
                     <label for="Tipo_sangre">Tipo de sangre:
-                    <?= Form::text('alumnos.tipo_sangre'); ?></label>
+                    <?= Form::text('alumnos.tipo_de_sangre'); ?></label>
                 </div>
-                <div class="input-field col s4">
+                <!-- CAMPO SEXO -->
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">person</i>
+                    <label for="Sexo">Sexo:
+                    <?= Form::text('alumnos.sexo'); ?></label>
+                </div>
+
+                <!-- CAMPO ESTADO_FAMILIAR -->
+                <div class="input-field col s3">
                     <i class="material-icons prefix">account_circle</i>
                     <label for="Estado_familiar">Estado Familiar:
-                    <?= Form::text('alumnos.estadio_familiar'); ?></label>
+                    <?= Form::text('alumnos.estado_familiar'); ?></label>
                 </div>
-                <div class="input-field col s4">
+
+                <!-- CAMPO DISCAPACIDAD -->
+                <div class="input-field col s3">
                     <i class="material-icons prefix">account_box</i>
                     <label for="Discapacidad">Discapacidad:
                     <?= Form::text('alumnos.discapacidad');?></label>
@@ -199,51 +218,67 @@
         </div>
         <div class="section">
             <h5>Datos de contacto.</h5>
+
+            <!-- CAMPO EMAIL -->
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">mail</i>
                     <label for="Correo_electronico">Correo electronico:
                     <?= Form::text('alumnos.email'); ?></label>
                 </div>
+
+                <!-- CAMPO TELEFONO_FIJO -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">call</i>
                     <label for="Telefono_fijo">Tel. Fijo:
                     <?= Form::text('alumnos.telefono_fijo'); ?></label>
                 </div>
+
+                <!-- CAMPO CELULAR -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">stay_current_portrait</i>
-                    <label for="Telefono_fijo">Celular:
-                    <?= Form::text('alumnos.telefono_celular'); ?></label>
+                    <label for="Celular">Celular:
+                    <?= Form::text('alumnos.celular'); ?></label>
                 </div>
             </div>
         </div>
         <div class="section">
             <h5>Residencia:</h5>
+
+            <!-- CAMPO ZONA -->
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">list</i>
                     <label for="Zona">Zona:
                     <?= Form::text('zonas.nombre_zona'); ?></label>
                 </div>
+
+                <!-- CAMPO DEPARTAMENTO DE RESIDENCIA -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Departamento">Departamento:
-                    <?= Form::text('departamentos.departamento'); ?></label>
+                    <?= Form::text('departamentos.nombre_departamento'); ?></label>
                 </div>
+
+                <!-- CAMPO MUNICIPIO DE RESIDENCIA -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Municipio">Municipio:
-                    <?= Form::text('municipios.municipio'); ?></label>
+                    <?= Form::text('municipios.nombre_municipio'); ?></label>
                 </div>
             </div>
         </div>
         <div class="section">
+
+            <!-- CAMPO CANTON -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
                     <label for="Canton">Cánton:
                     <?= Form::text('cantones.nombre_canton'); ?></label>
                 </div>
+
+                <!-- CAMPO CASERIOS -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
                     <label for="Caserio">Caserio:
@@ -252,12 +287,15 @@
             </div>
         </div>
         <div class="section">
+
+            <!-- CAMPO TIPOS DE CALLE -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">chevron_right</i>
                     <label for="Canton">Tipo de calle:
-                    <?= Form::text('alumnos.tipo_calle'); ?></label>
+                    <?= Form::text('alumnos.tipo_de_calle'); ?></label>
                 </div>
+                <!-- CAMPO DIRECCION_COMPLETA -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">directions_walk</i>
                     <label for="Caserio">Dirección completa del estudiante:
@@ -267,20 +305,26 @@
         </div>
         <div class="section">
             <h5>Otros Datos.</h5>
+
+            <!-- CAMPO MEDIO_TRANSPORTE -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">directions_bus</i>
                     <label for="Medio_de_transpote">Medio de transporte para llegar al centro educativo:
-                    <?= Form::text('alumnos.medio_transporte'); ?></label>
+                    <?= Form::text('alumnos.medio_de_transporte'); ?></label>
                 </div>
+
+                <!-- CAMPO DISTANICIA ENTRE EL INSO Y TU CASA -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">compare_arrows</i>
                     <label for="Distancia">kilometros de distacia entre el instituto y su residencia:
-                    <?= Form::text('alumnos.distancia_entre_casa_y_centroeducativo'); ?></label>
+                    <?= Form::text('alumnos.distancia_desde_casa_y_centroeducativo'); ?></label>
                 </div>
             </div>
         </div>
         <div class="section">
+
+            <!-- FACTOR DE RIESGO -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">add_alert</i>
@@ -291,17 +335,23 @@
         </div>
         <div class="section">
             <h5>Grupo familiar:</h5>
+
+            <!-- CAMPO NUMERO DE INTEGRANTES FAMILIA -->
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">wc</i>
                     <label for="Numero_integrantes_familia">Numero de integrantes de la familia:
                     <?= Form::text('alumnos.numero_integrantes_familia'); ?></label>
                 </div>
+
+                <!-- CAMPO INTEGRADOS -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">wc</i>
                     <label for="Integrados">Integrados:
                     <?= Form::text('alumnos.integrados'); ?></label>
                 </div>
+
+                <!-- CAMPO DEPENDE ECONOMICAMENTE DE -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">attach_money</i>
                     <label for="Depende_economicamente">Depende economicamente de:
@@ -310,6 +360,8 @@
             </div>
         </div>
         <div class="section">
+
+            <!-- CAMPO TIENE HIJOS ASTA AQUI ME QUEDE-->
             <div class="row">
                 <div class="input-field col s3">
                     <i class="material-icons prefix">group</i>
@@ -552,5 +604,17 @@
                     <?= Form::date('alumnos.fecha_revision_formulario'); ?></label>
                 </div>
             </div>
+            <?= Form::close(); ?>
         </div>
+        
+        <center><div class="section">
+            <div class="row">
+                <div class="input-field col s12">
+                   <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                    <!-- <i class="material-icons prefix">send</i> -->
+                   </button>
+                </div>
+            </div>
+            <?= Form::close(); ?>
+        </div></center>
     </div      

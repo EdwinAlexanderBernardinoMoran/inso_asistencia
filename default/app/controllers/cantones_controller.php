@@ -4,9 +4,9 @@ class CantonesController extends AppController
 {
     public function index($page=1){
         view::template('principal');
-        $this->titulo="cantones";
+        $this->titulo="Cantones";
         $canton = new Cantones();
-        $this->$ListCantones = $canton->getCantones($page);
+        $this->listaCantones = $canton->getCantones($page);
     }
     /**
   * create
@@ -17,11 +17,11 @@ class CantonesController extends AppController
       if (Input::hasPost('cantones')){
           $canton = new Cantones(Input::post('cantones'));
           if (!$canton->create()){
-              flash::valid("creado exitosamente")
-              Inpup::delate();
-              return
+              flash::valid("creado exitosamente");
+              Input::delete();
+              return Redirect::to();
           }
-          flash::error("fallo la operacion")
+          flash::error("fallo la operacion");
       }
   }
 
