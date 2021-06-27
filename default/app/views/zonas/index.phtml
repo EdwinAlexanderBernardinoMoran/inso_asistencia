@@ -1,17 +1,17 @@
-<?php echo view::content();?>
+<?php echo View::content();?>
 <h3>zonas</h3>
 <table>
     <thead>
         <th>id</th>
         <th>nombre_zona</th>
     </thead>
-    <?php foreach($listaZonas->items as $item) : ?>
+    <?php foreach($listaZonas->items as $item): ?>
         <tr>
             <td><?php echo $item->id_zona?></td>
             <td><?php echo $item->nombre_zona ?></td>
             <td>
-            <?php echo html::LinkAction("edit/$item->id",'editar','class="btn"') ?>
-            <?php echo html::LinkAction("del/$item->id",'borrar','class="btn red"') ?>
+                <?php echo Html::LinkAction("edit/$item->id",'editar','class="btn"') ?>
+                <?php echo Html::LinkAction("del/$item->id",'borrar','class="btn red"') ?>
             </td>
         </tr>
     <?php endforeach; ?>
