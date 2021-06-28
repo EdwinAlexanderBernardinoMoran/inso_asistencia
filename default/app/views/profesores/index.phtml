@@ -16,21 +16,20 @@
         </thead>
 
         <?php foreach ($ListaProfesores->items as $item) :  ?>
-    <tr class="blue lighten-4 ">
-        <td><?php echo $item->id ?></td>
-        <td><?php echo $item->primer_nombre_profesor ?></td>
-        <td><?php echo $item->segundo_nombre_profesor ?></td>
-        <td><?php echo $item->primer_apellido_profesor ?></td>
-        <td><?php echo $item->segundo_apellido_profesor?></td>
-        <td><?php echo $item->dui ?></td>
-        <td><?php echo $item->nip ?></td>
-        <td><?php echo $item->nit ?></td>
-        <td>
-            <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
-            <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
-        </td>
+            <tr>
+                <td><?php echo $item->id ?></td>
+                <td><?php echo $item->primer_nombre ?></td>
+                <td><?php echo $item->segundo_nombre ?></td>
+                <td><?php echo $item->primer_apellido ?></td>
+                <td><?php echo $item->segundo_apellido?></td>
+                <td><?php echo $item->dui ?></td>
+                <td><?php echo $item->nip ?></td>
+                <td><?php echo $item->nit ?></td>
+                <td>
+                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                    <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
+                </td>
+            </tr>
+        <?php endforeach ?>
     </tr>
-    </tr>
-<?php endforeach;  ?>
-</tr>
 </table>
