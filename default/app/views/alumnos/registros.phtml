@@ -74,12 +74,12 @@
             </div>
         </div>
         <div class="section">
-            <!-- CAMPO MUNICIPIO DE NACIMIENTO -->
+            <!-- CAMPO DEPARTAMENTO DE NACIMIENTO -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Departamento_nacimiento">Departamento de nacimiento:
-                    <?= Form::text('departamentos.nombre_departamento');?></label>
+                        <?php $ar2 = array('Ahuachapan'=>'Ahuachapan','Sonsonate'=>'Sonsonate','Santa Ana'=>'Santa Ana','Chalatenango'=>'Chalatenango','La Libertad'=>'La Liberta','San Salvador'=>'San Salvador','Cuscatlan'=>'Cuscatlan','Cabañas'=>'Cabañas','La Paz'=>'La Paz','San Vicente'=>'San Vicente','Usulutan'=>'Usulutan','San Miguel'=>'San Miguel','Morazan'=>'Morazan','La Union'=>'La Union');echo Form::Select('deparamentos', $ar2, NULL, 'Sonsonate'); ?></label></label>
                 </div>
                 <!-- CAMPOS DE MUNICIPIO_DE_NACIMIENTO -->
                 <div class="input-field col s6">
@@ -94,8 +94,8 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">local_library</i>
-                    <label for="Año_de_bachillerato">Año de bachillerato:
-                    <?= Form::text('matriculas.id_seccion');?></label>
+                    <label for="año_de_bachillerato">Año de bachillerto:
+                        <?php $grado = array('1'=>'1°','2'=>'2°','3'=>'3°'); echo Form::Select('alumnos.anio_bachillerato', $grado, NULL); ?></label>
                 </div>
                 <!-- CAMPOS DE NIE -->
                 <div class="input-field col s6">
@@ -146,20 +146,20 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">reorder</i>
-                    <label for="Especialidad">Especialidad:
-                    <?= Form::text('especialidades.nombre_especialidad');?></label>   
+                    <label for="especialidad">Especialidad:
+                    <?php $especialidades = array('Desarrollo De Software'=>'Desarrollo De Software','Administrativo Contable'=>'Administrativo Contable','Atencion Primaria En Salud'=>'Atencion Primaria En Salud','Mantenimiento Automotriz'=>'Mantenimiento Automotriz','Bachillerato General'=>'Bachillerato General'); echo Form::Select('especialidades.nombre_especialidad', $especialidades, NULL); ?></label>   
                 </div>
                 <!-- CAMPO ESTUDIO PARVULARIA -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">account_box</i>
-                    <label for="Estudio_parvularia">Estudio parvularia:
-                    <?= Form::text('alumnos.estudio_parvularia');?></label>   
+                    <label for="Estudio-parvularia">Estudio parvularia:
+                    <?php $parvularia = array('SI'=>'Si','NO'=>'No',''=>'',''=>''); echo Form::Select('alumnos.estudio_parvularia', $parvularia, NULL); ?></label> 
                 </div>
                 <!-- CAMPO REPITE GRADO -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">account_box</i>
-                    <label for="Repite_grado">Repite grado:
-                    <?= Form::text('alumnos.repite_grado');?></label>
+                    <label for="repite_grado">Repite grado:
+                    <?php $grado = array('SI'=>'Si','NO'=>'No',''=>'',''=>''); echo Form::Select('alumnos.repite_grado', $grado, NULL); ?></label>
                 </div>
             </div>
         </div>
@@ -198,21 +198,21 @@
                 <div class="input-field col s3">
                     <i class="material-icons prefix">person</i>
                     <label for="Sexo">Sexo:
-                    <?= Form::text('alumnos.sexo'); ?></label>
+                        <?php $sexo = array('F'=>'Femenino','M'=>'Masculino'); echo Form::Select('alumnos.sexo', $sexo, NULL); ?></label>
                 </div>
 
                 <!-- CAMPO ESTADO_FAMILIAR -->
                 <div class="input-field col s3">
                     <i class="material-icons prefix">account_circle</i>
                     <label for="Estado_familiar">Estado Familiar:
-                    <?= Form::text('alumnos.estado_familiar'); ?></label>
+                        <?php $estadofamiliar = array('S'=>'Soltero','C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado'); echo Form::Select('alumnos.estado_familiar', $estadofamiliar, NULL); ?></label>
                 </div>
 
                 <!-- CAMPO DISCAPACIDAD -->
                 <div class="input-field col s3">
                     <i class="material-icons prefix">account_box</i>
                     <label for="Discapacidad">Discapacidad:
-                    <?= Form::text('alumnos.discapacidad');?></label>
+                    <?php $discapacidad = array('Ninguna'=>'Ninguna','Ceguera'=>'Ceguera','Baja Vision'=>'Baja Vision','Sordera'=>'Sordera','Hipoacusia'=>'Hipoacusia','Sindrome de Down'=>'Sindrome de Down','Retardado Mental'=>'Retardado Mental','Problemas Motores'=>'Problemas Motores','Ausencia de miembros'=>'Ausencia de miembros','Autismo'=>'Autismo',''=>''); echo Form::Select('alumnos.discapacidad', $discapacidad, NULL);?></label>
                 </div>
             </div>
         </div>
@@ -249,15 +249,15 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">list</i>
-                    <label for="Zona">Zona:
-                    <?= Form::text('zonas.nombre_zona'); ?></label>
+                    <label for="zona_residencia">Zonas:
+                    <?php $zonas = array('Rural'=>'Rural','Urbana'=>'Urbana'); echo Form::Select('zonas.nombre_zona', $zonas, NULL, 'Rural'); ?></label>
                 </div>
 
-                <!-- CAMPO DEPARTAMENTO DE RESIDENCIA -->
+                <!-- CAMPO DEPARTAMENTO DE RESIDENCIA --> 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Departamento">Departamento:
-                    <?= Form::text('departamentos.nombre_departamento'); ?></label>
+                        <?php $ar2 = array('Ahuachapan'=>'Ahuachapan','Sonsonate'=>'Sonsonate','Santa Ana'=>'Santa Ana','Chalatenango'=>'Chalatenango','La Libertad'=>'La Liberta','San Salvador'=>'San Salvador','Cuscatlan'=>'Cuscatlan','Cabañas'=>'Cabañas','La Paz'=>'La Paz','San Vicente'=>'San Vicente','Usulutan'=>'Usulutan','San Miguel'=>'San Miguel','Morazan'=>'Morazan','La Union'=>'La Union',''=>'');echo Form::Select('deparamentos.nombre_departamento', $ar2, NULL, 'Sonsonate'); ?></label>
                 </div>
 
                 <!-- CAMPO MUNICIPIO DE RESIDENCIA -->
@@ -311,7 +311,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">directions_bus</i>
                     <label for="Medio_de_transpote">Medio de transporte para llegar al centro educativo:
-                    <?= Form::text('alumnos.medio_de_transporte'); ?></label>
+                    <?php $transporte = array('A pie'=>'A pie','Bicicleta'=>'Bicicleta','Autobus'=>'Autobus','Vehiculo propio'=>'Vehiculo propio','Otro'=>'Otro',''=>''); echo Form::Select('alumnos.medio_de_transporte', $transporte, NULL); ?></label>
                 </div>
 
                 <!-- CAMPO DISTANICIA ENTRE EL INSO Y TU CASA -->
@@ -361,7 +361,7 @@
         </div>
         <div class="section">
 
-            <!-- CAMPO TIENE HIJOS ASTA AQUI ME QUEDE-->
+            <!-- CAMPO TIENE HIJOS -->
             <div class="row">
                 <div class="input-field col s3">
                     <i class="material-icons prefix">group</i>
@@ -371,7 +371,7 @@
                 <div class="input-field col s3">
                     <i class="material-icons prefix">group</i>
                     <label for="Cuantos_tiene_hijos">Cuantos hijos tiene:
-                    <?= Form::text('alumnos.numero_hijos'); ?></label>
+                    <?= Form::text('alumnos.numero_de_hijos'); ?></label>
                 </div>
                 <div class="input-field col s3">
                     <i class="material-icons prefix">build</i>
@@ -381,7 +381,7 @@
                 <div class="input-field col s3">
                     <i class="material-icons prefix">wc</i>
                     <label for="Convivenicia_con">Convivencia con:
-                    <?= Form::text('alumnos.convivencia'); ?></label>
+                    <?= Form::text('alumnos.convivencia_con'); ?></label>
                 </div>
             </div>
         </div>
@@ -395,7 +395,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment_turned_in</i>
                     <label for="Nombre_de_la_madre">Ocupación:
-                    <?= Form::text('alumnos.ocupacion'); ?></label>
+                    <?= Form::text('alumnos.ocupacion_padre'); ?></label>
                 </div>
             </div>
         </div>
@@ -403,12 +403,12 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">accessibility</i>
-                    <label for="Lugar_de_trabajo">Lugar de trabajo (madre):
-                    <?= Form::text('alumnos.lugar_trabajo_madre'); ?></label>
+                    <label for="Lugar_de_trabajo-madre">Lugar de trabajo (madre):
+                    <?= Form::text('alumnos.lugar_de_trabajo_madre'); ?></label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">call</i>
-                    <label for="Lugar_de_trabajo">Telefono (madre):
+                    <label for="telefono-madre">Telefono (madre):
                     <?= Form::text('alumnos.telefono_madre'); ?></label>
                 </div>
             </div>
@@ -432,11 +432,11 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">accessibility</i>
                     <label for="Lugar_de_trabajo">Lugar de trabajo (padre):
-                    <?= Form::text('alumnos.lugar_trabajo_padre'); ?></label>
+                    <?= Form::text('alumnos.lugar_de_trabajo_padre'); ?></label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">call</i>
-                    <label for="Lugar_de_trabajo">Telefono (padre):
+                    <label for="telefono-padre">Telefono (padre):
                     <?= Form::text('alumnos.telefono_padre'); ?></label>
                 </div>
             </div>
@@ -453,12 +453,12 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
                     <label for="Primer_nombre_encargado">Primer Nombre:
-                    <?= Form::text('alumnos.primer_nombre_encargado'); ?></label>
+                    <?= Form::text('alumnos.primer_nombre_responsable'); ?></label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <label for="Segundo_nombre_encargado">Segundo Nombre:
-                    <?= Form::text('alumnos.segundo_nombre_encargado'); ?></label>
+                    <label for="segundo-nombre-responsabe">Segundo Nombre:
+                    <?= Form::text('alumnos.segundo_nombre_responsable'); ?></label>
                 </div>
             </div>
         </div>
@@ -468,21 +468,27 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
                     <label for="Primer_apellido_encargado">Primer Apellido:
-                    <?= Form::text('alumnos.primer_apellido_encargado'); ?></label>
+                    <?= Form::text('alumnos.primer_apellido_reponsable'); ?></label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
                     <label for="Segundo_nombre_encargado">Segundo Apellido:
-                    <?= Form::text('alumnos.segundo_apellido_encargado'); ?></label>
+                    <?= Form::text('alumnos.segundo_apellido_responsable'); ?></label>
                 </div>
             </div>
         </div>
         <div class="section">
+            <!-- CAMPOS DE DUI Y ESTADO FAMILIAR -->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <label for="Estado_familiar_encargado">Estado familiar:
-                    <?= Form::text('alumnos.estado_familiar_encargado'); ?></label>
+                    <label for="numero-dui-responsable">Numero de DUI:
+                    <?= Form::text('alumnos.numero_dui_responsable'); ?></label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="Estado_familiar_responsable">Estado Familiar:
+                        <?php $estadofamiliarresponsable = array('S'=>'Soltero','C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado',''=>''); echo Form::Select('alumnos.estado_familiar_responsable', $estadofamiliarresponsable, NULL); ?></label>
                 </div>
             </div>
         </div>
@@ -493,7 +499,7 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">mail</i>
                     <label for="Correo_electronico_encargado">Correo electronico:
-                    <?= Form::text('alumnos.email_encargado'); ?></label>
+                    <?= Form::text('alumnos.email_responsable'); ?></label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">call</i>
@@ -503,7 +509,7 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">stay_current_portrait</i>
                     <label for="Telefono_fijo_encargado">Celular:
-                    <?= Form::text('alumnos.telefono_celular_encargado'); ?></label>
+                    <?= Form::text('alumnos.celular_encargado'); ?></label>
                 </div>
             </div>
         </div>
@@ -514,18 +520,18 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">list</i>
-                    <label for="Zona_encargado">Zona:
-                    <?= Form::text('zonas.nombre_zona'); ?></label>
+                    <label for="zona_residencia">Zonas:
+                    <?php $zonas_responsable = array('Rural'=>'Rural','Urbana'=>'Urbana',''=>''); echo Form::Select('zonas.nombre_zona', $zonas_responsable, NULL, 'Rural'); ?></label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
-                    <label for="Departamento_encargado">Departamento:
-                    <?= Form::text('departamentos.departamento'); ?></label>
+                    <label for="Departamento-responsable">Departamento:
+                        <?php $ar2 = array('Ahuachapan'=>'Ahuachapan','Sonsonate'=>'Sonsonate','Santa Ana'=>'Santa Ana','Chalatenango'=>'Chalatenango','La Libertad'=>'La Liberta','San Salvador'=>'San Salvador','Cuscatlan'=>'Cuscatlan','Cabañas'=>'Cabañas','La Paz'=>'La Paz','San Vicente'=>'San Vicente','Usulutan'=>'Usulutan','San Miguel'=>'San Miguel','Morazan'=>'Morazan','La Union'=>'La Union',''=>'');echo Form::Select('deparamentos.nombre_departamento', $ar2, NULL, 'Sonsonate'); ?></label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Municipio_encargado">Municipio:
-                    <?= Form::text('municipios.municipio'); ?></label>
+                    <?= Form::text('municipios.nombre_municipio'); ?></label>
                 </div>
             </div>
         </div>
@@ -550,12 +556,12 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">chevron_right</i>
                     <label for="tipo_de_calle_encargado">Tipo de calle:
-                    <?= Form::text('alumnos.tipo_calle_encargado'); ?></label>
+                    <?= Form::text('alumnos.tipo_de_calle_responsable'); ?></label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">directions_walk</i>
                     <label for="direccion_encargado">Dirección completa del encargado:
-                    <?= Form::text('alumnos.direccion_completa_encargado'); ?></label>
+                    <?= Form::text('alumnos.direccion_completa_responsable'); ?></label>
                 </div>
             </div>
         </div>
@@ -572,7 +578,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">call</i>
                     <label for="profesion_encargado">Telefono o celular:
-                    <?= Form::text('alumnos.telefono_celular_responsable'); ?></label>
+                    <?= Form::text('alumnos.celular_responsable'); ?></label>
                 </div>
             </div>
         </div>
@@ -585,8 +591,8 @@
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">add_alert</i>
-                    <label for="Escolaridad_encargado">Factor de riesgo:
-                    <?= Form::text('alumnos.factor_riesgo_responsable'); ?></label>
+                    <label for="Factor-de-riesgo">Factor de riesgo:
+                    <?= Form::text('alumnos.factor_de_riesgo_responsable'); ?></label>
                 </div>
             </div>
         </div>
