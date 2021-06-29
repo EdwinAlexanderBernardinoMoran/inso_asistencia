@@ -1,15 +1,15 @@
 <div class="row section">
     <?php View::content(); ?>
     <h3>zonas</h3>
-    <?= Form::open(); ?>
-        <div class="row">
-            <div class="col s6">
-                <label for="Nombre_zona">
-                <?= Form::text('zonas.nombre_zona'); ?></label>
-            </div>
+    <?php echo Form::open(); ?>
+
+        <div class="col s6">
+            <label for="">Ingrese la zona
+            <?php echo Form::text('zonas.nombre_zona'); ?></label>
         </div>
+
         <div class="col s12">
-            <?= Form::submit('Guardar',"class='btn teal'"); ?>
+            <?php echo Form::submit('Guardar',"class='btn teal'"); ?>
         </div>
-    <?= Form::close(); ?>
+    <?php echo Form::close(); ?>
 </div>

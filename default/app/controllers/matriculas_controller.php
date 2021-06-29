@@ -13,26 +13,9 @@ class MatriculasController extends AppController
         $this->ListaMatriculas = $matricula->getMatriculas($page);
     }
 
-    //create
-
-    public function create()
-    {
-        View::template('principal');
-        $this->titulo = "Registro matriculas";
-        if (Input::hasPost('matriculas')){
-            $matricula = new Matriculas(Input::post('matriculas'));
-            if ($matricula->create()){
-                Flash::valid("Matricula creada exitosamente");
-                Input::delete();
-                return;
-            }
-            Flash::error("Fallo al crear la matricula");
-        }
-    }
-
     //edit
 
-    public function edit($id){
+    public function edit($id_matriculas){
         View::template('principal');
         $this->titulo = "Editando matricula";
         $matricula = new Matriculas();
@@ -44,16 +27,16 @@ class MatriculasController extends AppController
                 return Redirect::to();
             }
         }else{
-            $this->matriculas = $matricula->find((int) $id);
+            $this->matriculas = $matricula->find((int) $id_matriculas);
         }
     }
 
     //delete
 
-    public function del($id)
+    public function del($id_matriculas)
     {
         $matricula = new Matriculas();
-        if (!$matricula->delete((int) $id)){
+        if (!$matricula->delete((int) $id_matriculas)){
             Flash::error("Error al eleiminar la matricula");
         } else{
             Flash::valid("Matricula borrada");

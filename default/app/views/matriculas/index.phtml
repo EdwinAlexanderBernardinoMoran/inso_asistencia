@@ -5,9 +5,9 @@
     <tr>
         <thead class="blue">
             <th>Id</th>
-            <th>Id alumno</th>
-            <th>Id especialidad</th>
-            <th>Id seccion</th>
+            <th>Alumno</th>
+            <th>Especialidad</th>
+            <th>Seccion</th>
             <th>Año</th>
             <th>Estado</th>
             <th>Egresado</th>
@@ -17,7 +17,7 @@
         <?php foreach ($ListaMatriculas->items as $item) :  ?>
     <tr>
         <td><?php echo $item->id_matriculas ?></td>
-        <td><?php echo $item->alumnos_id?></td>
+        <td><?php echo Form::dbSelect('alumnos.nombre_alumno');?></td>
         <td><?php echo $item->especialidad_id?></td>
         <td><?php echo $item->id_seccion ?></td>
         <td><?php echo $item->anio ?></td>

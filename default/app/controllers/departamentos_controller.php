@@ -17,7 +17,7 @@ class DepartamentosController extends AppController
     public function create()
     {
         View::template('principal');
-        $this->titulo = "Edicion departamentos";
+        $this->titulo = "Departamentos";
         if (Input::hasPost('departamentos')) {
             $departamento = new Departamentos(Input::post('departamentos'));
             if ($departamento->create()) {
