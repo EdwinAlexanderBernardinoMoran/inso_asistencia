@@ -1,12 +1,12 @@
 <div class="row section">
     <?php View::content(); ?>
     <h3>zonas</h3>
+
     <?php echo Form::open(); ?>
-        <div class="row">
-            <div class="col s6">
-                <label for="Nombre_zona">
-                <?php Form::text('zonas.nombre_zona'); ?></label>
-            </div>
+
+        <div class="col s6">
+            <label for="Nombre_zona">Ingrese la zona
+            <?php echo Form::text('zonas.nombre_zona'); ?></label>
         </div>
 
         <div class="col s12">
