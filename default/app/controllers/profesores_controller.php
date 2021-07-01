@@ -31,7 +31,8 @@ class ProfesoresController extends AppController
 
     //edit
 
-    public function edit($id){
+    public function edit($id_profesor)
+    {
         View::template('principal');
         $this->titulo = "Editando registro profesor";
         $profesor = new Profesores();
@@ -43,16 +44,16 @@ class ProfesoresController extends AppController
                 return Redirect::to();
             }
         }else{
-            $this->profesores = $profesor->find((int) $id);
+            $this->profesores = $profesor->find((int) $id_profesor);
         }
     }
 
     //delete
 
-    public function del($id)
+    public function del($id_profesor)
     {
         $profesor = new Profesores();
-        if (!$profesor->delete((int)$id)){
+        if (!$profesor->delete((int)$id_profesor)){
             Flash::error("Error al eliminar el registro");
         }else{
             Flash::valid("Registro eliminado");

@@ -19,13 +19,13 @@
 
     <div class="col s6">
         <label for="">Ingrese el primer apellido
-            <?php echo Form::text('profesores.primer_apellido_profesor'); ?>
+            <?php echo Form::text('profesores.primer_apellido'); ?>
         </label>
     </div>
 
     <div class="col s6">
         <label for="">Ingrese el segundo apellido
-            <?php echo Form::text('profesores.segundo_apellido_profesor'); ?>
+            <?php echo Form::text('profesores.segundo_apellido'); ?>
         </label>
     </div>
 
@@ -48,7 +48,7 @@
     </div>
 
     <div class="col s12">
-        <?= Form::hidden('profesores.id'); ?>
+        <?= Form::hidden('profesores.id_profesor'); ?>
         <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
     </div>
 
