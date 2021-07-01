@@ -1,22 +1,24 @@
 <?php echo View::content(); ?>
-<h3>zonas</h3>
+<div class="center">
+    <h3 class=" card panel light-blue darken-4">zonas</h3>
+</div>
 <table>
     <tr>
-        <thead>
-            <th>id</th>
+        <thead class="blue lighten-3">
+            <th>id_zona</th>
             <th>Zona</th>
-            <th>Acciones</th>
+            <th>acciones</th>
         </thead>
 
-        <?php foreach ($listaZonas->items as $item) : ?>
+        <?php foreach ($listaZonas->items as $item): ?>
             <tr>
                 <td><?php echo $item->id_zona ?></td>
                 <td><?php echo $item->nombre_zona ?></td>
                 <td>
-                    <?php echo Html::LinkAction("edit/$item->id", 'editar', 'class="btn"') ?>
-                    <?php echo Html::LinkAction("del/$item->id", 'borrar', 'class="btn red"') ?>
+                    <?php echo Html::LinkAction("edit/$item->id", "Editar", 'class="btn"') ?>
+                    <?php echo Html::LinkAction("del/$item->id", "Borrar", 'class="btn red"') ?>
                 </td>
             </tr>
-        <?php endforeach; ?>
+        <?php endforeach ?>
     </tr>
 </table>

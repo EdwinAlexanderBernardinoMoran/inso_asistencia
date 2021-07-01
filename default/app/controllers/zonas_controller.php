@@ -12,12 +12,12 @@ class ZonasController extends AppController
   * create
   */
   public function create(){
-        $this->titulo="zonas";
         View::template('principal');
+            $this->titulo="zonas";
             if (Input::hasPost('zonas')){
                 $zona = new Zonas(Input::post('zonas'));
-            if (!$zona->create()) {
-            Flash::valid("creado exitosamente");
+            if (!$zona->create()){
+            Flash::valid("zona creada exitosamente");
             Input::delete();
             return Redirect::to();
             }
@@ -29,7 +29,7 @@ class ZonasController extends AppController
      */
     public function edit($id){
         View::template('principal');
-        $this->titulo="";
+        $this->titulo="zonas";
         $zona = new Zonas();
         if (Input::hasPost('zonas')){
             if (!$zona->update(Input::post('zonas'))){

@@ -1,10 +1,14 @@
 <div class="row">
     <?php echo View::content();?>
     <?php echo Form::open(); ?>
-        <label>
-        <?php echo Form::text('zonas.nombre_zona')?></label>
+        <div class="col s6">
+            <label>
+            <?php echo Form::text('zonas.nombre_zona');?></label>
+        </div>
+        <div class="col s12">
+            <?php echo Form::hidden('zonas.nombre_zona');?>
+            <?php echo Form::submit('guardar','class="btn green"') ?>
+        </div>
 
-        <?php echo Form::hidden('zonas,nombre_zonas')?>
-        <?php echo Form::submit('actualizar') ?>
-    <?php echo Form::close() ?>
+    <?php echo Form::close(); ?>
 </div> 
