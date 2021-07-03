@@ -7,13 +7,13 @@
 
     <div class="col s6">
         <label for="">Ingrese el primer nombre
-            <?php echo Form::text('profesores.primer_nombre_profesor'); ?>
+            <?php echo Form::text('profesores.primer_nombre'); ?>
         </label>
     </div>
 
     <div class="col s6">
-        <label for="nombre2">Ingrese el segundo nombre
-            <?php echo  Form::text('profesores.segundo_nombre_profesor'); ?>
+        <label for="">Ingrese el segundo nombre
+            <?php echo  Form::text('profesores.segundo_nombre'); ?>
         </label>
     </div>
 
@@ -48,7 +48,7 @@
     </div>
 
     <div class="col s12">
-        <?= Form::hidden('profesores.id_profesor'); ?>
+        <?= Form::hidden('profesores.id'); ?>
         <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
     </div>
 
