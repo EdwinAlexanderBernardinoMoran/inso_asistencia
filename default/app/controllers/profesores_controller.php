@@ -31,7 +31,8 @@ class ProfesoresController extends AppController
 
     //edit
 
-    public function edit($id){
+    public function edit($id)
+    {
         View::template('principal');
         $this->titulo = "Editando registro profesor";
         $profesor = new Profesores();

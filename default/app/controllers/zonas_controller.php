@@ -11,7 +11,8 @@ class ZonasController extends AppController
  /**
   * create
   */
-  public function create(){
+  public function create()
+  {
         View::template('principal');
             $this->titulo="zonas";
             if (Input::hasPost('zonas')){
@@ -29,7 +30,7 @@ class ZonasController extends AppController
     /**
      * edit
      */
-    public function edit($id){
+    public function edit($id_zona){
         View::template('principal');
         $this->titulo="zonas";
         $zona = new Zonas();
@@ -40,16 +41,25 @@ class ZonasController extends AppController
                 Flash::valid("creada exitosamente la zona");
                 return Redirect::to();
             }
+<<<<<<< HEAD
         } else {
             $this->zonas = $zona->find((int)$id); 
+=======
+        }else{
+            $this->zonas = $zona->Find((int)$id_zona); 
+>>>>>>> 460a40a6acc0495717346ce7f7665288bb503a0b
         }
     }
     /**
      * delate
      */
-    public function del($id){
+    public function del($id_zona){
         $zona = new Zonas();
+<<<<<<< HEAD
         if(!$zona->delete((int)$id)){
+=======
+        if(!$zona->delete((int)$id_zona)){
+>>>>>>> 460a40a6acc0495717346ce7f7665288bb503a0b
             Flash::error("error al ingresar la zona");
         }else{
             Flash::valid("ingreso con exito");
