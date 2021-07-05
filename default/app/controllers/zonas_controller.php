@@ -45,7 +45,7 @@ class ZonasController extends AppController
         }
     }
     /**
-     * delate
+     * delete
      */
     public function del($id){
         $zona = new Zonas();
