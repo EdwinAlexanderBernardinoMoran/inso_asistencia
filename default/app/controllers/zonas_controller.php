@@ -8,24 +8,6 @@ class ZonasController extends AppController
         $zona = new Zonas();
         $this->listaZonas = $zona->getZonas($page);
     }
- /**
-  * create
-  */
-  public function create(){
-        View::template('principal');
-            $this->titulo="zonas";
-            if (Input::hasPost('zonas')){
-                $zona = new Zonas(Input::post('zonas'));
-            if (!$zona->create(Input::post('zonas'))){
-            Flash::error('fallo la creacion de zona');
-            Flash::valid('zona creada exitosamente');
-            }else{
-           
-           Input::delete();
-            return Redirect::to();
-            }
-        }
-    }
     /**
      * edit
      */

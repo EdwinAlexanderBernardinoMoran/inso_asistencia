@@ -1,13 +1,16 @@
 <?php echo View::content();?>
-<h3>Cantones</h3>
+<div class="center">
+    <h3 class="card panel light-blue darken-4">Cantones</h3>
+</div>
 <table>
-<thead>
+<thead class="blue lighten-3">
     <th>id</th>
     <th>nombre_canton</th>
+    <th>acciones</th>
 </thead>
-    <?php foreach($listaCantones->items as $item): ?> 
+    <?php foreach ($listaCantones->items as $item): ?> 
         <tr>
-            <td><?php echo $item->id_canton?></td>
+            <td><?php echo $item->id?></td>
             <td><?php echo $item->nombre_canton?></td>
             <td>
                 <?php echo Html::LinkAction("edit/$item->id",'editar','class="btn"')?>

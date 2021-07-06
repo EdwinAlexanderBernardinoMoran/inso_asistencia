@@ -7,7 +7,6 @@
         <thead class="blue lighten-3">
             <th>Id</th>
             <th>Zona</th>
-            <th>Habilitado</th>
             <th>Acciones</th>
         </thead>
 
@@ -15,7 +14,6 @@
             <tr>
                 <td><?php echo $item->id?></td>
                 <td><?php echo $item->nombre_zona ?></td>
-                <td><?php echo $item->habilitado ?></td>
                 <td>
                     <?php echo Html::LinkAction("edit/$item->id", "Editar", 'class="btn"') ?>
                     <?php echo Html::LinkAction("del/$item->id", "Borrar", 'class="btn red"') ?>
