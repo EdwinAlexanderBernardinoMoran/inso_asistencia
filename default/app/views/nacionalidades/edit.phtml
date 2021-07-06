@@ -1,0 +1,18 @@
+<div class="row">
+  <?php View::content(); ?>
+  <h3 class="center"><b>Nacionalidades</b></h3>
+  <?php echo Form::open(); ?>
+  <div clas="col s6">
+      <label for="">Ingrese su nacionalidad
+          <?php echo Form::text('nacionalidades.nombre_nacionalidad') ?>
+      </label>
+  
+  </div>
+  <div class="col s12">
+      <?php echo Form::hidden('nacionalidades.nombre_nacionalidad') ?>
+      <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
+      <?php echo Form::reset('Limpiar', 'class="btn blue"') ?>
+  </div>
+  <?php echo Form::close(); ?>
+  
+</div>
