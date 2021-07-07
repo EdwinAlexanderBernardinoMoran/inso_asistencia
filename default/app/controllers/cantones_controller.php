@@ -8,6 +8,24 @@ class CantonesController extends AppController
         $canton = new Cantones();
         $this->listaCantones = $canton->getCantones($page);
     }
+      /**
+     * create
+     */
+    public function create (){
+        View::template('principal');
+        $this->titulo="cantones";
+        if (Input::hasPost('cantones')) {
+            $canton = new Cantones(Input::post('cantones'));
+            if (!$canton->save()) {
+                Flash::error('error al crea el canton');
+            } else {
+                Flash::valid('canton creada exitosamente');
+                Input::delete();
+                return Redirect::to();
+            }
+            
+        }
+    }
     /**
      * edit
      */

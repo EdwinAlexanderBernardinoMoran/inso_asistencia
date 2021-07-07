@@ -8,6 +8,24 @@ class CaseriosController extends AppController
         $caserio = new Caserios();
         $this->listaCaserios = $caserio->getCaserios($page);
     }
+    /**
+     * create
+     */
+    public function create (){
+        View::template('principal');
+        $this->titulo="caserios";
+        if (Input::hasPost('caserios')) {
+            $caserio = new Caserios(Input::post('caserios'));
+            if (!$caserio->save()) {
+                Flash::error('error al crear el caserio');
+            } else {
+                Flash::valid('caserio creado exitosamente');
+                Input::delete();
+                return Redirect::to();
+            }
+            
+        }
+    }
     /** 
      * edit
     */
