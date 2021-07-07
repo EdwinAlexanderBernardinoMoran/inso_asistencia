@@ -69,8 +69,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">people</i>
                     <label for="Nacionalidad">Nacionalidad:
-                    <?php $nacionalidad = array( "1 " => 'Salvadoreño', "2" => 'Salvadoreño por nacimiento');
-                        echo Form::Select('alumnos.nacionalidad_id', $nacionalidad, NULL)?></label>
+                    <?= Form::text('nacionalidades.nombre_nacionalidad'); ?></label>
                 </div>
             </div>
         </div>
@@ -80,7 +79,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Departamento_nacimiento">Departamento de nacimiento:
-                        <?php $ar2 = array('Ahuachapan'=>'Ahuachapan','Sonsonate'=>'Sonsonate','Santa Ana'=>'Santa Ana','Chalatenango'=>'Chalatenango','La Libertad'=>'La Liberta','San Salvador'=>'San Salvador','Cuscatlan'=>'Cuscatlan','Cabañas'=>'Cabañas','La Paz'=>'La Paz','San Vicente'=>'San Vicente','Usulutan'=>'Usulutan','San Miguel'=>'San Miguel','Morazan'=>'Morazan','La Union'=>'La Union');echo Form::Select('departamentos.nombre_departamento', $ar2, NULL, 'Sonsonate'); ?></label></label>
+                        <?php $ar2 = array('Ahuachapan'=>'Ahuachapan','Sonsonate'=>'Sonsonate','Santa Ana'=>'Santa Ana','Chalatenango'=>'Chalatenango','La Libertad'=>'La Liberta','San Salvador'=>'San Salvador','Cuscatlan'=>'Cuscatlan','Cabañas'=>'Cabañas','La Paz'=>'La Paz','San Vicente'=>'San Vicente','Usulutan'=>'Usulutan','San Miguel'=>'San Miguel','Morazan'=>'Morazan','La Union'=>'La Union');echo Form::Select('deparamentos', $ar2, NULL, 'Sonsonate'); ?></label></label>
                 </div>
                 <!-- CAMPOS DE MUNICIPIO_DE_NACIMIENTO -->
                 <div class="input-field col s6">
@@ -206,7 +205,7 @@
                 <div class="input-field col s3">
                     <i class="material-icons prefix">account_circle</i>
                     <label for="Estado_familiar">Estado Familiar:
-                        <?php $estadofamiliar = array('C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado', 'So'=>'Soltero/a'); echo Form::Select('alumnos.estado_familiar', $estadofamiliar, NULL); ?></label>
+                        <?php $estadofamiliar = array('S'=>'Soltero','C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado'); echo Form::Select('alumnos.estado_familiar', $estadofamiliar, NULL); ?></label>
                 </div>
 
                 <!-- CAMPO DISCAPACIDAD -->
@@ -611,16 +610,16 @@
                     <?= Form::date('alumnos.fecha_revision_formulario'); ?></label>
                 </div>
             </div>
+            <?= Form::close(); ?>
         </div>
         
         <div class="section">
             <div class="row">
                 <div class="input-field col s12">
-                   <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
-                    <!-- <i class="material-icons prefix">send</i> -->
-                   </button>
+                <?=Form::hidden('alumnos.id_alumnos'); ?>
+                <?= Form::submit('Actualizar',"class='btn success'"); ?>
                 </div>
             </div>
             <?= Form::close(); ?>
         </div>
-    </div>      
+    </div>
