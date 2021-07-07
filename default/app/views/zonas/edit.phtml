@@ -1,0 +1,20 @@
+<div class="row">
+    <?php echo View::content();?>
+    <?php echo Form::open(); ?>
+        <div class="col s6">
+            <label>
+            <?php echo Form::text('zonas.nombre_zona');?></label>
+        </div>
+        <div class="col s6">
+            <label>
+             <input type="checkbox"/>
+                <?php echo Form::check('zonas.habilitado', '1','',true);?>
+                <span>Habilitado</span>
+            </label>
+        </div>
+        <div class="col s12">
+            <?php echo Form::hidden('zonas.id');?>
+            <?php echo Form::submit('guardar','class="btn green"') ?>
+        </div>
+    <?php echo Form::close(); ?>
+</div> 

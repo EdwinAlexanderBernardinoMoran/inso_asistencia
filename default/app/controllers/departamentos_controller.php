@@ -12,22 +12,6 @@ class DepartamentosController extends AppController
         $this->ListaDepartamentos = $departamento->getDepartamentos($page);
     }
 
-    //create
-
-    public function create()
-    {
-        View::template('principal');
-        $this->titulo = "Edicion departamentos";
-        if (Input::hasPost('departamentos')) {
-            $departamento = new Departamentos(Input::post('departamentos'));
-            if ($departamento->create()) {
-                Flash::valid("Departamento agregado exitosamente");
-                Input::delete();
-                return Redirect::to();
-            }
-            Flash::error("Fallo  al agregar el departamento");
-        }
-    }
 
     //edit
 
