@@ -1,6 +1,6 @@
-<?php echo View::content() ?>
+<?php echo View::content()?>
 
-<h3 class="center-align">Registro de alumnos</h3>
+<h3 class="center-align">IDENTIFICACION DEL ESTUDIANTE</h3>
 <table>
     <thead>
         <th>ID</th>
@@ -10,32 +10,163 @@
         <th>SEGUNDO APELLIDO</th>
         <th>FECHA NACIMIENTO</th>
         <th>NACIONALIDAD</th>
-        <th>DEPARTAMENTO DE NACIMIENTO</th>
-        <th>MUNICIPIO DE NACIMIENTO</th>
+        <th>DEPARTAMENTO NACIMIENTO</th>
+        <th>MUNICIPIO NACIMIENTO</th>
         <th>AÑO DE BACHILLERATO</th>
         <th>NIE</th>
         <th>NUMERO DE PARTIDA</th>
-        <th>NUMERO DE FOLIO</th>
-        <th>LIBRO DE LA PARTIDA</th>
+        <th>FOLIO DE PARTIDA</th>
+        <th>LIBRO DE PARTIDA</th>
         <th>OTRO DOCUMENTO DE IDENTIFICACION</th>
         <th>SALVADOREÑO POR</th>
         <th>ESPECIALIDAD</th>
         <th>ESTUDIO PARVULARIA</th>
         <th>REPITE GRADO</th>
         <th>CENTRO DE PROCEDENCIA</th>
-        <th>AÑO QUE ESTUDIO EL AÑO ANTERIOR</th> -->
-    </thead>
-    <?php foreach ($listaAlumnos->items as $item): ?>
+        <th>AÑO ESTUDIADO EL AÑO ANTERIOR</th>
+        <!-- INFORMACION DEL ESTUDIANTE -->
 
+        <th>TIPO DE SANGRE</th>
+        <th>SEXO</th>
+        <th>ESTADO FAMILIAR</th>
+        <th>DISCAPACIDAD</th>
+        <th>CORREO ELECTRONICO</th>
+        <th>TELEFONO FIJO</th>
+        <th>CELULAR</th>
+        <th>ZONA</th>
+        <th>DEPARTAMENTO</th>
+        <th>MUNICIPIO</th>
+        <th>CANTON</th>
+        <th>CASERIO</th>
+        <th>TIPO DE CALLE</th>
+        <th>DIRECCION COMPLETA DEL ESTUDIANTE</th>
+        <th>MEDIO DE TRANSPORTE</th>
+        <th>DISTANICIA</th>
+        <th>FACTOR DE RIESGO</th>
+        <th>NUMERO INTEGRANTES FAMILIA</th>
+        <th>INTEGRADOS</th>
+        <th>DEPENDE ECONOMICAMENTE</th>
+        <th>TIENE HIJOS</th>
+        <th>TRABAJA</th>
+        <th>CONVIVENCIA</th>
+        <th>NOMBRE MADRE</th>
+        <th>OCUPACIÓN</th>
+        <th>LUGAR DE TRABAJO</th>
+        <th>TELEFONO</th>
+        <th>NOMBRE PADRE</th>
+        <th>OCUPACIÓN</th>
+        <th>LUGAR DE TRABAJO</th>
+        <th>TELEFONO</th>
+
+        <!-- IDENTIFICACION DEL RESPONSABLE -->
+        <th>PRIMER NOMBRE</th>
+        <th>SEGUNDO NOMBRE</th>
+        <th>PRIMER APELLIDO</th>
+        <th>SEGUNDO APELLIDO</th>
+        <th>ESTADO FAMILIAR</th>
+        <th>CORREO ELECTRONICO</th>
+        <th>TELEFONO FIJO</th>
+        <th>CELULAR</th>
+        <th>ZONA</th>
+        <th>DEPARTAMENTO</th>
+        <th>MUNICIPIO</th>
+        <th>CANTON</th>
+        <th>CASERIO</th>
+        <th>TIPO DE CALLE</th>
+        <th>DIRECCION COMPLETA RESPONSABLE</th>
+        <th>PROFECION U OFICIO</th>
+        <th>CELULAR</th>
+        <th>TELEFONO O CELULAR</th>
+        <th>ESCOLARIDAD</th>
+        <th>FACTOR DE RIESGO</th>
+        <th>FECHA DE REVISION</th>
+    </thead>
+    <?php foreach ($listaAlumnos->items as $item):?>
         <tr>
-            <td><?php echo $item->id_alumnos?></td>
-            <td><?php echo $item->primer_nombre?></td>
-            <td><?php echo $item->segundo_nombre?></td>
-            <td><?php echo $item->primer_apellido?></td>
-            <td><?php echo $item->segundo_apellido?></td>
-            <td><?php echo $item->fecha_nacimiento?></td>
+            <td><?php echo $item->id_alumnos?></td> 
+            <td><?php echo $item->primer_nombre ?></td>
+            <td><?php echo $item->segundo_nombre ?></td>
+            <td><?php echo $item->primer_apellido ?></td>
+            <td><?php echo $item->segundo_apellido ?></td>
+            <td><?php echo $item->fecha_nacimiento ?></td>
+            <td><?php echo $item->nacionalidad_id ?></td>
+            <td><?php echo $item->departamento_de_nacimiento_id ?></td>
+            <td><?php echo $item->municipio_de_nacimiento_id?></td>
+            <td><?php echo $item->anio_bachillerato ?></td>
+            <td><?php echo $item->nie ?></td>
+            <td><?php echo $item->numero_partida ?></td>
+            <td><?php echo $item->folio_partida ?></td>
+            <td><?php echo $item->libro_partida ?></td>
+            <td><?php echo $item->otro_documento_de_identificacion ?></td>
+            <td><?php echo $item->salvadoreño_por ?></td>
+            <td><?php echo $item->especialidad_ingreso_id?></td>
+            <td><?php echo $item->estudio_parvularia ?></td>
+            <td><?php echo $item->repite_grado ?></td>
+            <td><?php echo $item->centro_escolar_providencia_id?></td>
+            <td><?php echo $item->anio_anterior ?></td>
+            <td><?php echo $item->tipo_de_sangre?></td>
+            <td><?php echo $item->sexo ?></td>
+            <td><?php echo $item->estado_familiar ?></td>
+            <td><?php echo $item->discapacidad ?></td>
+            <td><?php echo $item->email ?></td>
+            <td><?php echo $item->telefono_fijo ?></td>
+            <td><?php echo $item->zona_id?></td>
+            <td><?php echo $item->departamento_residencia_id?></td>
+            <td><?php echo $item->municipio_residencia_id?></td>
+            <td><?php echo $item->canton_id?></td>
+            <td><?php echo $item->caserio_id?></td>
+            <td><?php echo $item->tipo_de_calle?></td>
+            <td><?php echo $item->direccion_completa ?></td>
+            <td><?php echo $item->medio_de_transporte ?></td>
+            <td><?php echo $item->distancia_desde_casa_y_centroeducativo?></td>
+            <td><?php echo $item->factor_de_riesgo?></td>
+            <td><?php echo $item->numero_integrantes_familia?></td>
+            <td><?php echo $item->integrados?></td>
+            <td><?php echo $item->depende_economicamente_de?></td>
+            <td><?php echo $item->tiene_hijos?></td>
+            <td><?php echo $item->numero_de_hijos?></td>
+            <td><?php echo $item->trabaja?></td>
+            <td><?php echo $item->convivencia_con?></td>
+            <td><?php echo $item->nombre_madre?></td>
+            <td><?php echo $item->ocupacion_madre?></td>
+            <td><?php echo $item->lugar_de_trabajo_madre?></td>
+            <td><?php echo $item->telefono_madre?></td>
+            <td><?php echo $item->nombre_padre?></td>
+            <td><?php echo $item->ocupacion_padre?></td>
+            <td><?php echo $item->lugar_de_trabajo_padre?></td>
+            <td><?php echo $item->telefono_padre?></td>
+            <td><?php echo $item->primer_nombre_responsable?></td>
+            <td><?php echo $item->segundo_nombre_responsable?></td>
+            <td><?php echo $item->primer_apellido_reponsable?></td>
+            <td><?php echo $item->segundo_apellido_responsable?></td>
+            <td><?php echo $item->numero_dui_responsable?></td>
+            <td><?php echo $item->estado_familiar_responsable?></td>
+            <td><?php echo $item->email_responsable?></td>
+            <td><?php echo $item->telefono_fijo_encargado ?></td>
+            <td><?php echo $item->celular_encargado?></td>
+            <td><?php echo $item->zona_responsable_id?></td>
+            <td><?php echo $item->departamento_responsable_id?></td>
+            <td><?php echo $item->municipio_responsable_id?></td>
+            <td><?php echo $item->canton_responsable_id?></td>
+            <td><?php echo $item->caserio_responsable_id?></td>
+            <td><?php echo $item->tipo_de_calle_responsable?></td>
+            <td><?php echo $item->direccion_completa_responsable?></td>
+            <td><?php echo $item->profesion_oficio_responsable?></td>
+            <td><?php echo $item->celular_responsable?></td>
+            <td><?php echo $item->escolaridad_responsable?></td>
+            <td><?php echo $item->factor_de_riesgo_responsable?></td>
+            <td><?php echo $item->fecha_revision_formulario?></td>
+            <!-- $usuarios = Load::model('usuario')->find_all_by_sql("select * from -->
+<!-- usuarios where codigo not in (select codigo from ingreso)") -->
+            
+                <?php echo Html::linkAction("edit/$item->id_alumnos/", 'Editar', 'class="btn "')?>
+                <?php echo Html::linkAction("del/$item->id_alumnos/", 'Borrar', 'class="btn red"')?>
+                <?php echo Html::linkAction("findbyid/$item->id/", 'Consultar', 'class="btn "')?>
+                <?php echo HTml::linkAction("registro/", 'Agregar Alumno', 'class="btn "')?>
+            </td>
         </tr>
-        <?php endforeach;  ?>
-</table>
+        
+        <?php endforeach; ?> 
+</table> 
     
 
