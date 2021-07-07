@@ -2,17 +2,17 @@
 <div class="center">
     <h3 class=" card panel light-blue darken-4">zonas</h3>
 </div>
-<table>
+<table class="centered">
     <tr>
         <thead class="blue lighten-3">
-            <th>id_zona</th>
+            <th>Id</th>
             <th>Zona</th>
-            <th>acciones</th>
+            <th>Acciones</th>
         </thead>
 
         <?php foreach ($listaZonas->items as $item): ?>
             <tr>
-                <td><?php echo $item->id_zona ?></td>
+                <td><?php echo $item->id?></td>
                 <td><?php echo $item->nombre_zona ?></td>
                 <td>
                     <?php echo Html::LinkAction("edit/$item->id", "Editar", 'class="btn"') ?>

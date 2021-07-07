@@ -1,20 +1,20 @@
 <div class="row section">
 
-    <?php View::content(); ?>
+    <?php echo View::content(); ?>
     <h3 class="center"><b>Formulario de registro Profesores</b></h3>
 
     <?php echo Form::open(); ?>
 
     <div class="col s6">
         <label for="">Ingrese el primer nombre
-            <?php echo Form::text('profesores.primer_nombre_profesor'); ?>
+            <?php echo Form::text('profesores.primer_nombre'); ?>
         </label>
     </div>
 
     <div class="col s6">
         <label for="">Ingrese el segundo nombre
         </label>
-        <?php echo  Form::text('profesores.segundo_nombre_profesor'); ?>
+        <?php echo  Form::text('profesores.segundo_nombre'); ?>
     </div>
 
     <div class="col s6">
@@ -44,6 +44,15 @@
     <div class="col s6">
         <label for="">Ingrese el NIT
             <?php echo Form::text('profesores.nit'); ?>
+        </label>
+    </div>
+
+    <div class="col s6">
+        <label>
+            <input type="checkbox" />
+            <?php echo Form::check('profesores.habilitado', '1', '', true); ?>
+
+            <span>Habilitado</span>
         </label>
     </div>
 

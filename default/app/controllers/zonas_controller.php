@@ -8,22 +8,6 @@ class ZonasController extends AppController
         $zona = new Zonas();
         $this->listaZonas = $zona->getZonas($page);
     }
- /**
-  * create
-  */
-  public function create(){
-        View::template('principal');
-            $this->titulo="zonas";
-            if (Input::hasPost('zonas')){
-                $zona = new Zonas(Input::post('zonas'));
-            if (!$zona->create()){
-            Flash::valid("zona creada exitosamente");
-            Input::delete();
-            return Redirect::to();
-            }
-           Flash::error("fallo la operacion");
-        }
-    }
     /**
      * edit
      */
@@ -33,21 +17,21 @@ class ZonasController extends AppController
         $zona = new Zonas();
         if (Input::hasPost('zonas')){
             if (!$zona->update(Input::post('zonas'))){
-                Flash::error("fallo la operacion");
-            }else{
-                Flash::valid("creado exitosamente");
+                Flash::error("fallo la edicion de la zona");
+            } else {
+                Flash::valid("creada exitosamente la zona");
                 return Redirect::to();
             }
-        }else{
-            $this->zonas = $zona->Find((int)$id); 
+        } else {
+            $this->zonas = $zona->find((int)$id); 
         }
     }
     /**
-     * delate
+     * delete
      */
     public function del($id){
         $zona = new Zonas();
-        if(!$zona->delate((int)$id)){
+        if(!$zona->delete((int)$id)){
             Flash::error("error al ingresar la zona");
         }else{
             Flash::valid("ingreso con exito");
