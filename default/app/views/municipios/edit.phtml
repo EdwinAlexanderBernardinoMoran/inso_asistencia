@@ -6,11 +6,11 @@
 
     <div class="col s6">
         <label for="">Ingrese el municipio
-            <?php echo Form::text('municipios.nombre_municipio') ?>
+            <?php echo Form::text('municipios.municipio') ?>
         </label>
     </div>
     <div class="col s12">
-        <?= Form::hidden('municipios.id_municipio'); ?>
+        <?= Form::hidden('municipios.id'); ?>
         <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
         <?php echo Form::reset('Limpiar', 'class="btn blue"') ?>
     </div>

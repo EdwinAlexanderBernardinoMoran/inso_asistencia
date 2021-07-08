@@ -7,5 +7,22 @@
             <th>Nombre Especialidad</th>
             <th>Activo</th>
         </thead>
+        <?php foreach($listaEspecialidades->items as $item) :?>
+            <tr>
+                <td><?php echo $item->id ?></td>
+                <td><?php echo $item->nombre_especialidad ?></td>
+                <td>
+                    <!-- Switch -->
+                    <div class="switch">
+                        <label>
+                        Off
+                        <input type="checkbox">
+                        <span class="lever"></span>
+                        On
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        <?php endforeach; ?>
     </table>
 </div>
