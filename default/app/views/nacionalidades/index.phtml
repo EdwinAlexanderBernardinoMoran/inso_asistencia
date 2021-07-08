@@ -7,10 +7,10 @@
          <th>Nacionalidad</th>
        </thead>
 
-       <?php foreach($ListaNacionalidades->items as $item): ?>
+       <?php foreach($ListaNacionalidad->items as $item): ?>
            <tr>
                <td><?php echo $item->id?></td>
-               <td><?php echo $item->nombre_nacionalidad ?></td>
+               <td><?php echo $item->nacionalidad ?></td>
               <td>
                   <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"' ) ?>
                   <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
