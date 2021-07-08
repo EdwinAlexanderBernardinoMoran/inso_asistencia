@@ -9,6 +9,24 @@ class ZonasController extends AppController
         $this->listaZonas = $zona->getZonas($page);
     }
     /**
+     * create
+     */
+    public function create (){
+        View::template('principal');
+        $this->titulo="zonas";
+        if (Input::hasPost('zonas')) {
+            $zona = new Zonas(Input::post('zonas'));
+            if (!$zona->save()) {
+                Flash::error('error al crea la zona');
+            } else {
+                Flash::valid('zona creada exitosamente');
+                Input::delete();
+                return Redirect::to();
+            }
+            
+        }
+    }
+    /**
      * edit
      */
     public function edit($id){

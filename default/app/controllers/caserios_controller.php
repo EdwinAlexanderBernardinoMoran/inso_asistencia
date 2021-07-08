@@ -11,17 +11,19 @@ class CaseriosController extends AppController
     /**
      * create
      */
-    public function create(){
-        $this->titulo="caserios";
+    public function create (){
         View::template('principal');
-            if (Input::hasPost('caserios')){
-                $caserio = new Caserios(Input::post('caserios'));
-            if (!$caserio->create()){
-                Flash::valid("creado exitosamente");
-                Input::delate();
+        $this->titulo="caserios";
+        if (Input::hasPost('caserios')) {
+            $caserio = new Caserios(Input::post('caserios'));
+            if (!$caserio->save()) {
+                Flash::error('error al crear el caserio');
+            } else {
+                Flash::valid('caserio creado exitosamente');
+                Input::delete();
                 return Redirect::to();
             }
-            Flash::error("fallo la operacion");
+            
         }
     }
     /** 
@@ -29,25 +31,25 @@ class CaseriosController extends AppController
     */
     public function edit($id){
         View::template('principal');
-        $this->titulo="";
+        $this->titulo="caserios";
         $caserio = new Caserios();
-        if (Input::hasPost('Caserios')){
+        if (Input::hasPost('caserios')){
             if(!$caserio->update(Input::post('caserios'))){
                 Flash::error("fallo la operacion");
-            }else{
+            } else {
                 Flash::valid("creado exitosamente");
                 return Redirect::to();
             }
-        }else{
-            $this->caserios = $caserio->Find((int)$id);
+        } else {
+            $this->caserios = $caserio->find((int)$id);
         }
     }
     /**
-     * delate
+     * delete
      */
     public  function del($id){
         $caserio = new Caserios();
-        if(!$caserio-delate((int)$id)){
+        if(!$caserio->delete((int)$id)){
             Flash::error("error al ingresar la zona");
         }else{
             Flash::valid("ingreso exitosamente");

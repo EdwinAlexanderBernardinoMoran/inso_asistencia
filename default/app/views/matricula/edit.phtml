@@ -1,0 +1,59 @@
+<div class="row section">
+
+    <?php View::content(); ?>
+    <h3 class="center"><b>Matriculas</b></h3>
+
+    <?php echo Form::open(); ?>
+
+    <div class="col s6">
+        <label for="">Nombre Alumno
+            <?php echo Form::text('matricula.id_alumno'); ?>
+        </label>
+    </div>
+
+    <div class="col s6">
+        <label for="">Especialidad
+            <?php echo  Form::text('matricula.id_especialidad'); ?>
+        </label>
+    </div>
+
+    <div class="col s6">
+        <label for="">Sección
+            <?php echo Form::text('matricula.id_seccion'); ?>
+        </label>
+    </div>
+
+    <div class="col s6">
+        <label for="">Año
+            <?php echo Form::text('matricula.anio'); ?>
+        </label>
+    </div>
+
+    <div class="col s6">
+        <label for="">Estado
+            <?php echo Form::text('matricula.estado'); ?>
+        </label>
+    </div>
+
+    <div class="col s6">
+        <label for="">Egresado
+            <?php echo Form::text('matricula.egresado'); ?>
+        </label>
+    </div>
+
+
+    <div class="col s12">
+        <?= Form::hidden('matricula.id'); ?>
+        <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
+
+        <label>
+            <input type="checkbox" />
+            <?php echo Form::check('centroescolares.habilitado', '1', '', true); ?>
+
+            <span>Habilitado</span>
+        </label>
+    </div>
+
+    <?php echo Form::close(); ?>
+
+</div>

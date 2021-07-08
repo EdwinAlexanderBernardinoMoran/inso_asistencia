@@ -14,11 +14,11 @@
             <th>Acciones</th>
         </thead>
 
-        <?php foreach ($ListaMatriculas->items as $item) :  ?>
+        <?php foreach ($ListaMatricula->items as $item) :  ?>
     <tr>
-        <td><?php echo $item->id_matriculas ?></td>
-        <td><?php echo Form::dbSelect('alumnos.nombre_alumno');?></td>
-        <td><?php echo $item->especialidad_id?></td>
+        <td><?php echo $item->id ?></td>
+        <td><?php $alumnos = Load::model('alumnos')->find_all_by_sql("select alumnos.	primer_nombre from matricula where alumnos.id=matricula.id_alumno") ?></td>
+        <td><?php echo $item->id_especialidad ?></td>
         <td><?php echo $item->id_seccion ?></td>
         <td><?php echo $item->anio ?></td>
         <td><?php echo $item->estado ?></td>

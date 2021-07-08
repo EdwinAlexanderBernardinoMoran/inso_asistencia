@@ -1,0 +1,35 @@
+<div class="row section">
+
+    <?php View::content(); ?>
+    <h3 class="center"><b>Formulario de registro Profesores</b></h3>
+
+    <?php echo Form::open(); ?>
+
+    <div class="col s6">
+        <label for="">Ingrese el primer nombre
+            <?php echo Form::text('centroescolares.nombre_centroescolar'); ?>
+        </label>
+    </div>
+
+    <div class="col s6">
+        <label for="">Ingrese el segundo nombre
+            <?php echo  Form::text('centroescolares.codigo_infraestructura'); ?>
+        </label>
+    </div>
+
+
+    <div class="col s12">
+        <?= Form::hidden('centroescolares.id'); ?>
+        <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
+
+        <label>
+            <input type="checkbox" />
+            <?php echo Form::check('centroescolares.habilitado', '1', '', true); ?>
+
+            <span>Habilitado</span>
+        </label>
+    </div>
+
+    <?php echo Form::close(); ?>
+
+</div>

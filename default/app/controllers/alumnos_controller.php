@@ -13,8 +13,35 @@ class AlumnosController extends AppController{
     //REGISTRO DE ALUMNOS
 
     public function registros(){
+        if (Input::hasPost('alumnos')){
+            $alumno = new Alumnos(Input::post('alumnos'));
+            if ($alumno->create()){
+                Flash::valid("Operacion exitosa");
+                Input::delete();
+                return Redirect::to();
+            }else{
+                Flash::error("Fallo la Operacion");
+            }
+        }
+
         View::template('principal');
         $this->titulo = "Registro de alumnos";
+    }
+
+    // BOTON DE EDITAR UN REGISTROS
+    public function edit($id){
+        View::template('principal');
+        $alumno = new Alumnos();
+        if(Input::hasPost('alumnos')){
+            if (!$alumno->update(Input::post('alumnos'))) {
+                Flash::error("No se actualizao el registro");
+            } else{
+                Flash::valid("Datos del alumno actualizados");
+                return Redirect::to();
+            }
+        } else {
+            $this->alumnos = $alumno->find((int)$id);
+        }
     }
 }
 
