@@ -23,6 +23,22 @@ class EspecialidadesController extends AppController{
             }
         }
     }
+
+    public function edit($id){
+        View::template('principal');
+        $especialidad = new Especialidades();
+
+        if(Input::hasPost('especialidades')){
+            if(!$especialidad->update(Input::post('especialidades'))){
+                Flash::error('Fallo la operacion');
+            }else{
+                Flash::valid('Operacion Exitosa');
+                return Redirect::to();
+            }
+        }else{
+            $this->especialidades = $especialidad->find((int) $id);
+        }
+    }
 }
 
 ?>
