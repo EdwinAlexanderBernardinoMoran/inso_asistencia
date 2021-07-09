@@ -6,23 +6,30 @@
             <th>id</th>
             <th>Nombre Especialidad</th>
             <th>Activo</th>
+            <th>Acciones</th>
         </thead>
         <?php foreach($listaEspecialidades->items as $item) :?>
             <tr>
                 <td><?php echo $item->id ?></td>
                 <td><?php echo $item->nombre_especialidad ?></td>
                 <td>
-                    <!-- Switch -->
-                    <div class="switch">
-                        <label>
-                        Off
-                        <input type="checkbox">
-                        <span class="lever"></span>
-                        On
-                        </label>
-                    </div>
+                    <?php 
+                        if ($item->habilitado == 1) {
+                            echo "Habilitado";
+                        }
+                        if ($item->habilitado == 0) {
+                            echo "Inhabilitado";
+                        }
+                    ?>
+                </td>
+                <td>
+                    <?php echo Html::linkAction('edit/$item->id','Editar',"class='btn info'")  ?>
+                    <?php echo Html::linkAction('delete/$item->id','Eliminar', "class='btn red'") ?><br/>
                 </td>
             </tr>
         <?php endforeach; ?>
+        <tr>
+            <td><?php echo Html::linkAction('create','Nueva Especialidad', "class='btn green'") ?></td>
+        </tr>
     </table>
 </div>
