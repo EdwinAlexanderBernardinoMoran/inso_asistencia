@@ -40,8 +40,9 @@ class NacionalidadesController extends AppController{
                 return Redirect::to();
             }
         } else {
-            $this->nacionalidades = $nacionalidad-find((int)$id);
+            $this->nacionalidades = $nacionalidad->find((int)$id);
         }
     }
 }
+
 ?>
