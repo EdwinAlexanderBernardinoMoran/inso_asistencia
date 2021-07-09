@@ -14,16 +14,15 @@ class CaseriosController extends AppController
     public function create (){
         View::template('principal');
         $this->titulo="caserios";
-        if (Input::hasPost('caserios')) {
+        if (Input::hasPost('caserios')){
             $caserio = new Caserios(Input::post('caserios'));
-            if (!$caserio->save()) {
-                Flash::error('error al crear el caserio');
-            } else {
-                Flash::valid('caserio creado exitosamente');
+            if ($caserio->save()){
+                Flash::valid("caserio creado exitosamente");
                 Input::delete();
-                return Redirect::to();
-            }
-            
+                return;
+            } 
+            Flash::error("error al crear el caserio");
+
         }
     }
     /** 
