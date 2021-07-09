@@ -1,0 +1,22 @@
+<div class="container">
+    <?php View::content();?>
+    <div class="row">
+        <?php echo Form::open() ;?>
+            <div class="col s12">
+            <label for="Especialidad">Especialidad
+            <?php echo Form::text('especialidades.nombre_especialidad') ?></label>
+            </div>
+            <div class="col s12">
+                <label for="habilitado">Habilitado
+                    <?php
+                        $arreglo = array('Inhabilitado','Habilitado');
+                        echo Form::select('especialidades.habilitado',$arreglo);
+                    ?>
+                </label>
+            </div>
+            <div class="col s12">
+                <?php echo Form::submit('Guardar',"class='btn green'"); ?>
+            </div>
+        <?php echo Form::close(); ?>
+    </div>
+</div>

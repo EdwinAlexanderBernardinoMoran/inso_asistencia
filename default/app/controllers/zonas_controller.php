@@ -14,16 +14,14 @@ class ZonasController extends AppController
     public function create (){
         View::template('principal');
         $this->titulo="zonas";
-        if (Input::hasPost('zonas')) {
+        if (Input::hasPost('zonas')){
             $zona = new Zonas(Input::post('zonas'));
-            if (!$zona->save()) {
-                Flash::error('error al crea la zona');
-            } else {
-                Flash::valid('zona creada exitosamente');
+            if ($zona->save()){
+                Flash::valid("Zona creada exitosamente");
                 Input::delete();
-                return Redirect::to();
+                return;
             }
-            
+            Flash::error("Fallo al crear la zona");
         }
     }
     /**

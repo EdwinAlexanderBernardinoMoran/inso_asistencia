@@ -14,16 +14,14 @@ class CantonesController extends AppController
     public function create (){
         View::template('principal');
         $this->titulo="cantones";
-        if (Input::hasPost('cantones')) {
+        if (Input::hasPost('cantones')){
             $canton = new Cantones(Input::post('cantones'));
-            if (!$canton->save()) {
-                Flash::error('error al crea el canton');
-            } else {
-                Flash::valid('canton creada exitosamente');
+            if ($canton->save()){
+                Flash::valid("canton creado exitosamente");
                 Input::delete();
-                return Redirect::to();
-            }
-            
+                return;
+            } 
+            Flash::error("error al crear el canton"); 
         }
     }
     /**
