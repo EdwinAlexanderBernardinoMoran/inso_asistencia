@@ -1,16 +1,16 @@
 
 <?php
 
-Load::models('matriculas');
+Load::models('matricula');
 
-class MatriculasController extends AppController
+class MatriculaController extends AppController
 {
     public function index($page=1)
     {
         View::template('principal');
         $this->titulo = "Matriculas";
-        $matricula = new Matriculas();
-        $this->ListaMatriculas = $matricula->getMatriculas($page);
+        $matricula = new Matricula();
+        $this->ListaMatriculas = $matricula->getMatricula($page);
     }
 
     //edit
