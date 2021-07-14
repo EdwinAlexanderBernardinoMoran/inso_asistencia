@@ -17,12 +17,8 @@
          </label>
       </div>
       <div class="col s12">
-         <button class="btn waves-effect waves-light" type="submit" name="action">Actualizar
-         <i class="material-icons right">send</i>
-      </button>
-         <button class="btn waves-effect waves-light" type="reset" name="action">Limpiar
-            <i class="material-icons right">send</i>
-         </button>
+      <?php echo Form::hidden('nacionalidades.id'); ?>
+      <?php echo Form::submit('Actualizar',"class='btn green'"); ?>
       </div>   
       <?php echo Form::close(); ?>
    </div>

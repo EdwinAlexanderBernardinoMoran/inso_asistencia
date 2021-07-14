@@ -40,8 +40,18 @@ class NacionalidadesController extends AppController{
                 return Redirect::to();
             }
         } else {
-            $this->nacionalidades = $nacionalidad->find((int)$id);
+            $this->nacionalidades = $nacionalidad->find((int) $id);
         }
+    }
+
+    public function del($id){
+        $nacionalidad = new Nacionalidades();
+        if (!$nacionalidad->delete((int)$id)){
+            Flash::valid('Operacion exitosa');
+        } else {
+            Flash::error('Fallo Operacion');
+        }
+        return Redirect::to();
     }
 }
 
