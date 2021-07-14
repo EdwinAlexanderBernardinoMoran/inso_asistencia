@@ -57,6 +57,7 @@
             </div>
         </div>
 
+
         <div class="section">
             <!-- CAMPOS DE FECHA_NACIMIENTO-->
             <div class="row">
@@ -69,8 +70,9 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">people</i>
                     <label for="Nacionalidad">Nacionalidad:
-                    <?php $nacionalidad = array( "1" => 'Salvadoreño', "2" => 'Salvadoreño por nacimiento');
-                        echo Form::Select('alumnos.nacionalidad_id', $nacionalidad, NULL)?></label>
+                    <?php
+                        $arreglo = array('nacionalidades', 'getNacionalidades');
+                        echo Form::dbSelect('nacionalidades.id', 'nombre_nacionalidad', $arreglo); ?></label>
                 </div>  
             </div>
         </div>
@@ -80,7 +82,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Departamento_nacimiento">Departamento de nacimiento:
-                        <?php $ar2 = array('Ahuachapan'=>'Ahuachapan','Sonsonate'=>'Sonsonate','Santa Ana'=>'Santa Ana','Chalatenango'=>'Chalatenango','La Libertad'=>'La Liberta','San Salvador'=>'San Salvador','Cuscatlan'=>'Cuscatlan','Cabañas'=>'Cabañas','La Paz'=>'La Paz','San Vicente'=>'San Vicente','Usulutan'=>'Usulutan','San Miguel'=>'San Miguel','Morazan'=>'Morazan','La Union'=>'La Union');echo Form::Select('departamentos.nombre_departamento', $ar2, NULL, 'Sonsonate'); ?></label></label>
+                        <?php $ar2 = array('Ahuachapan'=>'Ahuachapan','Sonsonate'=>'Sonsonate','Santa Ana'=>'Santa Ana','Chalatenango'=>'Chalatenango','La Libertad'=>'La Liberta','San Salvador'=>'San Salvador','Cuscatlan'=>'Cuscatlan','Cabañas'=>'Cabañas','La Paz'=>'La Paz','San Vicente'=>'San Vicente','Usulutan'=>'Usulutan','San Miguel'=>'San Miguel','Morazan'=>'Morazan','La Union'=>'La Union');echo Form::Select('departamentos.nombre_departamento', $ar2); ?></label></label>
                 </div>
                 <!-- CAMPOS DE MUNICIPIO_DE_NACIMIENTO -->
                 <div class="input-field col s6">

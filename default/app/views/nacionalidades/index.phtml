@@ -5,7 +5,7 @@
       <thead class= "blue lighten-2">
          <th>ID</th>
          <th>NACIONALIDAD</th>
-         <th>HABILITADO</th>
+         <th>ACTIVO</th>
          <th>ACCIONES</th>
        </thead>
 
@@ -13,19 +13,22 @@
            <tr>
                <td><?php echo $item->id?></td>
                <td><?php echo $item->nombre_nacionalidad ?></td>
-               <td><?php 
-                if ($item->habilitado > 0) {
-                    echo "Habilitado";
-                }
-                if ($item->habilitado < 1) {
-                    echo "Desabilitado";
-                }
-               ?></td>
+               <td>
+                   <?php 
+                        if ($item->habilitado == 1) {
+                            echo "Habilitado";
+                        }
+                        if ($item->habilitado == 0) {
+                            echo "Inhabilitado";
+                        }
+                    ?>
+                    </td>
               <td>
-                  <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"' ) ?>
-                  <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
+                  <?php echo Html::linkAction('edit/$item->id/', 'Editar', "class='btn'" ) ?>
+                  <?php echo Html::linkAction('del/$item->id/', 'Borrar', "class='btn red'") ?>
               </td>
            </tr>
        <?php endforeach ?>
   </tr>
+
 </table>
