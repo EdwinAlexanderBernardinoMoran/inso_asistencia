@@ -23,7 +23,7 @@ class ProfesoresController extends AppController
             if ($profesor->create()){
                 Flash::valid("Profesor registrado exitosamente");
                 Input::delete();
-                return;
+                return Redirect::to();
             }
             Flash::error("Fallo al crear el registro del profesor");
         }

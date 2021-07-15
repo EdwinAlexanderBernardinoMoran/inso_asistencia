@@ -6,12 +6,13 @@
         <thead class="blue lighten-4 ">
             <th>Id</th>
             <th>Nombre departamento</th>
+            <th>Acciones</th>
         </thead>
 
         <?php foreach ($ListaDepartamentos->items as $item) : ?>
             <tr>
                 <td><?php echo $item->id ?></td>
-                <td><?php echo $item->departamento ?></td>
+                <td><?php echo $item->nombre_departamento ?></td>
                 <td>
                     <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
                     <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
