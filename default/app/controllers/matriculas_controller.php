@@ -1,16 +1,16 @@
 
 <?php
 
-Load::models('matricula');
+Load::models('matriculas');
 
-class MatriculaController extends AppController
+class MatriculasController extends AppController
 {
     public function index($page=1)
     {
         View::template('principal');
         $this->titulo = "Matriculas";
-        $matricula = new Matricula();
-        $this->ListaMatriculas = $matricula->getMatricula($page);
+        $matricula = new Matriculas();
+        $this->ListaMatriculas = $matricula->getMatriculas($page);
     }
 
     //edit
@@ -18,9 +18,9 @@ class MatriculaController extends AppController
     public function edit($id){
         View::template('principal');
         $this->titulo = "Editando matricula";
-        $matricula1 = new Matricula();
-        if (Input::hasPost('matricula')){
-            if (!$matricula1->update(Input::post('matricula'))){
+        $matricula1 = new Matriculas();
+        if (Input::hasPost('matriculas')){
+            if (!$matricula1->update(Input::post('matriculas'))){
                 Flash::error("No se pudo editar la matricula");
             }else{
                 Flash::valid("Matricula actualizada");
@@ -35,7 +35,7 @@ class MatriculaController extends AppController
 
     public function del($id)
     {
-        $matricula1 = new Matricula();
+        $matricula1 = new Matriculas();
         if (!$matricula1->delete((int) $id)){
             Flash::error("Error al eleiminar la matricula");
         } else{

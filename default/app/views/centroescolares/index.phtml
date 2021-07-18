@@ -1,25 +1,43 @@
 <?php echo View::content() ?>
-<h3 class="center"><b>Centros Escolares</b></h3>
+<h3 class="center"><b>Lista de centros escolares</b></h3>
 
-<table class="centered">
+<?php echo Html::linkAction('create', 'Nuevo centro escolar +', "class='btn green'")  ?>
+
+
+<table class="centered table striped">
+
     <tr>
-        <thead class="blue lighten-4">
-            <th>Id</th>
-            <th>Centro Escolar</th>
-            <th>Codigo Infraestructura</th>
-            <th>Acciones</th>
-        </thead>
+            <thead class="blue lighten-4">
+                <th>Id</th>
+                <th>Centro Escolar</th>
+                <th>Codigo Infraestructura</th>
+                <th>Activo</th>
+                <th>Acciones</th>
+            </thead>
 
         <?php foreach ($ListaCentroescolares->items as $item) : ?>
-    <tr>
-        <td><?php echo $item->id ?></td>
-        <td><?php echo $item->nombre_centroescolar ?></td>
-        <td><?php echo $item->codigo_infraestructura ?></td>
-        <td>
-            <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
-            <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
-        </td>
+            <tr>
+                <td><?php echo $item->id ?></td>
+                <td><?php echo $item->nombre_centroescolar ?></td>
+                <td><?php echo $item->codigo_infraestructura ?></td>
+                <td>
+                    <?php
+                    if ($item->habilitado == 1) {
+                        echo "Habilitado";
+                    }
+                    if ($item->habilitado == 0) {
+                        echo "Inhabilitado";
+                    }
+                    ?>
+                </td>
+                <td>
+                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                    <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
+                </td>
+            </tr>
+        <?php endforeach ?>
     </tr>
-<?php endforeach ?>
-</tr>
+
 </table>
+
+

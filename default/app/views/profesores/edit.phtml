@@ -1,105 +1,67 @@
-<div class="row section">
+ <div class="row section">
 
     <?php View::content(); ?>
-    <h3 class="center"><b>Formulario de registro Profesores</b></h3>
+        <h3 class="center"><b>Formulario de registro Profesores</b></h3>
 
-    <?php echo Form::open(); ?>
+        <?php echo Form::open(); ?>
 
-    <div class="col s6">
-        <label for="">Ingrese el primer nombre
-            <?php echo Form::text('profesores.primer_nombre'); ?>
-        </label>
-    </div>
+        <div class="col s6">
+            <label for="">Ingrese el primer nombre
+                <?php echo Form::text('profesores.primer_nombre_profesor'); ?>
+            </label>
+        </div>
 
-    <div class="col s6">
-        <label for="">Ingrese el segundo nombre
-            <?php echo  Form::text('profesores.segundo_nombre'); ?>
-        </label>
-    </div>
+        <div class="col s6">
+            <label for="">Ingrese el segundo nombre
+                <?php echo  Form::text('profesores.segundo_nombre_profesor'); ?>
+            </label>
+        </div>
 
-    <div class="col s6">
-        <label for="">Ingrese el primer apellido
-            <?php echo Form::text('profesores.primer_apellido'); ?>
-        </label>
-    </div>
+        <div class="col s6">
+            <label for="">Ingrese el primer apellido
+                <?php echo Form::text('profesores.primer_apellido'); ?>
+            </label>
+        </div>
 
-    <div class="col s6">
-        <label for="">Ingrese el segundo apellido
-            <?php echo Form::text('profesores.segundo_apellido'); ?>
-        </label>
-    </div>
+        <div class="col s6">
+            <label for="">Ingrese el segundo apellido
+                <?php echo Form::text('profesores.segundo_apellido'); ?>
+            </label>
+        </div>
 
-    <div class="col s6">
-        <label for="">Ingrese el DUI
-            <?php echo Form::text('profesores.dui'); ?>
-        </label>
-    </div>
+        <div class="col s6">
+            <label for="">Ingrese el DUI
+                <?php echo Form::text('profesores.dui'); ?>
+            </label>
+        </div>
 
-    <div class="col s6">
-        <label for="">Ingrese el NIP
-            <?php echo Form::text('profesores.nip'); ?>
-        </label>
-    </div>
+        <div class="col s6">
+            <label for="">Ingrese el NIP
+                <?php echo Form::text('profesores.nip'); ?>
+            </label>
+        </div>
 
-    <div class="col s6">
-        <label for="">Ingrese el NIT
-            <?php echo Form::text('profesores.nit'); ?>
-        </label>
-    </div>
+        <div class="col s6">
+            <label for="">Ingrese el NIT
+                <?php echo Form::text('profesores.nit'); ?>
+            </label>
+        </div>
 
-    <div class="row section">
+        <div class="col s6">
+            <label for="habilitado">Habilitado
+                <?php
+                $arreglo = array('Inhabilitado', 'Habilitado');
+                echo Form::select('centroescolares.habilitado', $arreglo);
+                ?>
+            </label>
+        </div>
 
-    <?php View::content(); ?>
-    <h3 class="center"><b>Formulario de registro Profesores</b></h3>
-
-    <?php echo Form::open(); ?>
-
-    <div class="col s6">
-        <label for="">Ingrese el primer nombre
-            <?php echo Form::text('profesores.primer_nombre'); ?>
-        </label>
-    </div>
-
-    <div class="col s6">
-        <label for="">Ingrese el segundo nombre
-            <?php echo  Form::text('profesores.segundo_nombre'); ?>
-        </label>
-    </div>
-
-    <div class="col s6">
-        <label for="">Ingrese el primer apellido
-            <?php echo Form::text('profesores.primer_apellido'); ?>
-        </label>
-    </div>
-
-    <div class="col s6">
-        <label for="">Ingrese el segundo apellido
-            <?php echo Form::text('profesores.segundo_apellido'); ?>
-        </label>
-    </div>
-
-    <div class="col s6">
-        <label for="">Ingrese el DUI
-            <?php echo Form::text('profesores.dui'); ?>
-        </label>
-    </div>
-
-    <div class="col s6">
-        <label for="">Ingrese el NIP
-            <?php echo Form::text('profesores.nip'); ?>
-        </label>
-    </div>
-
-    <div class="col s6">
-        <label for="">Ingrese el NIT
-            <?php echo Form::text('profesores.nit'); ?>
-        </label>
-    </div>
-
-    <div class="col s12">
-        <?= Form::hidden('profesores.id'); ?>
-        <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
-    </div>
+        <div class="col s12">
+            <?= Form::hidden('profesores.id'); ?>
+            <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
+            <?php echo Form::reset('Limpiar', 'class="btn blue"') ?>
+            <?php echo Html::linkAction('index', 'regresar', "class='btn green'") ?>
+        </div>
 
     <?php echo Form::close(); ?>
 

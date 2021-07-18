@@ -17,9 +17,9 @@
         <?php foreach ($ListaMatriculas->items as $item) :  ?>
     <tr>
         <td><?php echo $item->id ?></td>
-        <td><?php $alumnos = Load::model('alumnos')->find_all_by_sql("select primer_nombre, segundo_nombre,	primer_apellido,	segundo_apellido	from matricula, alumnos where alumnos.id=matricula.id_alumno") ?></td>
-        <td><?php $alumnos = Load::model('alumnos')->find_all_by_sql("select nombre_especialidad	from matricula, especialidades where alumnos.id=matricula.id_especialidad") ?></td>
-        <td><?php $alumnos = Load::model('alumnos')->find_all_by_sql("select anio_bachillerato	from matricula, especialidades where alumnos.id=matricula.id_seccion") ?></td>
+        <td><?php $alumnos = Load::model('alumnos')->find_all_by_sql("select primer_nombre, segundo_nombre,	primer_apellido,	segundo_apellido	from matriculas, alumnos where alumnos.id=matriculas.id_alumno") ?></td>
+        <td><?php $alumnos = Load::model('alumnos')->find_all_by_sql("select nombre_especialidad	from matriculas, especialidades where alumnos.id=matriculas.id_especialidad") ?></td>
+        <td><?php $alumnos = Load::model('alumnos')->find_all_by_sql("select anio_bachillerato	from matriculas, especialidades where alumnos.id=matriculas.id_seccion") ?></td>
         <td><?php echo $item->anio ?></td>
         <td><?php echo $item->estado ?></td>
         <td><?php echo $item->egresado ?></td>

@@ -2,6 +2,7 @@
 
     <?php echo View::content(); ?>
     <h3 class="center"><b>Departamentos</b></h3>
+    
 
     <?php echo Form::open(); ?>
 
@@ -12,17 +13,18 @@
     </div>
 
     <div class="col s6">
-        <label>
-            <input type="checkbox" />
-            <?php echo Form::check('departamentos.habilitado', '1', '', true); ?>
-
-            <span>Habilitado</span>
+        <label for="habilitado">Habilitado
+            <?php
+            $arreglo = array('Inhabilitado', 'Habilitado');
+            echo Form::select('centroescolares.habilitado', $arreglo);
+            ?>
         </label>
     </div>
 
     <div class="col s12">
         <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
         <?php echo Form::reset('Limpiar', 'class="btn blue"') ?>
+        <?php echo Html::linkAction('index', 'regresar', "class='btn green'") ?>
     </div>
 
     <?php echo Form::close(); ?>

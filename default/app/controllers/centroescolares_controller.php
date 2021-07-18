@@ -12,6 +12,23 @@ class CentroescolaresController extends AppController
         $this ->ListaCentroescolares = $centroescolar->getCentroescolares($page);
     }
 
+    //create
+
+    public function create()
+    {
+        View::template('principal');
+        $this->titulo = "Centros Escolares";
+        if (Input::hasPost('centroescolares')) {
+            $centroescolar = new Centroescolares(Input::post('centroescolares'));
+            if ($centroescolar->create()) {
+                Flash::valid("Centro escolar registrado exitosamente");
+                Input::delete();
+                return Redirect::to();
+            }
+            Flash::error("Fallo al registrar el centro escolar");
+        }
+    }
+
     //edit
 
     public function edit($id)

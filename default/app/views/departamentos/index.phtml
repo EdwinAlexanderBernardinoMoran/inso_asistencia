@@ -1,23 +1,37 @@
 <?php echo View::content() ?>
 <h3 class="center"><b>Departamentos</b></h3>
 
+<?php echo Html::linkAction('create', 'Nuevo departamento +', "class='btn green'")  ?>
+
+
 <table class="centered">
     <tr>
         <thead class="blue lighten-4 ">
             <th>Id</th>
             <th>Nombre departamento</th>
+            <th>Activo</th>
             <th>Acciones</th>
         </thead>
 
         <?php foreach ($ListaDepartamentos->items as $item) : ?>
-            <tr>
-                <td><?php echo $item->id ?></td>
-                <td><?php echo $item->nombre_departamento ?></td>
-                <td>
-                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
-                    <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
-                </td>
-            </tr>
-        <?php endforeach ?>
+    <tr>
+        <td><?php echo $item->id ?></td>
+        <td><?php echo $item->nombre_departamento ?></td>
+        <td>
+            <?php
+            if ($item->habilitado == 1) {
+                echo "Habilitado";
+            }
+            if ($item->habilitado == 0) {
+                echo "Inhabilitado";
+            }
+            ?>
+        </td>
+        <td>
+            <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+            <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
+        </td>
     </tr>
+<?php endforeach ?>
+</tr>
 </table>

@@ -1,7 +1,9 @@
 <?php echo View::content() ?>
 <h3 class="center"><b>Registro de profesores</b></h3>
 
-<table class="centered">
+<?php echo Html::linkAction('create', 'Nuevo Profesor +', "class='btn green'")  ?>
+
+<table class="centered table striped">
     <tr>
         <thead class="blue lighten-4 ">
             <th>Id</th>
@@ -12,24 +14,36 @@
             <th>DUI</th>
             <th>NIP</th>
             <th>NIT</th>
+            <th>Activo</th>
             <th>Acciones</th>
         </thead>
 
         <?php foreach ($ListaProfesores->items as $item) :  ?>
             <tr>
                 <td><?php echo $item->id ?></td>
-                <td><?php echo $item->primer_nombre ?></td>
-                <td><?php echo $item->segundo_nombre ?></td>
+                <td><?php echo $item->primer_nombre_profesor ?></td>
+                <td><?php echo $item->segundo_nombre_profesor ?></td>
                 <td><?php echo $item->primer_apellido ?></td>
-                <td><?php echo $item->segundo_apellido?></td>
+                <td><?php echo $item->segundo_apellido ?></td>
                 <td><?php echo $item->dui ?></td>
                 <td><?php echo $item->nip ?></td>
                 <td><?php echo $item->nit ?></td>
                 <td>
+                    <?php
+                    if ($item->habilitado == 1) {
+                        echo "Habilitado";
+                    }
+                    if ($item->habilitado == 0) {
+                        echo "Inhabilitado";
+                    }
+                    ?>
+                </td>
+                <td>
                     <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
                     <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
-                </td>
+                        </td>
             </tr>
         <?php endforeach ?>
     </tr>
 </table>
+

@@ -20,10 +20,20 @@
         </label>
     </div>
 
+    <div class="col s6">
+        <label for="habilitado">Habilitado
+            <?php
+            $arreglo = array('Inhabilitado', 'Habilitado');
+            echo Form::select('centroescolares.habilitado', $arreglo);
+            ?>
+        </label>
+    </div>
+
     <div class="col s12">
         <?= Form::hidden('departamentos.id'); ?>
         <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
         <?php echo Form::reset('Limpiar', 'class="btn blue"') ?>
+        <?php echo Html::linkAction('index', 'regresar', "class='btn green'") ?>
     </div>
 
     <?php echo Form::close(); ?>
