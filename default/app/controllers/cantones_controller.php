@@ -19,7 +19,7 @@ class CantonesController extends AppController
             if ($canton->save()){
                 Flash::valid("canton creado exitosamente");
                 Input::delete();
-                return;
+                return Redirect::to();
             } 
             Flash::error("error al crear el canton"); 
         }

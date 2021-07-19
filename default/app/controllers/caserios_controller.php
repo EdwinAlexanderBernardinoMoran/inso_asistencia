@@ -19,7 +19,7 @@ class CaseriosController extends AppController
             if ($caserio->save()){
                 Flash::valid("caserio creado exitosamente");
                 Input::delete();
-                return;
+                return Redirect::to();
             } 
             Flash::error("error al crear el caserio");
 
