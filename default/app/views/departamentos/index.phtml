@@ -1,16 +1,17 @@
 <?php echo View::content() ?>
 <h3 class="center"><b>Departamentos</b></h3>
 
-<?php echo Html::linkAction('create', 'Nuevo departamento +', "class='btn green right'")  ?>
 
+<?php echo Html::linkAction('create', 'Nuevo departamento +', "class='btn teal lighten-2 right'")  ?>
 
 <table class="centered">
     <tr>
-        <thead class="blue lighten-4 ">
+        <thead class="blue lighten-4  ">
             <th>Id</th>
             <th>Nombre departamento</th>
             <th>Activo</th>
             <th>Acciones</th>
+
         </thead>
 
         <?php foreach ($ListaDepartamentos->items as $item) : ?>
@@ -27,10 +28,13 @@
             }
             ?>
         </td>
-        <td>
-            <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
-            <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
-        </td>
+
+        <div class="botones">
+            <td>
+                <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
+            </td>
+        </div>
     </tr>
 <?php endforeach ?>
 </tr>
