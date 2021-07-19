@@ -2,7 +2,7 @@
 <h3 clas="center"><b>Municipios</b></h3>
 <table class="centered">  
     <tr>
-      <thead>
+      <thead class= "teal accent-3">
           <th>Id</th>
           <th>Municipios</th>
       </thead>
@@ -10,7 +10,7 @@
       <?php foreach($ListaMunicipios->items as $item): ?>
           <tr>
               <td><?php echo $item->id ?></td>
-              <td><?php echo $item->municipio ?></td>
+              <td><?php echo $item->nombre_municipio ?></td>
               <td>
                 <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
                 <?php echo Html::linkAction("del/$item->id/", "Eliminar", 'class="btn red"') ?>

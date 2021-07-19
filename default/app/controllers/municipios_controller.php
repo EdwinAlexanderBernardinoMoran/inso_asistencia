@@ -31,7 +31,7 @@ class MunicipiosController extends AppController
         $this->titulo = "Editando municipio";
         $municipio = new Municipios();
         if(Input::hasPost('municipios')) {
-            if ($municipio->update(Input::post('departamentos'))){
+            if ($municipio->update(Input::post('municipios'))){
                 Flash::error("Fallo al editar el municipio");
             } else {
                 Flash::valid("Municipio actualizado con éxito");
