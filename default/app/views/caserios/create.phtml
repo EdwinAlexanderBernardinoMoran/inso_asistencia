@@ -1,17 +1,18 @@
 <div class="row">
     <?php View::content(); ?>
-    <h3>Caserios</h3>
+    <h3 class="center">Caserios</h3>
     <?php echo Form::open(); ?>
         <div class="row">
             <div class="col s6">
-                <label >
+                <label for="">nombre del caserio
                 <?php echo Form::text('caserios.nombre_caserio'); ?></label>
             </div>
             <div class="col s6">
-                <label for="">
-                    <Input type="checkbox"/>
-                    <?php echo Form::check('caserios.habilitado','1','',true); ?>
-                    <span>Habilitado</span>
+                <label for="habilitado">Habilitado
+                    <?php 
+                    $arreglo = array('Inhabilitado','Habilitado');
+                    echo Form::select('caserios.habilitado', $arreglo);
+                    ?>
                 </label>
             </div>
         </div>

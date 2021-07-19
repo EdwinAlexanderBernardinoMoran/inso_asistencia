@@ -1,12 +1,14 @@
 <?php echo View::content(); ?>
-<div class="center">
     <h3 class="centered">zonas</h3>
-</div>
+
+     <?php echo Html::linkAction('create','Nueva Zona',"class='btn green right'") ?>
+    
 <table class="centered table striped">
     <tr>
         <thead class="blue lighten-3">
             <th>Id</th>
-            <th>Zona</th>
+            <th>Nombre Zona</th>
+            <th>Activo</th>
             <th>Acciones</th>
         </thead>
         <?php foreach ($listaZonas->items as $item): ?>
@@ -14,13 +16,20 @@
                 <td><?php echo $item->id?></td>
                 <td><?php echo $item->nombre_zona ?></td>
                 <td>
+                    <?php 
+                    if ($item->habilitado ==1){
+                        echo "Habilitado";
+                    }
+                    if ($item->habilitado == 0){
+                        echo "Inhabilitado";
+                    }
+                    ?>
+                </td>
+                <td>
                     <?php echo Html::LinkAction("edit/$item->id", "Editar", 'class="btn"') ?>
                     <?php echo Html::LinkAction("del/$item->id", "Borrar", 'class="btn red"') ?>
                 </td>
             </tr>
         <?php endforeach ?>
-    </tr>
-    <tr>
-     <td><?php echo Html::linkAction('create','Nueva Zona',"class='btn green'") ?></td>
     </tr>
 </table>
