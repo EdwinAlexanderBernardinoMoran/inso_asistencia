@@ -1,20 +1,40 @@
 <?php echo View::content() ?>
-<h3 clas="center"><b>Municipios</b></h3>
-<table class="centered">  
+<h3 clas="center"><b>Municipios </b></h3>
+  
+<?php echo Html::linkAction('create','+Agregar municipio', "class='btn blue darken-2'") ?>
+<table class="centered table striped">
+
     <tr>
       <thead class= "teal accent-3">
           <th>Id</th>
           <th>Municipios</th>
+          <th>Activo</th>
+          <th>Acciones</th>
       </thead>
 
       <?php foreach($ListaMunicipios->items as $item): ?>
           <tr>
               <td><?php echo $item->id ?></td>
               <td><?php echo $item->nombre_municipio ?></td>
+              
               <td>
-                <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
-                <?php echo Html::linkAction("del/$item->id/", "Eliminar", 'class="btn red"') ?>
+                  <?php 
+                   if ($item->habilitado==1) {
+                       echo "Habilitado";
+                   }
+                   if ($item->habilitado ==0) {
+                       echo "Inhabilitado";
+                   }
+                  ?>
+
               </td>
+
+              <div class= "botones">
+                 <td>
+                       <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                       <?php echo Html::linkAction("del/$item->id/", "Eliminar", 'class="btn red"') ?>
+                 </td>
+            </div> 
           </tr>
        <?php endforeach ?>  
     </tr>

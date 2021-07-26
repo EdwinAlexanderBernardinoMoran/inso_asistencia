@@ -30,18 +30,19 @@ class MunicipiosController extends AppController
         View::template('principal');
         $this->titulo = "Editando municipio";
         $municipio = new Municipios();
-        if(Input::hasPost('municipios')) {
-            if ($municipio->update(Input::post('municipios'))){
+        if(Input::hasPost('municipios')){
+            if (!$municipio->update(Input::post('municipios'))){
                 Flash::error("Fallo al editar el municipio");
             } else {
                 Flash::valid("Municipio actualizado con éxito");
+                return Redirect::to();
             }
         } else {
-            $this->municipios = $municipio->find((int)$id);
+            $this->municipios = $municipio->find((int) $id);
         }
     }
     //delete
-    public function delete($id)
+    public function del($id)
     {
         $municipio = new Municipios();
         if (!$municipio->delete((int)$id)) {

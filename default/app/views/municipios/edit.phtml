@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row section">
     <?php View::content(); ?>
     <h3 class="center"><b>Municipios</b></h3>
 
@@ -9,10 +9,29 @@
             <?php echo Form::text('municipios.nombre_municipio') ?>
         </label>
     </div>
+    <div class="col s6">
+        <label>
+            <input type="checkbox" />
+            <?php echo Form::check('municipios.habilitado', '1', '', true); ?>
+
+             
+        </label>
+
+    </div>
+       <div class="col s6">
+           <label for="habilitado">Habilitado
+           <?php 
+         $arreglo = array('Inhabilitado', 'Habilitado');
+         echo Form::select('municipios.habilitado', $arreglo);
+         ?>
+           </label>
+       </div>
+
     <div class="col s12">
         <?= Form::hidden('municipios.id'); ?>
         <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
         <?php echo Form::reset('Limpiar', 'class="btn blue"') ?>
+        <?php echo Html::linkAction('index', 'regresar', "class='btn blue lighten-2'") ?>
     </div>
     <?php echo Form::close(); ?>
 
