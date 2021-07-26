@@ -15,12 +15,12 @@ class AlumnosController extends AppController{
     public function registros(){
         if (Input::hasPost('alumnos')){
             $alumno = new Alumnos(Input::post('alumnos'));
-            if ($alumno->create()){
+            if (!$alumno->save()){
+                Flash::error("Fallo la Operacion");
+            }else{
                 Flash::valid("Operacion exitosa");
                 Input::delete();
                 return Redirect::to();
-            }else{
-                Flash::error("Fallo la Operacion");
             }
         }
 

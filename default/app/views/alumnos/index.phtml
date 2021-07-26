@@ -89,8 +89,12 @@
             <td><?php echo $item->primer_apellido ?></td>
             <td><?php echo $item->segundo_apellido ?></td>
             <td><?php echo $item->fecha_nacimiento ?></td>
-            <td><?php echo $item->nacionalidad_id ?></td>
-            <td><?php echo $item->departamento_de_nacimiento_id ?></td>
+            <td><?php
+                if ($item->id_nacionalidad == $item->nombre_nacionalidad) {
+                    echo $alumnos = Load::model('alumnos')->find_by_sql("select nacionalidades.nombre_nacionalidad from nacionalidades where alumnos.id_nacionalidad=nacionalidades.id");
+                }
+            ?></td>
+            <td><?php echo $item->nombre_departamento ?></td>
             <td><?php echo $item->municipio_de_nacimiento_id?></td>
             <td><?php echo $item->anio_bachillerato ?></td>
             <td><?php echo $item->nie ?></td>
