@@ -80,6 +80,14 @@
         <th>ESCOLARIDAD</th>
         <th>FACTOR DE RIESGO</th>
         <th>FECHA DE REVISION</th>
+        <th>PARTIDA NACIMIENTO</th>
+        <th>CERTIFICACION DE NOTAS</th>
+        <th>CERTIFICADO</th>
+        <th>FOTOS</th>
+        <th>FOTOCOPIA DUI</th>
+        <th>CONSTANCIA DE CONDUCTA</th>
+        <th>CARNET RESIDENTE</th>
+        <th>ID PROFESOR REVISION</th>
     </thead>
     <?php foreach ($listaAlumnos->items as $item):?>
         <tr>
@@ -89,11 +97,7 @@
             <td><?php echo $item->primer_apellido ?></td>
             <td><?php echo $item->segundo_apellido ?></td>
             <td><?php echo $item->fecha_nacimiento ?></td>
-            <td><?php
-                if ($item->id_nacionalidad == $item->nombre_nacionalidad) {
-                    echo $alumnos = Load::model('alumnos')->find_by_sql("select nacionalidades.nombre_nacionalidad from nacionalidades where alumnos.id_nacionalidad=nacionalidades.id");
-                }
-            ?></td>
+            <td><?php echo $item->nombre_nacionalidad?></td>
             <td><?php echo $item->nombre_departamento ?></td>
             <td><?php echo $item->municipio_de_nacimiento_id?></td>
             <td><?php echo $item->anio_bachillerato ?></td>
@@ -160,9 +164,17 @@
             <td><?php echo $item->escolaridad_responsable?></td>
             <td><?php echo $item->factor_de_riesgo_responsable?></td>
             <td><?php echo $item->fecha_revision_formulario?></td>
-            <!-- $usuarios = Load::model('usuario')->find_all_by_sql("select * from -->
-<!-- usuarios where codigo not in (select codigo from ingreso)") -->
+            <td><?php echo $item->partida_nacimiento?></td>
+            <td><?php echo $item->certificacion_de_notas?></td>
+            <td><?php echo $item->certificado?></td>
+            <td><?php echo $item->fotos?></td>
+            <td><?php echo $item->fotocopia_dui?></td>
+            <td><?php echo $item->constancia_de_conducta?></td>
+            <td><?php echo $item->carnet_residente?></td>
+            <td><?php echo $item->id_profesor_revision?></td>
+
             
+            <td>
                 <?php echo Html::linkAction("edit/$item->id_alumnos/", 'Editar', 'class="btn "')?>
                 <?php echo Html::linkAction("del/$item->id_alumnos/", 'Borrar', 'class="btn red"')?>
                 <?php echo Html::linkAction("findbyid/$item->id/", 'Consultar', 'class="btn "')?>
@@ -171,6 +183,4 @@
         </tr>
         
         <?php endforeach; ?> 
-</table> 
-    
-
+</table>
