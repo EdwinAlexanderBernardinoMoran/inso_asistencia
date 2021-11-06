@@ -12,21 +12,35 @@ class AlumnosController extends AppController{
 
     //REGISTRO DE ALUMNOS
 
-    public function registros(){
+    public function create (){
+        View::template('principal');
+        $this->titulo="Registro de alumnos";
         if (Input::hasPost('alumnos')){
             $alumno = new Alumnos(Input::post('alumnos'));
-            if (!$alumno->save()){
-                Flash::error("Fallo la Operacion");
-            }else{
-                Flash::valid("Operacion exitosa");
+            if ($alumno->save()){
+                Flash::valid("Alumno registrado exitosamente");
                 Input::delete();
                 return Redirect::to();
-            }
+            } 
+            Flash::error("error al registrar un alumno"); 
         }
-
-        View::template('principal');
-        $this->titulo = "Registro de alumnos";
     }
+
+    // public function create(){
+    //     if (Input::hasPost('alumnos')){
+    //         $alumno = new Alumnos(Input::post('alumnos'));
+    //         if (!$alumno->save()){
+    //             Flash::error("Fallo la Operacion");
+    //         }else{
+    //             Flash::valid("Operacion exitosa");
+    //             Input::delete();
+    //             return Redirect::to();
+    //         }
+    //     }
+
+    //     View::template('principal');
+    //     $this->titulo = "Registro de alumnos";
+    // }
 
     // BOTON DE EDITAR UN REGISTROS
     public function edit($id){

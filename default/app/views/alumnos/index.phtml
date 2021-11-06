@@ -82,6 +82,14 @@
         <th>ESCOLARIDAD</th>
         <th>FACTOR DE RIESGO</th>
         <th>FECHA DE REVISION</th>
+        <th>PARTIDA NACIMIENTO</th>
+        <th>CERTIFICACION DE NOTAS</th>
+        <th>CERTIFICADO</th>
+        <th>FOTOS</th>
+        <th>FOTOCOPIA DUI</th>
+        <th>CONSTANCIA DE CONDUCTA</th>
+        <th>CARNET RESIDENTE</th>
+        <th>ID PROFESOR REVISION</th>
     </thead>
     <?php foreach ($listaAlumnos->items as $item) : ?>
         <tr>
@@ -91,11 +99,15 @@
             <td><?php echo $item->primer_apellido ?></td>
             <td><?php echo $item->segundo_apellido ?></td>
             <td><?php echo $item->fecha_nacimiento ?></td>
+<<<<<<< HEAD
             <td><?php
                 if ($item->id_nacionalidad == $item->nombre_nacionalidad) {
                     echo $alumnos = Load::model('alumnos')->find_by_sql("select nacionalidades.nombre_nacionalidad from nacionalidades where alumnos.id_nacionalidad=nacionalidades.id");
                 }
                 ?></td>
+=======
+            <td><?php echo $item->nombre_nacionalidad?></td>
+>>>>>>> 7cc5b75196d3d73a29a43cb9c8c38c2b4d9d7cf7
             <td><?php echo $item->nombre_departamento ?></td>
             <td><?php echo $item->municipio_de_nacimiento_id ?></td>
             <td><?php echo $item->anio_bachillerato ?></td>

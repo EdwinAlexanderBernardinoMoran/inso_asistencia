@@ -2,7 +2,7 @@
     <?php View::content() ?>
         <!-- <h3 class="center-align">Ministerio De Educacion</h3> -->
         <h3 class="center-align">Instituto Nacional De Sonzacate</h3>
-        <h4 class="center-align">Ficha De Matricula <?php echo date('Y'); ?></h4>
+        <!-- <h4 class="center-align">Ficha De Matricula <?php echo date('Y'); ?></h4> -->
 </div>
 
 <div class="row">
@@ -19,13 +19,12 @@
     <div id="test2" class="col s12">Test 2</div>
     <div id="test3" class="col s12">Test 3</div>
     <div id="test4" class="col s12">Test 4</div> -->
-
+    <?php echo Form::open(); ?>
 
     <!-- IDENTIFICACION DEL ESTUDIANTE -->
     <div id="test1" class="col s6">
         <div class="section">
-            <h5>Identificacion del estudiante:</h5>
-            <?= Form::open(); ?>
+            <h5>Identificacion del estudiante:</h5>     
             <?php echo Form::hidden('alumnos.id')?>
             <!-- CAMPOS DE NOMBRES -->
             <div class="row">
@@ -71,11 +70,10 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">people</i>
                     <label for="Nacionalidad">Nacionalidad:
-                    <?php 
-                        $arreglo = array('nacionalidades', 'find');
-                        echo Form::dbSelect('id_nacionalidad', 'nombre_nacionalidad', $arreglo);?></label>
+                        <?php echo Form::dbSelect('alumnos.nacionalidad_id', 'nombre_nacionalidad',  array('nacionalidades', 'find')); ?>
+                    </label>
                 </div>
-            </div>
+            </div>  
         </div>
         <div class="section">
             <!-- CAMPO DEPARTAMENTO DE NACIMIENTO -->
@@ -83,13 +81,15 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Departamento_nacimiento">Departamento de nacimiento:
-                        <?php $ar2 = array('Ahuachapan'=>'Ahuachapan','Sonsonate'=>'Sonsonate','Santa Ana'=>'Santa Ana','Chalatenango'=>'Chalatenango','La Libertad'=>'La Liberta','San Salvador'=>'San Salvador','Cuscatlan'=>'Cuscatlan','Cabañas'=>'Cabañas','La Paz'=>'La Paz','San Vicente'=>'San Vicente','Usulutan'=>'Usulutan','San Miguel'=>'San Miguel','Morazan'=>'Morazan','La Union'=>'La Union');echo Form::Select('departamentos.nombre_departamento', $ar2); ?></label></label>
+                        <?php echo Form::dbSelect('alumnos.id_departamento_de_nacimiento', 'nombre_departamento',  array('departamentos', 'find')); ?>
+                    </label>
                 </div>
                 <!-- CAMPOS DE MUNICIPIO_DE_NACIMIENTO -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Municipio_nacimiento">Municipio de nacimiento::
-                    <?= Form::text('municipios.nombre_municipio'); ?></label>
+                        <?php echo Form::dbSelect('alumnos.id_municipio_de_nacimiento', 'nombre_municipio',  array('municipios', 'find')); ?>
+                </label>
                 </div>
             </div>
         </div>
@@ -151,7 +151,7 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">reorder</i>
                     <label for="especialidad">Especialidad:
-                        <?php echo Form::dbSelect('alumnos.id_especialidad_ingreso', 'nombre_especialidad',  array('especialidades', 'find'), 'Seleccione', 'class="form-control"'); ?></label>   
+                        <?php echo Form::dbSelect('alumnos.id_especialidad_ingreso', 'nombre_especialidad',  array('especialidades', 'find')); ?>   
                 </div>
                 <!-- CAMPO ESTUDIO PARVULARIA -->
                 <div class="input-field col s4">
@@ -173,7 +173,8 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_box</i>
                     <label for="Centro_procedencia">Centro de procedencia:
-                    <?= Form::text('centros_escolares_providencias.nombre_centroescolar_providencia');?></label>
+                        <?php echo Form::dbSelect('alumnos.id_centro_escolar_providencia', 'nombre_centroescolar',  array('centroescolares', 'find')); ?>
+                   </label>
                 </div>
 
                 <!-- CAMPO AÑO ANTERIOR ESTUDIADO -->
@@ -254,21 +255,24 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">list</i>
                     <label for="zona_residencia">Zonas:
-                    <?php $zonas = array('Rural'=>'Rural','Urbana'=>'Urbana'); echo Form::Select('zonas.nombre_zona', $zonas, NULL, 'Rural'); ?></label>
+                        <?php echo Form::dbSelect('alumnos.id_zona', 'nombre_zona',  array('zonas', 'find')); ?>
+                    </label>
                 </div>
 
                 <!-- CAMPO DEPARTAMENTO DE RESIDENCIA --> 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Departamento">Departamento:
-                        <?php $ar2 = array('Ahuachapan'=>'Ahuachapan','Sonsonate'=>'Sonsonate','Santa Ana'=>'Santa Ana','Chalatenango'=>'Chalatenango','La Libertad'=>'La Liberta','San Salvador'=>'San Salvador','Cuscatlan'=>'Cuscatlan','Cabañas'=>'Cabañas','La Paz'=>'La Paz','San Vicente'=>'San Vicente','Usulutan'=>'Usulutan','San Miguel'=>'San Miguel','Morazan'=>'Morazan','La Union'=>'La Union',''=>'');echo Form::Select('deparamentos.nombre_departamento', $ar2, NULL, 'Sonsonate'); ?></label>
+                        <?php echo Form::dbSelect('alumnos.id_departamento_residencia', 'nombre_departamento',  array('departamentos', 'find')); ?>
+                    </label>
                 </div>
 
                 <!-- CAMPO MUNICIPIO DE RESIDENCIA -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Municipio">Municipio:
-                    <?= Form::text('municipios.nombre_municipio'); ?></label>
+                        <?php echo Form::dbSelect('alumnos.id_municipio_residencia', 'nombre_municipio',  array('municipios', 'find')); ?>
+                    </label>
                 </div>
             </div>
         </div>
@@ -279,14 +283,16 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
                     <label for="Canton">Cánton:
-                    <?= Form::text('cantones.nombre_canton'); ?></label>
+                        <?php echo Form::dbSelect('alumnos.id_canton', 'nombre_canton',  array('cantones', 'find')); ?>
+                    </label>
                 </div>
 
                 <!-- CAMPO CASERIOS -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
                     <label for="Caserio">Caserio:
-                    <?= Form::text('caserios.nombre_caserio'); ?></label>
+                        <?php echo Form::dbSelect('alumnos.id_caserio', 'nombre_caserio',  array('caserios', 'find')); ?>
+                    </label>
                 </div>
             </div>
         </div>
@@ -399,7 +405,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment_turned_in</i>
                     <label for="Nombre_de_la_madre">Ocupación:
-                    <?= Form::text('alumnos.ocupacion_padre'); ?></label>
+                    <?= Form::text('alumnos.ocupacion_madre'); ?></label>
                 </div>
             </div>
         </div>
@@ -472,7 +478,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
                     <label for="Primer_apellido_encargado">Primer Apellido:
-                    <?= Form::text('alumnos.primer_apellido_reponsable'); ?></label>
+                    <?= Form::text('alumnos.primer_apellido_responsable'); ?></label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
@@ -525,17 +531,20 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">list</i>
                     <label for="zona_residencia">Zonas:
-                    <?php $zonas_responsable = array('Rural'=>'Rural','Urbana'=>'Urbana',''=>''); echo Form::Select('zonas.nombre_zona', $zonas_responsable, NULL, 'Rural'); ?></label>
+                        <?php echo Form::dbSelect('alumnos.id_zona_responsable', 'nombre_zona',  array('zonas', 'find')); ?>
+                    </label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Departamento-responsable">Departamento:
-                        <?php $ar2 = array('Ahuachapan'=>'Ahuachapan','Sonsonate'=>'Sonsonate','Santa Ana'=>'Santa Ana','Chalatenango'=>'Chalatenango','La Libertad'=>'La Liberta','San Salvador'=>'San Salvador','Cuscatlan'=>'Cuscatlan','Cabañas'=>'Cabañas','La Paz'=>'La Paz','San Vicente'=>'San Vicente','Usulutan'=>'Usulutan','San Miguel'=>'San Miguel','Morazan'=>'Morazan','La Union'=>'La Union',''=>'');echo Form::Select('deparamentos.nombre_departamento', $ar2, NULL, 'Sonsonate'); ?></label>
+                        <?php echo Form::dbSelect('alumnos.id_departamento_responsable', 'nombre_departamento',  array('departamentos', 'find')); ?>
+                    </label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
                     <label for="Municipio_encargado">Municipio:
-                    <?= Form::text('municipios.nombre_municipio'); ?></label>
+                        <?php echo Form::dbSelect('alumnos.id_municipio_responsable', 'nombre_municipio',  array('municipios', 'find')); ?>
+                    </label>
                 </div>
             </div>
         </div>
@@ -546,12 +555,14 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
                     <label for="Canton_encargado">Cánton:
-                    <?= Form::text('cantones.nombre_canton'); ?></label>
+                        <?php echo Form::dbSelect('alumnos.id_canton_responsable', 'nombre_canton',  array('cantones', 'find')); ?>
+                    </label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
                     <label for="Caserio_encargado">Caserio:
-                    <?= Form::text('caserios.nombre_caserio'); ?></label>
+                        <?php echo Form::dbSelect('alumnos.id_caserio_responsable', 'nombre_caserio',  array('caserios', 'find')); ?>
+                    </label>
                 </div>
             </div>
         </div>
@@ -615,6 +626,83 @@
                 </div>
             </div>
         </div>
+
+        <div class="section">
+            <!-- PARTIDA DE NACIMIENTO -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="partida_nacimiento">Partida Nacimiento:
+                        <?php $partida_nacimiento = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.partida_nacimiento', $partida_nacimiento, NULL); ?></label>
+                    </label>
+                </div>
+
+                <!-- CERTIFICACION DE NOTAS -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">add_alert</i>
+                    <label for="certificado_notas">Certificado de notas:
+                        <?php $certificacion_de_notas = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.certificacion_de_notas', $certificacion_de_notas, NULL); ?>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <!-- CERTIFICADO -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="certificado">Certificado:
+                        <?php $certificado = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.certificado', $certificado, NULL); ?>
+                    </label>
+                </div>
+
+                <!-- FOTOS -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="fotos">Fotos:
+                        <?php $fotos = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.fotos', $fotos, NULL); ?>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <!-- FOTOCOPIA DE DUI -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="fotocopia_dui">Fotocopia de dui:
+                        <?php $fotocopia_dui = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.fotocopia_dui', $fotocopia_dui, NULL); ?>
+                    </label>
+                </div>
+
+                <!-- CONSTANCIA DE CONDUCTA -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="constancia_conducta">Constancia de conducta:
+                        <?php $constancia_conducta = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.constancia_de_conducta', $constancia_conducta, NULL); ?>
+                    </label>
+                </div>  
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="carnet_residente">Carnet residente:
+                        <?php $carnet_residente = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.carnet_residente', $carnet_residente, NULL); ?>
+                    </label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <label for="id_profesor">Profesor que realizo la matricula:
+                        <?php echo Form::dbSelect('alumnos.id_profesor_revision', 'primer_nombre_profesor',  array('profesores', 'find')); ?>
+                    </label>
+                </div>
+            </div>
+        </div>
         
         <div class="section">
             <div class="row">
@@ -624,6 +712,6 @@
                 </button>
                 </div>
             </div>
-            <?= Form::close(); ?>
+            <?php echo Form::close(); ?>
         </div>
-    </div>      
+    </div>
