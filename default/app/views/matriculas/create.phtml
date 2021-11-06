@@ -1,36 +1,35 @@
 <div class="row section">
 
-    <?php View::content(); ?>
+    <?php echo View::content(); ?>
     <h3 class="center"><b>Matriculas</b></h3>
+
 
     <?php echo Form::open(); ?>
 
     <div class="col s6">
-        <label for="">Nombre Alumno
+        <label for="">Ingrese el nombre del alumno
             <?php echo Form::text('matriculas.id_alumnos'); ?>
         </label>
     </div>
-
     <div class="col s6">
-        <label for="">Especialidad
-            <?php echo  Form::text('matriculas.id_especialidad'); ?>
+        <label for="">Ingrese la especialidad
+            <?php echo Form::text('matriculas.id_especialidad'); ?>
         </label>
     </div>
-
     <div class="col s6">
-        <label for="">Sección
+        <label for="">Ingrese la seccion
             <?php echo Form::text('matriculas.id_seccion'); ?>
         </label>
     </div>
 
     <div class="col s6">
-        <label for="">Año
+        <label for="">Ingrese el Año
             <?php echo Form::text('matriculas.anio'); ?>
         </label>
     </div>
 
     <div class="col s6">
-        <label for="habilitado">Egresado
+        <label for="egresado">Egresado
             <?php
             $arreglo = array('No', 'Si');
             echo Form::select('matriculas.egresado', $arreglo);
@@ -49,9 +48,9 @@
 
 
     <div class="col s12">
-        <?= Form::hidden('matriculas.id'); ?>
-        <?php echo Form::submit('Guardar', 'class="btn blue"') ?>
-
+        <?php echo Form::submit('Guardar', 'class="btn green"') ?>
+        <?php echo Form::reset('Limpiar', 'class="btn blue"') ?>
+        <?php echo Html::linkAction('index', 'regresar', "class='btn red darken-1'") ?>
     </div>
 
     <?php echo Form::close(); ?>

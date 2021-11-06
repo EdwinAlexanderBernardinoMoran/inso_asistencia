@@ -1,6 +1,9 @@
 <?php echo View::content() ?>
 <h3 class="center"><b>Registro de matriculas</b></h3>
 
+
+<?php echo Html::linkAction('create', 'Nueva matricula +', "class='btn green right'")  ?>
+
 <table class="centered">
     <tr>
         <thead class="blue">
@@ -9,20 +12,38 @@
             <th>Especialidad</th>
             <th>Seccion</th>
             <th>Año</th>
-            <th>Estado</th>
             <th>Egresado</th>
-            <th>Acciones</th>
+            <th>Estado</th>
+            <th>Acciones</th> 
         </thead>
 
         <?php foreach ($ListaMatriculas->items as $item) :  ?>
     <tr>
         <td><?php echo $item->id ?></td>
-        <td><?php $alumnos = Load::model('alumnos')->find_all_by_sql("select primer_nombre, segundo_nombre,	primer_apellido,	segundo_apellido	from matriculas, alumnos where alumnos.id=matriculas.id_alumno") ?></td>
-        <td><?php $alumnos = Load::model('alumnos')->find_all_by_sql("select nombre_especialidad	from matriculas, especialidades where alumnos.id=matriculas.id_especialidad") ?></td>
-        <td><?php $alumnos = Load::model('alumnos')->find_all_by_sql("select anio_bachillerato	from matriculas, especialidades where alumnos.id=matriculas.id_seccion") ?></td>
+        <td><?php echo $item->id_alumnos ?></td>
+        <td><?php echo $item->id_especialidad ?></td>
+        <td><?php echo $item->id_seccion ?></td>
         <td><?php echo $item->anio ?></td>
-        <td><?php echo $item->estado ?></td>
-        <td><?php echo $item->egresado ?></td>
+        <td>
+            <?php
+            if ($item->egresado == 1) {
+                echo "Si";
+            }
+            if ($item->egresado == 0) {
+                echo "No";
+            }
+            ?>
+        </td>
+        <td>
+            <?php
+            if ($item->habilitado == 1) {
+                echo "Habilitado";
+            }
+            if ($item->habilitado == 0) {
+                echo "Inhabilitado";
+            }
+            ?>
+        </td>
         <td>
             <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
             <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>

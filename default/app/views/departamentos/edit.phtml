@@ -11,20 +11,12 @@
         </label>
     </div>
 
-    <div class="col s6">
-        <label>
-            <input type="checkbox" />
-            <?php echo Form::check('departamentos.habilitado', '1', '', true); ?>
-
-            <span>Habilitado</span>
-        </label>
-    </div>
 
     <div class="col s6">
         <label for="habilitado">Habilitado
             <?php
             $arreglo = array('Inhabilitado', 'Habilitado');
-            echo Form::select('centroescolares.habilitado', $arreglo);
+            echo Form::select('departamentos.habilitado', $arreglo);
             ?>
         </label>
     </div>

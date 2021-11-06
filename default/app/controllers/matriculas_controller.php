@@ -11,6 +11,26 @@ class MatriculasController extends AppController
         $this->titulo = "Matriculas";
         $matricula = new Matriculas();
         $this->ListaMatriculas = $matricula->getMatriculas($page);
+
+        Flash::info(Input::get('criterio'));
+
+    }
+
+    //create
+
+    public function create()
+    {
+        View::template('principal');
+        $this->titulo = "Matriculas";
+        if (Input::hasPost('matriculas')) {
+            $matricula = new Matriculas(Input::post('matriculas'));
+            if ($matricula->create()) {
+                Flash::valid("Matricula creada correctamente");
+                Input::delete();
+                return Redirect::to();
+            }
+            Flash::error("Error, la matricula no fue agregada");
+        }
     }
 
     //edit
@@ -18,16 +38,16 @@ class MatriculasController extends AppController
     public function edit($id){
         View::template('principal');
         $this->titulo = "Editando matricula";
-        $matricula1 = new Matriculas();
+        $matricula = new Matriculas();
         if (Input::hasPost('matriculas')){
-            if (!$matricula1->update(Input::post('matriculas'))){
+            if (!$matricula->update(Input::post('matriculas'))){
                 Flash::error("No se pudo editar la matricula");
             }else{
                 Flash::valid("Matricula actualizada");
                 return Redirect::to();
             }
         }else{
-            $this->matricula = $matricula1->find((int) $id);
+            $this->matriculas = $matricula->find((int) $id);
         }
     }
 
@@ -35,8 +55,8 @@ class MatriculasController extends AppController
 
     public function del($id)
     {
-        $matricula1 = new Matriculas();
-        if (!$matricula1->delete((int) $id)){
+        $matricula = new Matriculas();
+        if (!$matricula ->delete((int) $id)){
             Flash::error("Error al eleiminar la matricula");
         } else{
             Flash::valid("Matricula borrada");
