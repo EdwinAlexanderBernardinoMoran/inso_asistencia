@@ -1,4 +1,106 @@
-<?php echo View::content() ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Buscador</h2>
+
+        <form action="" method="post">
+            <div class="input-group mb-3">
+                <input type="text" name="Buscar" class="form-control" placeholder="Buscar" autocomplete="off">
+
+                <div class="input-group-append">
+                    <button type="submit" class="btn-primary input-group-text">Buscar</button>
+                </div>
+            </div>
+
+        </form>
+
+        <?php
+        require 'conexion.php';
+        $conexion = conexion();
+
+        if (!empty($_POST['Buscar'])) {
+            $Buscar = $_POST['Buscar'];
+            $sql = "SELECT * FROM matriculas WHERE id_alumnos LIKE '%$Buscar%' OR id_especialidad LIKE '%$Buscar%' OR id_seccion LIKE '%$Buscar%'";
+        } else {
+            $sql = "SELECT * FROM matriculas";
+        }
+
+
+        ?>
+        <?php echo Html::linkAction('create', 'Nueva matricula +', "class='btn green right'")  ?>
+        <table class="table">
+            <thead>
+                <th>Id</th>
+                <th>Alumno</th>
+                <th>Especialidad</th>
+                <th>Seccion</th>
+                <th>Año</th>
+                <th>Egresado</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </thead>
+            <?php
+            $query = mysqli_query($conexion, $sql);
+            if ($query) {
+                while ($data = mysqli_fetch_assoc($query)) {
+
+            ?>
+                    <tbody>
+                        <tr>
+                            <td><?php echo $data['id'] ?></td>
+                            <td><?php echo $data['id_alumnos'] ?></td>
+                            <td><?php echo $data['id_especialidad'] ?></td>
+                            <td><?php echo $data['id_seccion'] ?></td>
+                            <td><?php echo $data['anio'] ?></td>
+                            <td><?php
+                                if ($data['egresado'] == 1) {
+                                    echo "Si";
+                                }
+                                if ($data['egresado'] == 0) {
+                                    echo "No";
+                                }
+                                ?></td>
+                            <td><?php
+                                if ($data['habilitado'] == 1) {
+                                    echo "Habilitado";
+                                }
+                                if ($data['habilitado'] == 0) {
+                                    echo "Inhabilitado";
+                                }
+                                ?></td>
+                            <td><?php echo Html::linkAction("edit/$data/", "Editar", 'class="btn"') ?>
+                                <?php echo Html::linkAction("del/$data/", "Borrar", 'class="btn red"') ?></td>
+                        </tr>
+                    </tbody>
+                <?php
+                }
+            } else {
+                ?>
+                <td colspan="4">Busqueda sin resultados</td>
+            <?php
+            }
+            ?>
+        </table>
+    </div>
+
+
+</body>
+
+</html>
+
+
+
+<!-- <?php echo View::content() ?>
 <h3 class="center"><b>Registro de matriculas</b></h3>
 
 
@@ -52,4 +154,4 @@
     </tr>
 <?php endforeach;  ?>
 </tr>
-</table>
+</table> -->
