@@ -57,6 +57,11 @@ class AlumnosController extends AppController{
             $this->alumnos = $alumno->find((int)$id);
         }
     }
+
+    public function barra(){
+        View::template('principal');
+        
+    }
 }
 
 ?>
