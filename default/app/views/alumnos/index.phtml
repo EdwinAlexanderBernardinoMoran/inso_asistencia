@@ -1,7 +1,9 @@
-<?php echo View::content()?>
+<?php echo View::content() ?>
 
-<h3 class="center-align">IDENTIFICACION DEL ESTUDIANTE</h3>
-<table>
+<h3 class="center">
+    IDENTIFICACION DEL ESTUDIANTE
+</h3>
+<table class="responsive-table centered">
     <thead>
         <th>ID</th>
         <th>PRIMER NOMBRE</th>
@@ -89,17 +91,25 @@
         <th>CARNET RESIDENTE</th>
         <th>ID PROFESOR REVISION</th>
     </thead>
-    <?php foreach ($listaAlumnos->items as $item):?>
+    <?php foreach ($listaAlumnos->items as $item) : ?>
         <tr>
-            <td><?php echo $item->id_alumnos?></td> 
+            <td><?php echo $item->id_alumnos ?></td>
             <td><?php echo $item->primer_nombre ?></td>
             <td><?php echo $item->segundo_nombre ?></td>
             <td><?php echo $item->primer_apellido ?></td>
             <td><?php echo $item->segundo_apellido ?></td>
             <td><?php echo $item->fecha_nacimiento ?></td>
+<<<<<<< HEAD
+            <td><?php
+                if ($item->id_nacionalidad == $item->nombre_nacionalidad) {
+                    echo $alumnos = Load::model('alumnos')->find_by_sql("select nacionalidades.nombre_nacionalidad from nacionalidades where alumnos.id_nacionalidad=nacionalidades.id");
+                }
+                ?></td>
+=======
             <td><?php echo $item->nombre_nacionalidad?></td>
+>>>>>>> 7cc5b75196d3d73a29a43cb9c8c38c2b4d9d7cf7
             <td><?php echo $item->nombre_departamento ?></td>
-            <td><?php echo $item->municipio_de_nacimiento_id?></td>
+            <td><?php echo $item->municipio_de_nacimiento_id ?></td>
             <td><?php echo $item->anio_bachillerato ?></td>
             <td><?php echo $item->nie ?></td>
             <td><?php echo $item->numero_partida ?></td>
@@ -107,80 +117,72 @@
             <td><?php echo $item->libro_partida ?></td>
             <td><?php echo $item->otro_documento_de_identificacion ?></td>
             <td><?php echo $item->salvadoreño_por ?></td>
-            <td><?php echo $item->especialidad_ingreso_id?></td>
+            <td><?php echo $item->especialidad_ingreso_id ?></td>
             <td><?php echo $item->estudio_parvularia ?></td>
             <td><?php echo $item->repite_grado ?></td>
-            <td><?php echo $item->centro_escolar_providencia_id?></td>
+            <td><?php echo $item->centro_escolar_providencia_id ?></td>
             <td><?php echo $item->anio_anterior ?></td>
-            <td><?php echo $item->tipo_de_sangre?></td>
+            <td><?php echo $item->tipo_de_sangre ?></td>
             <td><?php echo $item->sexo ?></td>
             <td><?php echo $item->estado_familiar ?></td>
             <td><?php echo $item->discapacidad ?></td>
             <td><?php echo $item->email ?></td>
             <td><?php echo $item->telefono_fijo ?></td>
-            <td><?php echo $item->zona_id?></td>
-            <td><?php echo $item->departamento_residencia_id?></td>
-            <td><?php echo $item->municipio_residencia_id?></td>
-            <td><?php echo $item->canton_id?></td>
-            <td><?php echo $item->caserio_id?></td>
-            <td><?php echo $item->tipo_de_calle?></td>
+            <td><?php echo $item->zona_id ?></td>
+            <td><?php echo $item->departamento_residencia_id ?></td>
+            <td><?php echo $item->municipio_residencia_id ?></td>
+            <td><?php echo $item->canton_id ?></td>
+            <td><?php echo $item->caserio_id ?></td>
+            <td><?php echo $item->tipo_de_calle ?></td>
             <td><?php echo $item->direccion_completa ?></td>
             <td><?php echo $item->medio_de_transporte ?></td>
-            <td><?php echo $item->distancia_desde_casa_y_centroeducativo?></td>
-            <td><?php echo $item->factor_de_riesgo?></td>
-            <td><?php echo $item->numero_integrantes_familia?></td>
-            <td><?php echo $item->integrados?></td>
-            <td><?php echo $item->depende_economicamente_de?></td>
-            <td><?php echo $item->tiene_hijos?></td>
-            <td><?php echo $item->numero_de_hijos?></td>
-            <td><?php echo $item->trabaja?></td>
-            <td><?php echo $item->convivencia_con?></td>
-            <td><?php echo $item->nombre_madre?></td>
-            <td><?php echo $item->ocupacion_madre?></td>
-            <td><?php echo $item->lugar_de_trabajo_madre?></td>
-            <td><?php echo $item->telefono_madre?></td>
-            <td><?php echo $item->nombre_padre?></td>
-            <td><?php echo $item->ocupacion_padre?></td>
-            <td><?php echo $item->lugar_de_trabajo_padre?></td>
-            <td><?php echo $item->telefono_padre?></td>
-            <td><?php echo $item->primer_nombre_responsable?></td>
-            <td><?php echo $item->segundo_nombre_responsable?></td>
-            <td><?php echo $item->primer_apellido_reponsable?></td>
-            <td><?php echo $item->segundo_apellido_responsable?></td>
-            <td><?php echo $item->numero_dui_responsable?></td>
-            <td><?php echo $item->estado_familiar_responsable?></td>
-            <td><?php echo $item->email_responsable?></td>
+            <td><?php echo $item->distancia_desde_casa_y_centroeducativo ?></td>
+            <td><?php echo $item->factor_de_riesgo ?></td>
+            <td><?php echo $item->numero_integrantes_familia ?></td>
+            <td><?php echo $item->integrados ?></td>
+            <td><?php echo $item->depende_economicamente_de ?></td>
+            <td><?php echo $item->tiene_hijos ?></td>
+            <td><?php echo $item->numero_de_hijos ?></td>
+            <td><?php echo $item->trabaja ?></td>
+            <td><?php echo $item->convivencia_con ?></td>
+            <td><?php echo $item->nombre_madre ?></td>
+            <td><?php echo $item->ocupacion_madre ?></td>
+            <td><?php echo $item->lugar_de_trabajo_madre ?></td>
+            <td><?php echo $item->telefono_madre ?></td>
+            <td><?php echo $item->nombre_padre ?></td>
+            <td><?php echo $item->ocupacion_padre ?></td>
+            <td><?php echo $item->lugar_de_trabajo_padre ?></td>
+            <td><?php echo $item->telefono_padre ?></td>
+            <td><?php echo $item->primer_nombre_responsable ?></td>
+            <td><?php echo $item->segundo_nombre_responsable ?></td>
+            <td><?php echo $item->primer_apellido_reponsable ?></td>
+            <td><?php echo $item->segundo_apellido_responsable ?></td>
+            <td><?php echo $item->numero_dui_responsable ?></td>
+            <td><?php echo $item->estado_familiar_responsable ?></td>
+            <td><?php echo $item->email_responsable ?></td>
             <td><?php echo $item->telefono_fijo_encargado ?></td>
-            <td><?php echo $item->celular_encargado?></td>
-            <td><?php echo $item->zona_responsable_id?></td>
-            <td><?php echo $item->departamento_responsable_id?></td>
-            <td><?php echo $item->municipio_responsable_id?></td>
-            <td><?php echo $item->canton_responsable_id?></td>
-            <td><?php echo $item->caserio_responsable_id?></td>
-            <td><?php echo $item->tipo_de_calle_responsable?></td>
-            <td><?php echo $item->direccion_completa_responsable?></td>
-            <td><?php echo $item->profesion_oficio_responsable?></td>
-            <td><?php echo $item->celular_responsable?></td>
-            <td><?php echo $item->escolaridad_responsable?></td>
-            <td><?php echo $item->factor_de_riesgo_responsable?></td>
-            <td><?php echo $item->fecha_revision_formulario?></td>
-            <td><?php echo $item->partida_nacimiento?></td>
-            <td><?php echo $item->certificacion_de_notas?></td>
-            <td><?php echo $item->certificado?></td>
-            <td><?php echo $item->fotos?></td>
-            <td><?php echo $item->fotocopia_dui?></td>
-            <td><?php echo $item->constancia_de_conducta?></td>
-            <td><?php echo $item->carnet_residente?></td>
-            <td><?php echo $item->id_profesor_revision?></td>
+            <td><?php echo $item->celular_encargado ?></td>
+            <td><?php echo $item->zona_responsable_id ?></td>
+            <td><?php echo $item->departamento_responsable_id ?></td>
+            <td><?php echo $item->municipio_responsable_id ?></td>
+            <td><?php echo $item->canton_responsable_id ?></td>
+            <td><?php echo $item->caserio_responsable_id ?></td>
+            <td><?php echo $item->tipo_de_calle_responsable ?></td>
+            <td><?php echo $item->direccion_completa_responsable ?></td>
+            <td><?php echo $item->profesion_oficio_responsable ?></td>
+            <td><?php echo $item->celular_responsable ?></td>
+            <td><?php echo $item->escolaridad_responsable ?></td>
+            <td><?php echo $item->factor_de_riesgo_responsable ?></td>
+            <td><?php echo $item->fecha_revision_formulario ?></td>
+            <!-- $usuarios = Load::model('usuario')->find_all_by_sql("select * from -->
+            <!-- usuarios where codigo not in (select codigo from ingreso)") -->
 
-            
-            <td>
-                <?php echo Html::linkAction("edit/$item->id_alumnos/", 'Editar', 'class="btn "')?>
-                <?php echo Html::linkAction("del/$item->id_alumnos/", 'Borrar', 'class="btn red"')?>
-                <?php echo Html::linkAction("findbyid/$item->id/", 'Consultar', 'class="btn "')?>
-                <?php echo HTml::linkAction("registro/", 'Agregar Alumno', 'class="btn "')?>
+            <?php echo Html::linkAction("edit/$item->id_alumnos/", 'Editar', 'class="btn "') ?>
+            <?php echo Html::linkAction("del/$item->id_alumnos/", 'Borrar', 'class="btn red"') ?>
+            <?php echo Html::linkAction("findbyid/$item->id/", 'Consultar', 'class="btn "') ?>
+            <?php echo HTml::linkAction("registro/", 'Agregar Alumno', 'class="btn "') ?>
             </td>
         </tr>
-        
-        <?php endforeach; ?> 
+
+    <?php endforeach; ?>
 </table>
