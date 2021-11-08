@@ -10,14 +10,16 @@
 
 <body>
 
-    <div class="container">
+    <div class="">
         <h2>Buscador</h2>
 
         <form action="" method="post">
-            <div class="input-group mb-3">
-                <input type="text" name="Buscar" class="form-control" placeholder="Buscar" autocomplete="off">
+            <div class="row">
+                <div class="col s10">
+                    <input type="text" name="Buscar" class="form-control" placeholder="Buscar" autocomplete="off">
+                </div>
 
-                <div class="input-group-append">
+                <div class="col s2">
                     <button type="submit" class="btn-primary input-group-text">Buscar</button>
                 </div>
             </div>
@@ -38,8 +40,8 @@
 
         ?>
         <?php echo Html::linkAction('create', 'Nueva matricula +', "class='btn green right'")  ?>
-        <table class="table">
-            <thead>
+        <table class="centered table striped">
+            <thead class="blue lighten-4 ">
                 <th>Id</th>
                 <th>Alumno</th>
                 <th>Especialidad</th>
