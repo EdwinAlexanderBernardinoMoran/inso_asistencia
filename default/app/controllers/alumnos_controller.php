@@ -60,7 +60,7 @@ class AlumnosController extends AppController{
 
     public function barra(){
         View::template('principal');
-        
+        $this->titulo = "Codigo de Barras";
     }
 }
 
