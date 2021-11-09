@@ -38,60 +38,74 @@
         }
 
 
+
         ?>
+
+
+        <?php echo View::content() ?>
+
         <?php echo Html::linkAction('create', 'Nueva matricula +', "class='btn green right'")  ?>
         <table class="centered table striped">
-            <thead class="blue lighten-4 ">
-                <th>Id</th>
-                <th>Alumno</th>
-                <th>Especialidad</th>
-                <th>Seccion</th>
-                <th>Año</th>
-                <th>Egresado</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </thead>
-            <?php
-            $query = mysqli_query($conexion, $sql);
-            if ($query) {
-                while ($data = mysqli_fetch_assoc($query)) {
-
-            ?>
-                    <tbody>
-                        <tr>
-                            <td><?php echo $data['id'] ?></td>
-                            <td><?php echo $data['id_alumnos'] ?></td>
-                            <td><?php echo $data['id_especialidad'] ?></td>
-                            <td><?php echo $data['id_seccion'] ?></td>
-                            <td><?php echo $data['anio'] ?></td>
-                            <td><?php
-                                if ($data['egresado'] == 1) {
-                                    echo "Si";
-                                }
-                                if ($data['egresado'] == 0) {
-                                    echo "No";
-                                }
-                                ?></td>
-                            <td><?php
-                                if ($data['habilitado'] == 1) {
-                                    echo "Habilitado";
-                                }
-                                if ($data['habilitado'] == 0) {
-                                    echo "Inhabilitado";
-                                }
-                                ?></td>
-                            <td><?php echo Html::linkAction("edit/$data/", "Editar", 'class="btn"') ?>
-                                <?php echo Html::linkAction("del/$data/", "Borrar", 'class="btn red"') ?></td>
-                        </tr>
-                    </tbody>
+            <tr>
+                <thead class="blue lighten-4 ">
+                    <th>Id</th>
+                    <th>Alumno</th>
+                    <th>Especialidad</th>
+                    <th>Seccion</th>
+                    <th>Año</th>
+                    <th>Egresado</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </thead>
                 <?php
-                }
-            } else {
+                $query = mysqli_query($conexion, $sql);
+                if ($query) {
+                    while ($data = mysqli_fetch_assoc($query)) {
+
                 ?>
-                <td colspan="4">Busqueda sin resultados</td>
+
+            <tr>
+                <td><?php echo $data['id'] ?></td>
+                <td><?php echo $data['id_alumnos'] ?></td>
+                <td><?php echo $data['id_especialidad'] ?></td>
+                <td><?php echo $data['id_seccion'] ?></td>
+                <td><?php echo $data['anio'] ?></td>
+                <td><?php
+                        if ($data['egresado'] == 1) {
+                            echo "Si";
+                        }
+                        if ($data['egresado'] == 0) {
+                            echo "No";
+                        }
+                    ?></td>
+                <td><?php
+                        if ($data['habilitado'] == 1) {
+                            echo "Habilitado";
+                        }
+                        if ($data['habilitado'] == 0) {
+                            echo "Inhabilitado";
+                        }
+                    ?></td>
+
+
+                
+                    <td>
+                        <?php echo Html::linkAction("edit/$data[id]/", "Editar", 'class="btn"') ?>
+                        <?php echo Html::linkAction("del/$data[id]/", "Borrar", 'class="btn red"') ?>
+                    </td>
             <?php
-            }
+                    }
+                } else {
             ?>
+            <td colspan="4">Busqueda sin resultados</td>
+        <?php
+                }
+        ?>
+
+            </tr>
+
+            </tr>
+
         </table>
     </div>
 
@@ -155,5 +169,12 @@
     </tr>
     </tr>
 <?php endforeach;  ?>
+
+
+
+ <?php foreach ($ListaMatriculas->items as $item) :  ?>
+                                <td><?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                                    <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?></td>
+                            <?php endforeach;  ?>
 </tr>
 </table> -->
