@@ -17,12 +17,15 @@ class AlumnosController extends AppController{
         $this->titulo="Registro de alumnos";
         if (Input::hasPost('alumnos')){
             $alumno = new Alumnos(Input::post('alumnos'));
-            if ($alumno->save()){
+            // print_r($alumno);
+            // return;
+            if (!$alumno->create()){
+                Flash::error('Fallo la operacion');
+            }else{
                 Flash::valid("Alumno registrado exitosamente");
                 Input::delete();
                 return Redirect::to();
-            } 
-            Flash::error("error al registrar un alumno"); 
+            }
         }
     }
 
