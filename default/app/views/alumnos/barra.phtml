@@ -3,15 +3,67 @@
 <h3>Impresion de Codigos de Barra por Estudiante</h3>
 <div class="row">
     <?php echo Form::open(); ?>
-    <div class="col s12">
-        <label for="codigo">Busqueda por codigo
-            <input type="text" id="codigo"/>
-        </label>
-    </div>
+    <form action="" method="post">
+        <div class="col s10">
+            <label for="codigo">Busqueda por codigo
+                <input type="text" name="Buscar_codigo" id="codigo" autocomplete="off" />
+            </label>
+        </div>
+        <div class="col s2">
+            <button type="submit" class="btn blue">Buscar</button>
+        </div>
+
+    </form>
+
+    <?php
+    require 'conexion.php';
+    $conexion = conexion();
+
+    if (!empty($_POST['Buscar_codigo'])) {
+        $Buscar = $_POST['Buscar_codigo'];
+        $sql = "SELECT id_alumnos FROM matriculas WHERE id_alumnos LIKE '%$Buscar%'";
+    } else {
+        $sql = "SELECT id_alumnos FROM matriculas";
+    }
+    ?>
+
+    <?php echo View::content() ?>
+
+    <table class="centerd striped responsive-table">
+        <tr>
+            <thead>
+                <th>Nombre</th>
+                <th>Codigo</th>
+            </thead>
+
+            <?php
+            $query = mysqli_query($conexion, $sql);
+            if ($query) {
+                while ($data = mysqli_fetch_assoc($query)) {
+
+            ?>
+        <tr>
+            <td><?php echo$data['id_alumnos'] ?></td>
+        </tr>
+
+    <?php
+                }
+            } else {
+    ?>
+    <td colspan="4">Busqueda sin resultados</td>
+<?php
+            }
+?>
+</tr>
+    </table>
+
+
     <div class="col s12">
         <img id="barcode" alt="">
     </div>
+
+
 </div>
 <script>
-    JsBarcode("#barcode","ND0238011");
+    JsBarcode("#barcode", "ND0238011");
 </script>
