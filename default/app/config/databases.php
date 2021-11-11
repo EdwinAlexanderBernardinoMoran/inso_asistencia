@@ -16,7 +16,7 @@ return [
         /**
          * password: clave del usuario de la base de datos
          */
-        'password' => 'lasttip2021',
+        'password' => '',
         /**
          * test: nombre de la base de datos
          */
