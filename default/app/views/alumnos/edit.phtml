@@ -139,8 +139,8 @@
                 <!-- CAMPO DE SALVADOREÑO POR -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">person</i>
-                    <label for="Salvadoreño_por">Salvadoreño por:
-                    <?= Form::text('alumnos.salvadoreno_por');?></label>   
+                        <label for="Salvadoreño_por">Salvadoreño por:</label><br>
+                        <?php $salvadoreño = array('Nacimiento'=>'Nacimiento','Naturalizado'=>'Naturalizado'); echo Form::Select('alumnos.salvadoreno_por', $salvadoreño); ?>   
                 </div>
             </div>
         </div>
