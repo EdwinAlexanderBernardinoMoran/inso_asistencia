@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="col s2">
-                    <button type="submit" class="btn-primary input-group-text">Buscar</button>
+                    <button type="submit" class="btn green">Buscar</button>
                 </div>
             </div>
 
@@ -45,7 +45,7 @@
         <?php echo View::content() ?>
 
         <?php echo Html::linkAction('create', 'Nueva matricula +', "class='btn green right'")  ?>
-        <table class="centered table striped">
+        <table class="centered striped responsive-table">
             <tr>
                 <thead class="blue lighten-4 ">
                     <th>Id</th>
@@ -64,35 +64,35 @@
 
                 ?>
 
-            <tr>
-                <td><?php echo $data['id'] ?></td>
-                <td><?php echo $data['id_alumnos'] ?></td>
-                <td><?php echo $data['id_especialidad'] ?></td>
-                <td><?php echo $data['id_seccion'] ?></td>
-                <td><?php echo $data['anio'] ?></td>
-                <td><?php
-                        if ($data['egresado'] == 1) {
-                            echo "Si";
-                        }
-                        if ($data['egresado'] == 0) {
-                            echo "No";
-                        }
-                    ?></td>
-                <td><?php
-                        if ($data['habilitado'] == 1) {
-                            echo "Habilitado";
-                        }
-                        if ($data['habilitado'] == 0) {
-                            echo "Inhabilitado";
-                        }
-                    ?></td>
+                <tr>
+                    <td><?php echo $data['id'] ?></td>
+                    <td><?php echo $data['id_alumnos'] ?></td>
+                    <td><?php echo $data['id_especialidad'] ?></td>
+                    <td><?php echo $data['id_seccion'] ?></td>
+                    <td><?php echo $data['anio'] ?></td>
+                    <td><?php
+                            if ($data['egresado'] == 1) {
+                                echo "Si";
+                            }
+                            if ($data['egresado'] == 0) {
+                                echo "No";
+                            }
+                        ?></td>
+                    <td><?php
+                            if ($data['habilitado'] == 1) {
+                                echo "Habilitado";
+                            }
+                            if ($data['habilitado'] == 0) {
+                                echo "Inhabilitado";
+                            }
+                        ?></td>
 
 
-                
-                    <td>
-                        <?php echo Html::linkAction("edit/$data[id]/", "Editar", 'class="btn"') ?>
-                        <?php echo Html::linkAction("del/$data[id]/", "Borrar", 'class="btn red"') ?>
-                    </td>
+                    
+                        <td>
+                            <?php echo Html::linkAction("edit/$data[id]/", "Editar", 'class="btn"') ?>
+                            <?php echo Html::linkAction("del/$data[id]/", "Borrar", 'class="btn red"') ?>
+                        </td>
             <?php
                     }
                 } else {

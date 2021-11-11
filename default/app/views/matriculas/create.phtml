@@ -13,12 +13,16 @@
     </div>
     <div class="col s6">
         <label for="">Ingrese la especialidad
-            <?php echo Form::text('matriculas.id_especialidad'); ?>
+            <?php 
+            $especialidades = array('Seleccionar','Técnico vocacional en desarrollo de software'=> 'Técnico vocacional en desarrollo de software','Atención primaria en salud'=> 'Atención primaria en salud','Administrativo contable'=> 'Administrativo contable','Mecánica automotriz'=> 'Mecánica automotriz','General'=>'General');
+            echo Form::select('matriculas.id_especialidad', $especialidades); ?>
         </label>
     </div>
     <div class="col s6">
         <label for="">Ingrese la seccion
-            <?php echo Form::text('matriculas.id_seccion'); ?>
+            <?php
+            $seccion = array('Seleccionar','1° "A"'=>'1° "A"', '1° "B"' => '1° "B"', '1° "C"' => '1° "C"', '2° "A"' => '2° "A"', '2° "B"' => '2° "B"', '2° "C"' => '2° "C"', '3° "A"' => '3° "A"', '3° "B"' => '3° "B"'); 
+            echo Form::select('matriculas.id_seccion',$seccion); ?>
         </label>
     </div>
 
