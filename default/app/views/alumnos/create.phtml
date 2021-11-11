@@ -149,20 +149,20 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">reorder</i>
-                    <label for="especialidad">Especialidad:
+                    <label for="especialidad">Especialidad:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_especialidad_ingreso', 'nombre_especialidad',  array('especialidades', 'find')); ?>   
                 </div>
                 <!-- CAMPO ESTUDIO PARVULARIA -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">account_box</i>
-                    <label for="Estudio-parvularia">Estudio parvularia:
+                    <label for="Estudio-parvularia">Estudio parvularia:</label><br>
                     <?php $parvularia = array('SI'=>'Si','NO'=>'No'); echo Form::Select('alumnos.estudio_parvularia', $parvularia); ?>
                 </div>
                 <!-- CAMPO REPITE GRADO -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">account_box</i>
-                    <label for="repite_grado">Repite grado:
-                    <?php $grado = array('SI'=>'Si','NO'=>'No'); echo Form::Select('alumnos.repite_grado', $grado, NULL); ?></label>
+                    <label for="repite_grado">Repite grado:</label><br>
+                    <?php $grado = array('SI'=>'Si','NO'=>'No'); echo Form::Select('alumnos.repite_grado', $grado, NULL); ?>
                 </div>
             </div>
         </div>
@@ -208,15 +208,15 @@
                 <!-- CAMPO ESTADO_FAMILIAR -->
                 <div class="input-field col s3">
                     <i class="material-icons prefix">account_circle</i>
-                    <label for="Estado_familiar">Estado Familiar:
-                        <?php $estadofamiliar = array('C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado', 'S'=>'Soltero/a'); echo Form::Select('alumnos.estado_familiar', $estadofamiliar, NULL); ?></label>
+                    <label for="Estado_familiar">Estado Familiar:</label><br>
+                        <?php $estadofamiliar = array('C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado', 'S'=>'Soltero/a'); echo Form::Select('alumnos.estado_familiar', $estadofamiliar, NULL); ?>
                 </div>
 
                 <!-- CAMPO DISCAPACIDAD -->
                 <div class="input-field col s3">
                     <i class="material-icons prefix">account_box</i>
-                    <label for="Discapacidad">Discapacidad:
-                    <?php $discapacidad = array('Ninguna'=>'Ninguna','Ceguera'=>'Ceguera','Baja Vision'=>'Baja Vision','Sordera'=>'Sordera','Hipoacusia'=>'Hipoacusia','Sindrome de Down'=>'Sindrome de Down','Retardado Mental'=>'Retardado Mental','Problemas Motores'=>'Problemas Motores','Ausencia de miembros'=>'Ausencia de miembros','Autismo'=>'Autismo',''=>''); echo Form::Select('alumnos.discapacidad', $discapacidad, NULL);?></label>
+                    <label for="Discapacidad">Discapacidad:</label><br>
+                    <?php $discapacidad = array('Ninguna'=>'Ninguna','Ceguera'=>'Ceguera','Baja Vision'=>'Baja Vision','Sordera'=>'Sordera','Hipoacusia'=>'Hipoacusia','Sindrome de Down'=>'Sindrome de Down','Retardado Mental'=>'Retardado Mental','Problemas Motores'=>'Problemas Motores','Ausencia de miembros'=>'Ausencia de miembros','Autismo'=>'Autismo',''=>''); echo Form::Select('alumnos.discapacidad', $discapacidad, NULL);?>
                 </div>
             </div>
         </div>
@@ -500,8 +500,8 @@
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <label for="Estado_familiar_responsable">Estado Familiar:
-                        <?php $estadofamiliarresponsable = array('S'=>'Soltero','C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado',''=>''); echo Form::Select('alumnos.estado_familiar_responsable', $estadofamiliarresponsable, NULL); ?></label>
+                    <label for="Estado_familiar_responsable">Estado Familiar:</label><br>
+                        <?php $estadofamiliarresponsable = array('S'=>'Soltero','C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado'); echo Form::Select('alumnos.estado_familiar_responsable', $estadofamiliarresponsable, NULL); ?>
                 </div>
             </div>
         </div>
@@ -533,21 +533,18 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">list</i>
-                    <label for="zona_residencia">Zonas:
+                    <label for="zona_residencia">Zonas:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_zona_responsable', 'nombre_zona',  array('zonas', 'find')); ?>
-                    </label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
-                    <label for="Departamento-responsable">Departamento:
+                    <label for="Departamento-responsable">Departamento:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_departamento_responsable', 'nombre_departamento',  array('departamentos', 'find')); ?>
-                    </label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
-                    <label for="Municipio_encargado">Municipio:
+                    <label for="Municipio_encargado">Municipio:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_municipio_responsable', 'nombre_municipio',  array('municipios', 'find')); ?>
-                    </label>
                 </div>
             </div>
         </div>
@@ -557,15 +554,13 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
-                    <label for="Canton_encargado">Cánton:
+                    <label for="Canton_encargado">Cánton:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_canton_responsable', 'nombre_canton',  array('cantones', 'find')); ?>
-                    </label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
-                    <label for="Caserio_encargado">Caserio:
+                    <label for="Caserio_encargado">Caserio:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_caserio_responsable', 'nombre_caserio',  array('caserios', 'find')); ?>
-                    </label>
                 </div>
             </div>
         </div>
