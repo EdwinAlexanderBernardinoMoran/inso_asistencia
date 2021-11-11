@@ -149,20 +149,20 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">reorder</i>
-                    <label for="especialidad">Especialidad:
+                    <label for="especialidad">Especialidad:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_especialidad_ingreso', 'nombre_especialidad',  array('especialidades', 'find')); ?>   
                 </div>
                 <!-- CAMPO ESTUDIO PARVULARIA -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">account_box</i>
-                    <label for="Estudio-parvularia">Estudio parvularia:
-                    <?php $parvularia = array('SI'=>'Si','NO'=>'No'); echo Form::Select('alumnos.estudio_parvularia', $parvularia, NULL); ?></label> 
+                    <label for="Estudio-parvularia">Estudio parvularia:</label><br>
+                    <?php $parvularia = array('SI'=>'Si','NO'=>'No'); echo Form::Select('alumnos.estudio_parvularia', $parvularia); ?>
                 </div>
                 <!-- CAMPO REPITE GRADO -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">account_box</i>
-                    <label for="repite_grado">Repite grado:
-                    <?php $grado = array('SI'=>'Si','NO'=>'No'); echo Form::Select('alumnos.repite_grado', $grado, NULL); ?></label>
+                    <label for="repite_grado">Repite grado:</label><br>
+                    <?php $grado = array('SI'=>'Si','NO'=>'No'); echo Form::Select('alumnos.repite_grado', $grado, NULL); ?>
                 </div>
             </div>
         </div>
@@ -208,15 +208,15 @@
                 <!-- CAMPO ESTADO_FAMILIAR -->
                 <div class="input-field col s3">
                     <i class="material-icons prefix">account_circle</i>
-                    <label for="Estado_familiar">Estado Familiar:
-                        <?php $estadofamiliar = array('C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado', 'So'=>'Soltero/a'); echo Form::Select('alumnos.estado_familiar', $estadofamiliar, NULL); ?></label>
+                    <label for="Estado_familiar">Estado Familiar:</label><br>
+                        <?php $estadofamiliar = array('C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado', 'S'=>'Soltero/a'); echo Form::Select('alumnos.estado_familiar', $estadofamiliar, NULL); ?>
                 </div>
 
                 <!-- CAMPO DISCAPACIDAD -->
                 <div class="input-field col s3">
                     <i class="material-icons prefix">account_box</i>
-                    <label for="Discapacidad">Discapacidad:
-                    <?php $discapacidad = array('Ninguna'=>'Ninguna','Ceguera'=>'Ceguera','Baja Vision'=>'Baja Vision','Sordera'=>'Sordera','Hipoacusia'=>'Hipoacusia','Sindrome de Down'=>'Sindrome de Down','Retardado Mental'=>'Retardado Mental','Problemas Motores'=>'Problemas Motores','Ausencia de miembros'=>'Ausencia de miembros','Autismo'=>'Autismo',''=>''); echo Form::Select('alumnos.discapacidad', $discapacidad, NULL);?></label>
+                    <label for="Discapacidad">Discapacidad:</label><br>
+                    <?php $discapacidad = array('Ninguna'=>'Ninguna','Ceguera'=>'Ceguera','Baja Vision'=>'Baja Vision','Sordera'=>'Sordera','Hipoacusia'=>'Hipoacusia','Sindrome de Down'=>'Sindrome de Down','Retardado Mental'=>'Retardado Mental','Problemas Motores'=>'Problemas Motores','Ausencia de miembros'=>'Ausencia de miembros','Autismo'=>'Autismo',''=>''); echo Form::Select('alumnos.discapacidad', $discapacidad, NULL);?>
                 </div>
             </div>
         </div>
@@ -351,8 +351,11 @@
                 <!-- CAMPO INTEGRADOS -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">wc</i>
-                    <label for="Integrados">Integrados:
-                    <?= Form::text('alumnos.integrados'); ?></label>
+                    <label for="integrados">Integrados:</label><br>
+                    <?php
+                        $integrados = array('No','Si');
+                        echo Form::select('alumnos.integrados',$integrados);
+                    ?>
                 </div>
 
                 <!-- CAMPO DEPENDE ECONOMICAMENTE DE -->
@@ -369,8 +372,11 @@
             <div class="row">
                 <div class="input-field col s3">
                     <i class="material-icons prefix">group</i>
-                    <label for="Tiene_hijos">Tiene hijos:
-                    <?= Form::text('alumnos.tiene_hijos'); ?></label>
+                    <label for="tiene_hijos">Tiene hijos:</label><br>
+                    <?php
+                        $hijos = array('No','Si');
+                        echo Form::select('alumnos.tiene_hijos',$hijos);
+                    ?>
                 </div>
                 <div class="input-field col s3">
                     <i class="material-icons prefix">group</i>
@@ -379,8 +385,11 @@
                 </div>
                 <div class="input-field col s3">
                     <i class="material-icons prefix">build</i>
-                    <label for="Trabaja">Trabaja:
-                    <?= Form::text('alumnos.trabaja'); ?></label>
+                    <label for="trabaja">Trabaja:</label><br>
+                    <?php
+                        $trabaja = array('No','Si');
+                        echo Form::select('alumnos.trabaja',$trabaja);
+                    ?>
                 </div>
                 <div class="input-field col s3">
                     <i class="material-icons prefix">wc</i>
@@ -491,8 +500,8 @@
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <label for="Estado_familiar_responsable">Estado Familiar:
-                        <?php $estadofamiliarresponsable = array('S'=>'Soltero','C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado',''=>''); echo Form::Select('alumnos.estado_familiar_responsable', $estadofamiliarresponsable, NULL); ?></label>
+                    <label for="Estado_familiar_responsable">Estado Familiar:</label><br>
+                        <?php $estadofamiliarresponsable = array('S'=>'Soltero','C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado'); echo Form::Select('alumnos.estado_familiar_responsable', $estadofamiliarresponsable, NULL); ?>
                 </div>
             </div>
         </div>
@@ -524,21 +533,18 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">list</i>
-                    <label for="zona_residencia">Zonas:
+                    <label for="zona_residencia">Zonas:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_zona_responsable', 'nombre_zona',  array('zonas', 'find')); ?>
-                    </label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
-                    <label for="Departamento-responsable">Departamento:
+                    <label for="Departamento-responsable">Departamento:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_departamento_responsable', 'nombre_departamento',  array('departamentos', 'find')); ?>
-                    </label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
-                    <label for="Municipio_encargado">Municipio:
+                    <label for="Municipio_encargado">Municipio:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_municipio_responsable', 'nombre_municipio',  array('municipios', 'find')); ?>
-                    </label>
                 </div>
             </div>
         </div>
@@ -548,15 +554,13 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
-                    <label for="Canton_encargado">Cánton:
+                    <label for="Canton_encargado">Cánton:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_canton_responsable', 'nombre_canton',  array('cantones', 'find')); ?>
-                    </label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
-                    <label for="Caserio_encargado">Caserio:
+                    <label for="Caserio_encargado">Caserio:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_caserio_responsable', 'nombre_caserio',  array('caserios', 'find')); ?>
-                    </label>
                 </div>
             </div>
         </div>
@@ -626,17 +630,21 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="partida_nacimiento">Partida Nacimiento:
-                        <?php $partida_nacimiento = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.partida_nacimiento', $partida_nacimiento, NULL); ?></label>
-                    </label>
+                    <label for="fotos">Partida de nacimiento:</label><br>
+                    <?php
+                        $partida_nacimiento = array('No','Si');
+                        echo Form::select('alumnos.partida_nacimiento',$partida_nacimiento);
+                    ?>
                 </div>
 
                 <!-- CERTIFICACION DE NOTAS -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">add_alert</i>
-                    <label for="certificado_notas">Certificado de notas:
-                        <?php $certificacion_de_notas = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.certificacion_de_notas', $certificacion_de_notas, NULL); ?>
-                    </label>
+                    <label for="fotos">Certificacion de notas:</label><br>
+                    <?php
+                        $certificado_notas = array('No','Si');
+                        echo Form::select('alumnos.certificacion_de_notas',$certificado_notas);
+                    ?>
                 </div>
             </div>
         </div>
@@ -646,17 +654,21 @@
                 <!-- CERTIFICADO -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="certificado">Certificado:
-                        <?php $certificado = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.certificado', $certificado, NULL); ?>
-                    </label>
+                    <label for="fotos">Certificado:</label><br>
+                    <?php
+                        $certificado = array('No','Si');
+                        echo Form::select('alumnos.certificado',$certificado);
+                    ?>
                 </div>
 
                 <!-- FOTOS -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="fotos">Fotos:
-                        <?php $fotos = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.fotos', $fotos, NULL); ?>
-                    </label>
+                    <label for="fotos">Fotos:</label><br>
+                    <?php
+                        $fotos = array('No','Si');
+                        echo Form::select('alumnos.fotos',$fotos);
+                    ?>
                 </div>
             </div>
         </div>
@@ -666,17 +678,21 @@
                 <!-- FOTOCOPIA DE DUI -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="fotocopia_dui">Fotocopia de dui:
-                        <?php $fotocopia_dui = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.fotocopia_dui', $fotocopia_dui, NULL); ?>
-                    </label>
+                    <label for="fotocopia_dui">Fotocopia de dui:</label><br>
+                    <?php
+                        $fotocopia = array('No','Si');
+                        echo Form::select('alumnos.fotocopia_dui',$fotocopia);
+                    ?>
                 </div>
 
                 <!-- CONSTANCIA DE CONDUCTA -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="constancia_conducta">Constancia de conducta:
-                        <?php $constancia_conducta = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.constancia_de_conducta', $constancia_conducta, NULL); ?>
-                    </label>
+                    <label for="constancia_conducta">Constancia de conducta:</label><br>
+                    <?php
+                        $constancia = array('No','Si');
+                        echo Form::select('alumnos.constancia_de_conducta',$constancia);
+                    ?>
                 </div>  
             </div>
         </div>
@@ -685,15 +701,16 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="carnet_residente">Carnet residente:
-                        <?php $carnet_residente = array('0'=>'No','1'=>'Si'); echo Form::Select('alumnos.carnet_residente', $carnet_residente, NULL); ?>
-                    </label>
+                    <label for="carnet_residente">Carnet Residente:</label><br>
+                    <?php
+                        $carnet = array('No','Si');
+                        echo Form::select('alumnos.carnet_residente',$carnet);
+                    ?>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
-                    <label for="id_profesor">Profesor que realizo la matricula:
+                    <label for="id_profesor">Profesor que realizo la matricula:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_profesor_revision', 'primer_nombre_profesor',  array('profesores', 'find')); ?>
-                    </label>
                 </div>
             </div>
         </div>
