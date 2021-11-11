@@ -17,26 +17,36 @@
         <ul id="alumnos" class="dropdown-content">
             <li><?php echo Html::Link('alumnos' , 'Listado') ?></li>
             <li><?php echo Html::Link('alumnos/create', 'Nuevo') ?></li>
+            <li><?php echo Html::LInk('alumnos/barra','Codido Barra')?></li>
         </ul>
         <ul id="maestros" class="dropdown-content">
             <li><?php echo Html::Link('profesores','Listado')?></li>
             <li><?php echo Html::Link('profesores/create','Nuevo')?></li>
         </ul>
+        <ul id="matriculas" class="dropdown-content">
+            <li><?php echo Html::Link('matricula','Listado') ?></li>
+            <li><?php echo Html::Link('matricula/create','Agregar') ?></li>
+        </ul>
+        <ul id="asistencias" class="dropdown-content">
+            <li><?php echo Html::Link('asistencias','Asistencia')?></li>
+        </ul>
+        <ul id="mantenimientos" class="dropdown-content">
+            <li><?php echo Html::Link('departamentos','Departamentos')?></li>
+            <li><?php echo Html::Link('nacionalidades', 'Nacionalidades') ?></li>
+            <li><?php echo Html::Link('centroescolares', 'Centros Escolares') ?></li>
+            <li><?php echo Html::Link('zonas', 'Zonas') ?></li>
+            <li><?php echo Html::Link('cantones', 'Cantones') ?></li>
+            <li><?php echo Html::Link('caserios', 'Caserios') ?></li>
+            <li><?php echo Html::Link('municipios', 'Municipios') ?></li>
+        </ul>
         <nav class="navbar teal">
             <div class="container">
-                <ul class="right hide-on-med-and-down">
+                <ul class="left hide-on-med-and-down">
                     <li><a href="#!" class="dropdown-trigger" data-target="alumnos">Alumnos</a></li>
                     <li><a href="#!" class="dropdown-trigger" data-target="maestros">Profesores</a></li>
-                    <li><?php echo Html::Link('matriculas', 'Matriculas') ?></li>
-                    <li><?php echo Html::Link('nacionalidades', 'Nacionalidades') ?></li>
-                    <li><?php echo Html::Link('nacionalidades/create', 'Form Nacionalidades') ?></li>
-                    <li><?php echo Html::Link('departamentos', 'Departamentos') ?></li>
-                    <li><?php echo Html::Link('nacionalidades', 'Nacionalidades') ?></li>
-                    <li><?php echo Html::Link('centroescolares', 'Centros Escolares') ?></li>
-                    <li><?php echo Html::Link('zonas', 'Zonas') ?></li>
-                    <li><?php echo Html::Link('cantones', 'Cantones') ?></li>
-                    <li><?php echo Html::Link('caserios', 'Caserios') ?></li>
-                    <li><?php echo Html::Link('municipios', 'Municipios') ?></li>
+                    <li><a href="#!" class="dropdown-trigger" data-target="matriculas">Mastriculas</a></li>
+                    <li><a href="#!" class="dropdown-trigger" data-target="asistencias">Asistencia</a></li>
+                    <li><a href="#!" class="dropdown-trigger" data-target="mantenimientos">Mantenimientos</a></li>    
             </div>
         </nav>
     </div>
