@@ -253,25 +253,22 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">list</i>
-                    <label for="zona_residencia">Zonas:
+                    <label for="zona_residencia">Zonas:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_zona', 'nombre_zona',  array('zonas', 'find')); ?>
-                    </label>
                 </div>
 
                 <!-- CAMPO DEPARTAMENTO DE RESIDENCIA --> 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
-                    <label for="Departamento">Departamento:
+                    <label for="Departamento">Departamento:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_departamento_residencia', 'nombre_departamento',  array('departamentos', 'find')); ?>
-                    </label>
                 </div>
 
                 <!-- CAMPO MUNICIPIO DE RESIDENCIA -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment_ind</i>
-                    <label for="Municipio">Municipio:
+                    <label for="Municipio">Municipio:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_municipio_residencia', 'nombre_municipio',  array('municipios', 'find')); ?>
-                    </label>
                 </div>
             </div>
         </div>
@@ -281,17 +278,15 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
-                    <label for="Canton">Cánton:
+                    <label for="Canton">Cánton:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_canton', 'nombre_canton',  array('cantones', 'find')); ?>
-                    </label>
                 </div>
 
                 <!-- CAMPO CASERIOS -->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lens</i>
-                    <label for="Caserio">Caserio:
+                    <label for="Caserio">Caserio:</label><br>
                         <?php echo Form::dbSelect('alumnos.id_caserio', 'nombre_caserio',  array('caserios', 'find')); ?>
-                    </label>
                 </div>
             </div>
         </div>
@@ -319,8 +314,8 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">directions_bus</i>
-                    <label for="Medio_de_transpote">Medio de transporte para llegar al centro educativo:
-                    <?php $transporte = array('A pie'=>'A pie','Bicicleta'=>'Bicicleta','Autobus'=>'Autobus','Vehiculo propio'=>'Vehiculo propio','Otro'=>'Otro',''=>''); echo Form::Select('alumnos.medio_de_transporte', $transporte, NULL); ?></label>
+                    <label for="Medio_de_transpote">Medio de transporte para llegar al centro educativo:</label><br>
+                    <?php $transporte = array('A pie'=>'A pie','Bicicleta'=>'Bicicleta','Autobus'=>'Autobus','Vehiculo propio'=>'Vehiculo propio','Otro'=>'Otro',''=>''); echo Form::Select('alumnos.medio_de_transporte', $transporte, NULL); ?>
                 </div>
 
                 <!-- CAMPO DISTANICIA ENTRE EL INSO Y TU CASA -->
