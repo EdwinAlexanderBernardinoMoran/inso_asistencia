@@ -21,9 +21,9 @@
 
     if (!empty($_POST['Buscar_codigo'])) {
         $Buscar = $_POST['Buscar_codigo'];
-        $sql = "SELECT id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido FROM alumnos WHERE primer_nombre LIKE '%$Buscar%' OR segundo_nombre LIKE '%$Buscar%' OR primer_apellido LIKE '%$Buscar%' OR segundo_apellido LIKE '%$Buscar%'";
+        $sql = "SELECT id, nie, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido FROM alumnos WHERE primer_nombre LIKE '%$Buscar%' OR segundo_nombre LIKE '%$Buscar%' OR primer_apellido LIKE '%$Buscar%' OR segundo_apellido LIKE '%$Buscar%'";
     } else {
-        $sql = "SELECT id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido FROM alumnos";
+        $sql = "SELECT id, nie, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido FROM alumnos";
     }
     ?>
 
@@ -32,7 +32,6 @@
     <table class="centerd striped responsive-table">
         <tr>
             <thead class="blue lighten-4 ">
-                <th>Id</th>
                 <th>Nombre</th>
                 <th>Codigo</th>
             </thead>
@@ -44,7 +43,7 @@
 
             ?>
         <tr>
-            <td><?php echo $data['id'] ?></td>
+            <td><?php echo$data['id'] ?></td>
             <td><?php echo $data['primer_nombre'] . ' ' . $data['segundo_nombre'] . ' ' . $data['primer_apellido'] . ' ' . $data['segundo_apellido'] ?></td>
         </tr>
 
