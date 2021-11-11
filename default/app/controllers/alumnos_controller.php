@@ -57,8 +57,18 @@ class AlumnosController extends AppController{
                 return Redirect::to();
             }
         } else {
-            $this->alumnos = $alumno->find((int)$id);
+            $this->alumnos = $alumno->find((int) $id);
         }
+    }
+
+    public function del($id){
+        $alumno = new Alumnos();
+        if(!$alumno->delete((int)$id)){
+            Flash::error("No se apodido eliminar el alumno");
+        }else{
+            Flash::valid("Alumno eliminado con exito");
+        }
+        return Redirect::to();
     }
 
     public function barra(){
