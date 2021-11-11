@@ -46,6 +46,8 @@
         <tr>
             <td><?php echo $data['id'] ?></td>
             <td><?php echo $data['primer_nombre'] . ' ' . $data['segundo_nombre'] . ' ' . $data['primer_apellido'] . ' ' . $data['segundo_apellido'] ?></td>
+            <td><img id="barcode" alt=""></td>
+            <?php $codigo = $data['id']; ?>
         </tr>
 
     <?php
@@ -60,12 +62,8 @@
     </table>
 
 
-    <div class="col s12">
-        <img id="barcode" alt="">
-    </div>
-
 
 </div>
 <script>
-    JsBarcode("#barcode", "ND0238011");
+    JsBarcode("#barcode", <?php echo $codigo;?>);
 </script>
