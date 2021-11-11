@@ -18,14 +18,16 @@
             <li><?php echo Html::Link('alumnos' , 'Listado') ?></li>
             <li><?php echo Html::Link('alumnos/create', 'Nuevo') ?></li>
         </ul>
+        <ul id="maestros" class="dropdown-content">
+            <li><?php echo Html::Link('profesores','Listado')?></li>
+            <li><?php echo Html::Link('profesores/create','Nuevo')?></li>
+        </ul>
         <nav class="navbar teal">
             <div class="container">
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#!" class="dropdown-trigger" data-target="alumnos">Alumnos</a></li>
-                    <li><?php echo Html::Link('alumnos/create', 'Registro de alumnos') ?></li>
+                    <li><a href="#!" class="dropdown-trigger" data-target="maestros">Profesores</a></li>
                     <li><?php echo Html::Link('matriculas', 'Matriculas') ?></li>
-                    <li><?php echo Html::Link('profesores/create', 'Formulario Profesores') ?></li>
-                    <li><?php echo Html::Link('profesores', 'Profesores') ?></li>
                     <li><?php echo Html::Link('nacionalidades', 'Nacionalidades') ?></li>
                     <li><?php echo Html::Link('nacionalidades/create', 'Form Nacionalidades') ?></li>
                     <li><?php echo Html::Link('departamentos', 'Departamentos') ?></li>
