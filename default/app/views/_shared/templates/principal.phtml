@@ -14,10 +14,14 @@
 <body>
 
     <div class="navbar-fixed">
+        <ul id="alumnos" class="dropdown-content">
+            <li><?php echo Html::Link('alumnos' , 'Listado') ?></li>
+            <li><?php echo Html::Link('alumnos/create', 'Nuevo') ?></li>
+        </ul>
         <nav class="navbar teal">
             <div class="container">
                 <ul class="right hide-on-med-and-down">
-                    <li><?php echo Html::Link('alumnos', 'Alumnos') ?></li>
+                    <li><a href="#!" class="dropdown-trigger" data-target="alumnos">Alumnos</a></li>
                     <li><?php echo Html::Link('alumnos/create', 'Registro de alumnos') ?></li>
                     <li><?php echo Html::Link('matriculas', 'Matriculas') ?></li>
                     <li><?php echo Html::Link('profesores/create', 'Formulario Profesores') ?></li>
@@ -51,6 +55,7 @@
         $(document).ready(function() {
             $('.tabs').tabs();
             $('select').formSelect();
+            $('.dropdown-trigger').dropdown();
         });
     </script>
  
