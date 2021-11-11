@@ -59,12 +59,11 @@
         <th>OCUPACIÓN</th>
         <th>LUGAR DE TRABAJO</th>
         <th>TELEFONO</th>
-
-        <!-- IDENTIFICACION DEL RESPONSABLE -->
         <th>PRIMER NOMBRE</th>
         <th>SEGUNDO NOMBRE</th>
         <th>PRIMER APELLIDO</th>
         <th>SEGUNDO APELLIDO</th>
+        <th>NUMERO DE DUI</th>
         <th>ESTADO FAMILIAR</th>
         <th>CORREO ELECTRONICO</th>
         <th>TELEFONO FIJO</th>
@@ -78,10 +77,8 @@
         <th>DIRECCION COMPLETA RESPONSABLE</th>
         <th>PROFECION U OFICIO</th>
         <th>CELULAR</th>
-        <th>TELEFONO O CELULAR</th>
         <th>ESCOLARIDAD</th>
         <th>FACTOR DE RIESGO</th>
-        <th>FECHA DE REVISION</th>
         <th>PARTIDA NACIMIENTO</th>
         <th>CERTIFICACION DE NOTAS</th>
         <th>CERTIFICADO</th>
@@ -89,6 +86,7 @@
         <th>FOTOCOPIA DUI</th>
         <th>CONSTANCIA DE CONDUCTA</th>
         <th>CARNET RESIDENTE</th>
+        <th>FECHA DE REVISION</th>
         <th>ID PROFESOR REVISION</th>
     </thead>
     <?php foreach ($listaAlumnos->items as $item) : ?>
@@ -99,20 +97,20 @@
             <td><?php echo $item->primer_apellido ?></td>
             <td><?php echo $item->segundo_apellido ?></td>
             <td><?php echo $item->fecha_nacimiento ?></td>
-            <td><?php echo $item->nombre_nacionalidad?></td>
-            <td><?php echo $item->nombre_departamento ?></td>
-            <td><?php echo $item->municipio_de_nacimiento_id ?></td>
+            <td><?php echo $item->id_nacionalidad?></td>
+            <td><?php echo $item->id_departamento_de_nacimiento ?></td>
+            <td><?php echo $item->id_municipio_de_nacimiento ?></td>
             <td><?php echo $item->anio_bachillerato ?></td>
             <td><?php echo $item->nie ?></td>
             <td><?php echo $item->numero_partida ?></td>
             <td><?php echo $item->folio_partida ?></td>
             <td><?php echo $item->libro_partida ?></td>
             <td><?php echo $item->otro_documento_de_identificacion ?></td>
-            <td><?php echo $item->salvadoreño_por ?></td>
-            <td><?php echo $item->especialidad_ingreso_id ?></td>
+            <td><?php echo $item->salvadoreno_por ?></td>
+            <td><?php echo $item->id_especialidad_ingreso ?></td>
             <td><?php echo $item->estudio_parvularia ?></td>
             <td><?php echo $item->repite_grado ?></td>
-            <td><?php echo $item->centro_escolar_providencia_id ?></td>
+            <td><?php echo $item->id_centro_escolar_providencia?></td>
             <td><?php echo $item->anio_anterior ?></td>
             <td><?php echo $item->tipo_de_sangre ?></td>
             <td><?php echo $item->sexo ?></td>
@@ -120,22 +118,49 @@
             <td><?php echo $item->discapacidad ?></td>
             <td><?php echo $item->email ?></td>
             <td><?php echo $item->telefono_fijo ?></td>
-            <td><?php echo $item->zona_id ?></td>
-            <td><?php echo $item->departamento_residencia_id ?></td>
-            <td><?php echo $item->municipio_residencia_id ?></td>
-            <td><?php echo $item->canton_id ?></td>
-            <td><?php echo $item->caserio_id ?></td>
+            <td><?php echo $item->celular ?></td>
+            <td><?php echo $item->id_zona ?></td>
+            <td><?php echo $item->id_departamento_residencia ?></td>
+            <td><?php echo $item->id_municipio_residencia ?></td>
+            <td><?php echo $item->id_canton ?></td>
+            <td><?php echo $item->id_caserio ?></td>
             <td><?php echo $item->tipo_de_calle ?></td>
             <td><?php echo $item->direccion_completa ?></td>
             <td><?php echo $item->medio_de_transporte ?></td>
             <td><?php echo $item->distancia_desde_casa_y_centroeducativo ?></td>
             <td><?php echo $item->factor_de_riesgo ?></td>
             <td><?php echo $item->numero_integrantes_familia ?></td>
-            <td><?php echo $item->integrados ?></td>
+            <td>
+                    <?php 
+                        if ($item->integrados == 1) {
+                            echo "Si";
+                        }
+                        if ($item->integrados == 0) {
+                            echo "No";
+                        }
+                    ?>
+            </td>
             <td><?php echo $item->depende_economicamente_de ?></td>
-            <td><?php echo $item->tiene_hijos ?></td>
-            <td><?php echo $item->numero_de_hijos ?></td>
-            <td><?php echo $item->trabaja ?></td>
+            <td>
+                    <?php 
+                        if ($item->tiene_hijos == 1) {
+                            echo "Si";
+                        }
+                        if ($item->tiene_hijos == 0) {
+                            echo "No";
+                        }
+                    ?>
+            </td>
+            <td>
+                    <?php 
+                        if ($item->trabaja == 1) {
+                            echo "Si";
+                        }
+                        if ($item->trabaja == 0) {
+                            echo "No";
+                        }
+                    ?>
+            </td>
             <td><?php echo $item->convivencia_con ?></td>
             <td><?php echo $item->nombre_madre ?></td>
             <td><?php echo $item->ocupacion_madre ?></td>
@@ -147,27 +172,97 @@
             <td><?php echo $item->telefono_padre ?></td>
             <td><?php echo $item->primer_nombre_responsable ?></td>
             <td><?php echo $item->segundo_nombre_responsable ?></td>
-            <td><?php echo $item->primer_apellido_reponsable ?></td>
+            <td><?php echo $item->primer_apellido_responsable ?></td>
             <td><?php echo $item->segundo_apellido_responsable ?></td>
             <td><?php echo $item->numero_dui_responsable ?></td>
             <td><?php echo $item->estado_familiar_responsable ?></td>
             <td><?php echo $item->email_responsable ?></td>
             <td><?php echo $item->telefono_fijo_encargado ?></td>
             <td><?php echo $item->celular_encargado ?></td>
-            <td><?php echo $item->zona_responsable_id ?></td>
-            <td><?php echo $item->departamento_responsable_id ?></td>
-            <td><?php echo $item->municipio_responsable_id ?></td>
-            <td><?php echo $item->canton_responsable_id ?></td>
-            <td><?php echo $item->caserio_responsable_id ?></td>
+            <td><?php echo $item->id_zona_responsable?></td>
+            <td><?php echo $item->id_departamento_responsable?></td>
+            <td><?php echo $item->id_municipio_responsable?></td>
+            <td><?php echo $item->id_canton_responsable?></td>
+            <td><?php echo $item->id_caserio_responsable?></td>
             <td><?php echo $item->tipo_de_calle_responsable ?></td>
             <td><?php echo $item->direccion_completa_responsable ?></td>
             <td><?php echo $item->profesion_oficio_responsable ?></td>
             <td><?php echo $item->celular_responsable ?></td>
             <td><?php echo $item->escolaridad_responsable ?></td>
             <td><?php echo $item->factor_de_riesgo_responsable ?></td>
+            <td>
+                    <?php 
+                        if ($item->partida_nacimiento == 1) {
+                            echo "Si";
+                        }
+                        if ($item->partida_nacimiento == 0) {
+                            echo "No";
+                        }
+                    ?>
+            </td>
+            <td>
+                    <?php 
+                        if ($item->certificacion_de_notas == 1) {
+                            echo "Si";
+                        }
+                        if ($item->certificacion_de_notas == 0) {
+                            echo "No";
+                        }
+                    ?>
+            </td>
+            <td>
+                    <?php 
+                        if ($item->certificado == 1) {
+                            echo "Si";
+                        }
+                        if ($item->certificado == 0) {
+                            echo "No";
+                        }
+                    ?>
+            </td>
+            <td>
+                    <?php 
+                        if ($item->fotos == 1) {
+                            echo "Si";
+                        }
+                        if ($item->fotos == 0) {
+                            echo "No";
+                        }
+                    ?>
+            </td>
+            <td>
+                    <?php 
+                        if ($item->fotocopia_dui == 1) {
+                            echo "Si";
+                        }
+                        if ($item->fotocopia_dui == 0) {
+                            echo "No";
+                        }
+                    ?>
+            </td>
+            <td>
+                    <?php 
+                        if ($item->constancia_de_conducta == 1) {
+                            echo "Si";
+                        }
+                        if ($item->constancia_de_conducta == 0) {
+                            echo "No";
+                        }
+                    ?>
+            </td>
+            <td>
+                    <?php 
+                        if ($item->carnet_residente == 1) {
+                            echo "Si";
+                        }
+                        if ($item->carnet_residente == 0) {
+                            echo "No";
+                        }
+                    ?>
+            </td>
             <td><?php echo $item->fecha_revision_formulario ?></td>
-            <!-- $usuarios = Load::model('usuario')->find_all_by_sql("select * from -->
-            <!-- usuarios where codigo not in (select codigo from ingreso)") -->
+            <td><?php echo $item->id_profesor_revision ?></td>
+
 
             <?php echo Html::linkAction("edit/$item->id_alumnos/", 'Editar', 'class="btn "') ?>
             <?php echo Html::linkAction("del/$item->id_alumnos/", 'Borrar', 'class="btn red"') ?>
