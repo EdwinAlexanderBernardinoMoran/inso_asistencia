@@ -1,13 +1,25 @@
 <div class="row section">
 
     <?php echo View::content(); ?>
+    <?php echo Tag::js('jquery'); ?>
+    <?php echo Tag::js('busquedaAlumnos') ;?>
     <h3 class="center"><b>Matriculas</b></h3>
 
+    <div class="row section">
+        <div class="col s12">
+            <label for="nombre">Nombre del estudiante a buscar.
+                <?php echo Form::text('nombre'); ?>
+            </label>
+        </div>
+        <div class="col s12">
+            <div class="" id="resultado"></div>
+        </div>
+    </div>
 
     <?php echo Form::open(); ?>
 
     <div class="col s6">
-        <label for="">Ingrese el nombre del alumno
+        <label for="">Nombre del estudiante
             <?php echo Form::text('matriculas.id_alumnos'); ?>
         </label>
     </div>
