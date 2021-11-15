@@ -32,8 +32,9 @@
     <table class="centerd striped responsive-table">
         <tr>
             <thead class="blue lighten-4 ">
+                <th>NIE</th>
                 <th>Nombre</th>
-                <th>Codigo</th>
+                <th>Codido</th>
             </thead>
 
             <?php
@@ -43,10 +44,10 @@
 
             ?>
         <tr>
-            <td><?php echo$data['id'] ?></td>
+            <td><?php echo$data['nie'] ?></td>
             <td><?php echo $data['primer_nombre'] . ' ' . $data['segundo_nombre'] . ' ' . $data['primer_apellido'] . ' ' . $data['segundo_apellido'] ?></td>
             <td><img id="barcode" alt=""></td>
-            <?php $codigo = $data['id']; ?>
+            <?php $codigo = $data['nie']; ?>
         </tr>
 
     <?php
