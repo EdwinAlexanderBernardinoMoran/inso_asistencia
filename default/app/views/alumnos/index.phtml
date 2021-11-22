@@ -25,6 +25,7 @@
             <td><?php echo $item->nie ?></td>
             <td>
                 <?php echo Html::linkAction("edit/$item->id/", 'Editar', 'class="btn "') ?>
+                <?php echo Html::linkAction("ficha", 'Ficha', 'class="btn red"') ?>
                 <?php echo Html::linkAction("del/$item->id/", 'Borrar', 'class="btn red"') ?>
             </td>
         </tr>

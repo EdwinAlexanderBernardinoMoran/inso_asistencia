@@ -75,6 +75,11 @@ class AlumnosController extends AppController{
         View::template('principal');
         $this->titulo = "Codigo de Barras";
     }
+
+    public function ficha(){
+        View::template('principal');
+        $this->titulo = "Ficha de matricula";
+    }
 }
 
 ?>

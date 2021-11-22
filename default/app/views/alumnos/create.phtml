@@ -2,16 +2,16 @@
     <?php View::content() ?>
         <!-- <h3 class="center-align">Ministerio De Educacion</h3> -->
         <h3 class="center-align">Instituto Nacional De Sonzacate</h3>
-        <!-- <h4 class="center-align">Ficha De Matricula <?php echo date('Y'); ?></h4> -->
+        <h4 class="center-align">Ficha De Matricula <?php echo date('Y'); ?></h4>
 </div>
 
 <div class="row">
     <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s3"><a class="active" href="#test1">Identificacion del estudiante</a></li>
-        <li class="tab col s3"><a href="#test2">Informacion Del Estudiante</a></li>
-        <li class="tab col s3"><a href="#test3">Identificacion Del Responsable</a></li>
-        <li class="tab col s3"><a href="#test4">Profesor Que Realizo La Matricula</a></li>
+      <ul class="tabs black">
+        <li class="tab col s3"><a class="active white-text text-texdarken-1" href="#test1">Identificacion del estudiante</a></li>
+        <li class="tab col s3"><a class="white-text text-texdarken-1" href="#test2">Informacion Del Estudiante</a></li>
+        <li class="tab col s3"><a class="white-text text-texdarken-1" href="#test3">Identificacion Del Responsable</a></li>
+        <li class="tab col s3"><a class="white-text text-texdarken-1" href="#test4">Profesor Que Realizo La Matricula</a></li>
       </ul>
     </div>
 </div>
@@ -297,7 +297,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">chevron_right</i>
                     <label for="Canton">Tipo de calle:
-                    <?= Form::text('alumnos.tipo_de_calle'); ?></label>
+                        <?php $tipocalle = array('Polvosa'=>'Polvosa','Ensementada'=>'Ensementada'); echo Form::Select('alumnos.tipo_de_calle_responsable', $tipocalle); ?>
                 </div>
                 <!-- CAMPO DIRECCION_COMPLETA -->
                 <div class="input-field col s6">
@@ -315,7 +315,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">directions_bus</i>
                     <label for="Medio_de_transpote">Medio de transporte para llegar al centro educativo:</label><br>
-                    <?php $transporte = array('A pie'=>'A pie','Bicicleta'=>'Bicicleta','Autobus'=>'Autobus','Vehiculo propio'=>'Vehiculo propio','Otro'=>'Otro',''=>''); echo Form::Select('alumnos.medio_de_transporte', $transporte, NULL); ?>
+                    <?php $transporte = array('A pie'=>'A pie','Bicicleta'=>'Bicicleta','Autobus'=>'Autobus','Vehiculo propio'=>'Vehiculo propio','Otro'=>'Otro'); echo Form::Select('alumnos.medio_de_transporte', $transporte, NULL); ?>
                 </div>
 
                 <!-- CAMPO DISTANICIA ENTRE EL INSO Y TU CASA -->
@@ -361,8 +361,8 @@
                 <!-- CAMPO DEPENDE ECONOMICAMENTE DE -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">attach_money</i>
-                    <label for="Depende_economicamente">Depende economicamente de:
-                    <?= Form::text('alumnos.depende_economicamente_de'); ?></label>
+                    <label for="Depende_economicamente">Depende economicamente de:</label><br>
+                        <?php $dependeeconomicamente = array('Mamá'=>'Mamá','Papá'=>'Papá', 'Mamá y Papá'=>'Mamá y Papá', 'Abuelo'=>'Abuelo', 'Abuela'=>'Abuela', 'Tia'=>'Tia', 'Tio'=>'Tio', 'Otro'=>'Otro'); echo Form::Select('alumnos.tipo_de_calle_responsable', $dependeeconomicamente); ?>
                 </div>
             </div>
         </div>
@@ -393,8 +393,8 @@
                 </div>
                 <div class="input-field col s3">
                     <i class="material-icons prefix">wc</i>
-                    <label for="Convivenicia_con">Convivencia con:
-                    <?= Form::text('alumnos.convivencia_con'); ?></label>
+                    <label for="Convivenicia_con">Convivencia con:</label><br>
+                        <?php $convivencia = array('Mamá'=>'Mamá','Papá'=>'Papá', 'Mamá y Papá'=>'Mamá y Papá', 'Abuelo'=>'Abuelo', 'Abuela'=>'Abuela', 'Tia'=>'Tia', 'Tio'=>'Tio', 'Otro'=>'Otro'); echo Form::Select('alumnos.tipo_de_calle_responsable', $convivencia); ?>
                 </div>
             </div>
         </div>
@@ -568,8 +568,8 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">chevron_right</i>
-                    <label for="tipo_de_calle_encargado">Tipo de calle:
-                    <?= Form::text('alumnos.tipo_de_calle_responsable'); ?></label>
+                    <label for="tipo_de_calle_encargado">Tipo de calle:</label><br>
+                        <?php $tipocalle = array('Polvosa'=>'Polvosa','Ensementada'=>'Ensementada'); echo Form::Select('alumnos.tipo_de_calle_responsable', $tipocalle); ?>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">directions_walk</i>
@@ -599,8 +599,8 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="Escolaridad_encargado">Escolaridad:
-                    <?= Form::text('alumnos.escolaridad_responsable'); ?></label>
+                    <label for="Escolaridad_encargado">Escolaridad:</label><br>
+                        <?php $escolaridadresponsable = array('Primer Grado'=>'Primer Grado','Segundo Grado'=>'Segundo Grado','Tercer Grado'=>'Tercer Grado','Cuarto Grado'=>'Cuarto Grado','Quinto Grado'=>'Quinto Grado','Sexto Grado'=>'Sexto Grado', 'Séptimo Grado'=>'Séptimo Grado', 'Octavo Grado'=>'Octavo Grado', 'Noveno Grado'=>'Noveno Grado', 'Bachillerato'=>'Bachillerato', 'Ninguno'=>'Ninguno'); echo Form::Select('alumnos.escolaridad_responsable', $escolaridadresponsable); ?>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">add_alert</i>
