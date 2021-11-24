@@ -12,7 +12,9 @@
 		"source": "https://github.com/KumbiaPHP/KumbiaPHP"
     },
     "require": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+        "fpdf/fpdf": "^1.83",
+        "mpdf/mpdf": "^8.0"
     },
     "require-dev": {
         "php": ">=5.4",

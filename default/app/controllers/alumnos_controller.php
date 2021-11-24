@@ -1,4 +1,8 @@
-<?php
+<?php 
+
+require_once APP_PATH . '../../vendor/autoload.php';
+
+use Mpdf\Mpdf;
 
 Load::models('alumnos');
 
@@ -8,6 +12,20 @@ class AlumnosController extends AppController{
         $this->titulo = "Alumnos";
         $alumno = new Alumnos();
         $this->listaAlumnos = $alumno->getAlumnos($page);
+    }
+
+    
+
+    public function pdf($id)
+    {
+        //Usa el tempalte 'pdf'
+        View::template('pdf/mpdf');
+        //Modifica el nombre del archivo a descargar
+        $this->fileName = 'user-list';
+        //Modifica el título del documento PDF en la cabecera
+        $this->title = 'Ficha de matricula';
+        $this->listaAlumnos = new Alumnos();
+        $this->download = false;
     }
 
     //REGISTRO DE ALUMNOS
@@ -28,22 +46,6 @@ class AlumnosController extends AppController{
             }
         }
     }
-
-    // public function create(){
-    //     if (Input::hasPost('alumnos')){
-    //         $alumno = new Alumnos(Input::post('alumnos'));
-    //         if (!$alumno->save()){
-    //             Flash::error("Fallo la Operacion");
-    //         }else{
-    //             Flash::valid("Operacion exitosa");
-    //             Input::delete();
-    //             return Redirect::to();
-    //         }
-    //     }
-
-    //     View::template('principal');
-    //     $this->titulo = "Registro de alumnos";
-    // }
 
     // BOTON DE EDITAR UN REGISTROS
     public function edit($id){
@@ -74,11 +76,6 @@ class AlumnosController extends AppController{
     public function barra(){
         View::template('principal');
         $this->titulo = "Codigo de Barras";
-    }
-
-    public function ficha(){
-        View::template('principal');
-        $this->titulo = "Ficha de matricula";
     }
 }
 

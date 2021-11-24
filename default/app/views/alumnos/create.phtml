@@ -297,7 +297,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">chevron_right</i>
                     <label for="Canton">Tipo de calle:
-                        <?php $tipocalle = array('Polvosa'=>'Polvosa','Ensementada'=>'Ensementada'); echo Form::Select('alumnos.tipo_de_calle_responsable', $tipocalle); ?>
+                        <?php $tipocalle = array('Polvosa'=>'Polvosa','Ensementada'=>'Ensementada'); echo Form::Select('alumnos.tipo_de_calle', $tipocalle); ?>
                 </div>
                 <!-- CAMPO DIRECCION_COMPLETA -->
                 <div class="input-field col s6">
@@ -362,7 +362,7 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">attach_money</i>
                     <label for="Depende_economicamente">Depende economicamente de:</label><br>
-                        <?php $dependeeconomicamente = array('Mamá'=>'Mamá','Papá'=>'Papá', 'Mamá y Papá'=>'Mamá y Papá', 'Abuelo'=>'Abuelo', 'Abuela'=>'Abuela', 'Tia'=>'Tia', 'Tio'=>'Tio', 'Otro'=>'Otro'); echo Form::Select('alumnos.tipo_de_calle_responsable', $dependeeconomicamente); ?>
+                        <?php $dependeeconomicamente = array('Mamá'=>'Mamá','Papá'=>'Papá', 'Mamá y Papá'=>'Mamá y Papá', 'Abuelo'=>'Abuelo', 'Abuela'=>'Abuela', 'Tia'=>'Tia', 'Tio'=>'Tio', 'Otro'=>'Otro'); echo Form::Select('alumnos.depende_economicamente_de', $dependeeconomicamente); ?>
                 </div>
             </div>
         </div>
@@ -394,7 +394,7 @@
                 <div class="input-field col s3">
                     <i class="material-icons prefix">wc</i>
                     <label for="Convivenicia_con">Convivencia con:</label><br>
-                        <?php $convivencia = array('Mamá'=>'Mamá','Papá'=>'Papá', 'Mamá y Papá'=>'Mamá y Papá', 'Abuelo'=>'Abuelo', 'Abuela'=>'Abuela', 'Tia'=>'Tia', 'Tio'=>'Tio', 'Otro'=>'Otro'); echo Form::Select('alumnos.tipo_de_calle_responsable', $convivencia); ?>
+                        <?php $convivencia = array('Mamá'=>'Mamá','Papá'=>'Papá', 'Mamá y Papá'=>'Mamá y Papá', 'Abuelo'=>'Abuelo', 'Abuela'=>'Abuela', 'Tia'=>'Tia', 'Tio'=>'Tio', 'Otro'=>'Otro'); echo Form::Select('alumnos.convivencia_con', $convivencia); ?>
                 </div>
             </div>
         </div>

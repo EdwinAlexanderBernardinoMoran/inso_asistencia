@@ -1,0 +1,57 @@
+<?php
+
+use Mpdf\Mpdf;
+
+/* Defaults */
+
+// fileName
+$fileName = $filename ?? "Ficha de $controller_name";
+
+// Title
+$title = $title ?? "Ficha de $controller_name";
+
+// CSS
+$css = $css ?? 'css/pdf.css';
+
+// Destination I show in browser  D download
+$destination = isset($download) && $download ? 'D' : 'I';
+
+//Activa el almacenamiento en búfer de la salida
+ob_start();
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $title ?></title>
+    <link rel="stylesheet" href="css/pdf.css">
+</head>
+<body>
+    <h2>MINISTERIO DE EDUCACION</h2>
+    <h2>INSTITUTO NACIONAL DE SONZACATE</h2>
+</body>
+</html>
+<?php
+$html = ob_get_clean();
+ob_clean();
+
+// Crea una instancia de la clase y le pasa el directorio temporal
+$mpdf = new Mpdf([
+    'tempDir' => APP_PATH . 'temp/mpdf',
+    'format' => 'letter',
+    'title2annots' => true,  // convert headers <hx> in annotations
+    'mirrorMargins' => 0,    // mirror the left and right margin values on odd and even pages 
+    'exposeVersion' => false // security 
+    // more variables in https://mpdf.github.io/reference/mpdf-variables/overview.html
+]);
+
+// $plantilla = getplantilla();
+
+// Escribe el contenido HTML (Template + View):
+$mpdf->WriteHTML($html);
+
+// Genera el PDF, ya sea para su descarga o visualización en el navegador
+$mpdf->Output("$fileName.pdf", $destination);

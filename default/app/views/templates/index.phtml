@@ -1,0 +1,52 @@
+<header class="container-top">
+        <h1>Templates</h1>
+        <p>Using KumbiaPHP templates</p>
+</header>
+<div class="container">
+    <aside>
+        <h2>KumbiaPHP Templates</h2>
+        <pre class="language-php">
+            <code class="language-php"><?= h('// Any method in the controller
+public function index()
+{
+    $this->listaAlumnos = Alumnos(); // Send any data to $this->listaAlumnos
+    View::select(null, "xml"); // Use any of xml, json or csv. That\'s all!
+}'
+) ?></code>
+        </pre>
+    </aside>
+    <article>
+        <h2>View this table in 
+            <a href="/templates/get/json" role="button" target="_blank" data-tooltip="JSON Template">JSON</a>
+            <a href="/templates/get/xml" role="button" target="_blank" data-tooltip="XML Template">XML</a>
+            <a href="/templates/get/csv" role="button" target="_blank" data-tooltip="CSV Template">CSV</a>
+        </h2>
+        <?php if (!count($listaAlumnos)) : ?>
+            <h2>There are no records</h2>
+        <?php else : ?>
+            <figure>
+            <table class="report">
+                <caption class="caption">User list</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">PRIMER_NOMBRE</th>
+                        <th scope="col">SEGUNDO_NOMBRE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($listaAlumnos->items as $item) : ?>
+                        <tr>
+                            <td><?= $item->id ?></td>
+                            <td><?= $item->primer_nombre ?></td>
+                            <td><?= $item->segundo_nombre ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+            </figure>
+        <?php endif ?>
+    </article>
+</div>
+<?= Tag::js('prism') ?>
+<?php Css::add('prism') ?> 
