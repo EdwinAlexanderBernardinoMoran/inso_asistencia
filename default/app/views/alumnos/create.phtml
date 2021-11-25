@@ -104,7 +104,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">person_pin</i>
                     <label for="Nie">NIE:
-                    <?= Form::text('alumnos.nie');?></label>
+                    <?= Form::text('alumnos.nie', 'placeholder=000000');?></label>
                 </div>       
             </div>
         </div>
@@ -114,17 +114,17 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i>
                     <label for="Numero_de_partida">Numero de partida de nacimiento:
-                    <?= Form::text('alumnos.numero_partida');?></label>
+                    <?= Form::text('alumnos.numero_partida', 'placeholder=#_numero_de_partida');?></label>
                 </div> 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i>
                     <label for="Numero_de_partida">Folio de la partida de nacimiento:
-                    <?= Form::text('alumnos.folio_partida');?></label>
+                    <?= Form::text('alumnos.folio_partida', 'placeholder=#_numero_de_folio');?></label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">library_books</i>
                     <label for="Numero_de_partida">libro de la partida de nacimiento:
-                    <?= Form::text('alumnos.libro_partida');?></label>
+                    <?= Form::text('alumnos.libro_partida', 'placeholder=#_numero_del_libro_de_partida_nacimiento');?></label>
                 </div> 
             </div>
         </div>
@@ -209,7 +209,7 @@
                 <div class="input-field col s3">
                     <i class="material-icons prefix">account_circle</i>
                     <label for="Estado_familiar">Estado Familiar:</label><br>
-                        <?php $estadofamiliar = array('C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado', 'S'=>'Soltero/a'); echo Form::Select('alumnos.estado_familiar', $estadofamiliar, NULL); ?>
+                        <?php $estadofamiliar = array('C'=>'Casado/a','V'=>'Viudo/a','D'=>'Divorciado/a','S'=>'Separado/a','A'=>'Acompañado/a', 'S'=>'Soltero/a'); echo Form::Select('alumnos.estado_familiar', $estadofamiliar, NULL); ?>
                 </div>
 
                 <!-- CAMPO DISCAPACIDAD -->
@@ -228,21 +228,21 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">mail</i>
                     <label for="Correo_electronico">Correo electronico:
-                    <?= Form::text('alumnos.email'); ?></label>
+                    <?= Form::text('alumnos.email', 'placeholder=ejemplo@gmail.com'); ?></label>
                 </div>
 
                 <!-- CAMPO TELEFONO_FIJO -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">call</i>
                     <label for="Telefono_fijo">Tel. Fijo:
-                    <?= Form::text('alumnos.telefono_fijo'); ?></label>
+                    <?= Form::text('alumnos.telefono_fijo', 'placeholder=0000-0000'); ?></label>
                 </div>
 
                 <!-- CAMPO CELULAR -->
                 <div class="input-field col s4">
                     <i class="material-icons prefix">stay_current_portrait</i>
                     <label for="Celular">Celular:
-                    <?= Form::text('alumnos.celular'); ?></label>
+                    <?= Form::text('alumnos.celular', 'placeholder=0000-0000'); ?></label>
                 </div>
             </div>
         </div>
@@ -379,8 +379,8 @@
                     ?>
                 </div>
                 <div class="input-field col s3">
-                    <i class="material-icons prefix">group</i>
-                    <label for="Cuantos_tiene_hijos">Cuantos hijos tiene:
+                    <i class="material-icons prefix">wc</i>
+                    <label for="Numero_de_hijos">Cuantos hijos tiene:
                     <?= Form::text('alumnos.numero_de_hijos'); ?></label>
                 </div>
                 <div class="input-field col s3">
@@ -422,7 +422,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">call</i>
                     <label for="telefono-madre">Telefono (madre):
-                    <?= Form::text('alumnos.telefono_madre'); ?></label>
+                    <?= Form::text('alumnos.telefono_madre', 'placeholder=0000-0000'); ?></label>
                 </div>
             </div>
         </div>
@@ -450,7 +450,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">call</i>
                     <label for="telefono-padre">Telefono (padre):
-                    <?= Form::text('alumnos.telefono_padre'); ?></label>
+                    <?= Form::text('alumnos.telefono_padre', 'placeholder=0000-0000'); ?></label>
                 </div>
             </div>
         </div>
@@ -501,7 +501,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
                     <label for="Estado_familiar_responsable">Estado Familiar:</label><br>
-                        <?php $estadofamiliarresponsable = array('S'=>'Soltero','C'=>'Casado','V'=>'Viudo','D'=>'Divorciado','S'=>'Separado','A'=>'Acompañado'); echo Form::Select('alumnos.estado_familiar_responsable', $estadofamiliarresponsable, NULL); ?>
+                        <?php $estadofamiliarresponsable = array('S'=>'Soltero/a','C'=>'Casado/a','V'=>'Viudo/a','D'=>'Divorciado/a','S'=>'Separado/a','A'=>'Acompañado/a'); echo Form::Select('alumnos.estado_familiar_responsable', $estadofamiliarresponsable, NULL); ?>
                 </div>
             </div>
         </div>
@@ -512,17 +512,17 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">mail</i>
                     <label for="Correo_electronico_encargado">Correo electronico:
-                    <?= Form::text('alumnos.email_responsable'); ?></label>
+                    <?= Form::text('alumnos.email_responsable', 'placeholder=ejemplo@gmail.com'); ?></label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">call</i>
                     <label for="Telefono_fijo_encargado">Tel. Fijo:
-                    <?= Form::text('alumnos.telefono_fijo_encargado'); ?></label>
+                    <?= Form::text('alumnos.telefono_fijo_encargado', 'placeholder=0000-0000'); ?></label>
                 </div>
                 <div class="input-field col s4">
                     <i class="material-icons prefix">stay_current_portrait</i>
                     <label for="Telefono_fijo_encargado">Celular:
-                    <?= Form::text('alumnos.celular_encargado'); ?></label>
+                    <?= Form::text('alumnos.celular_encargado', 'placeholder=0000-0000'); ?></label>
                 </div>
             </div>
         </div>
@@ -591,7 +591,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">call</i>
                     <label for="profesion_encargado">Telefono o celular:
-                    <?= Form::text('alumnos.celular_responsable'); ?></label>
+                    <?= Form::text('alumnos.celular_responsable', 'placeholder=0000-0000'); ?></label>
                 </div>
             </div>
         </div>

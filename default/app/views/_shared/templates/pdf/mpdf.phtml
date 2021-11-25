@@ -1,57 +1,58 @@
-<?php
+<?php 
 
-use Mpdf\Mpdf;
+require "conecction.phtml";
 
-/* Defaults */
+$sql = "SELECT alumnos.id, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, alumnos.fecha_nacimiento, nacionalidades.nombre_nacionalidad, departamentos.nombre_departamento, municipios.nombre_municipio, alumnos.anio_bachillerato, alumnos.nie, alumnos.numero_partida, alumnos.folio_partida, alumnos.libro_partida, alumnos.otro_documento_de_identificacion, alumnos.salvadoreno_por, especialidades.nombre_especialidad, alumnos.estudio_parvularia, alumnos.repite_grado, centroescolares.nombre_centroescolar, alumnos.anio_anterior, alumnos.tipo_de_sangre, alumnos.sexo, alumnos.estado_familiar, alumnos.discapacidad, alumnos.email, alumnos.telefono_fijo, alumnos.celular, zonas.nombre_zona, cantones.nombre_canton, caserios.nombre_caserio, alumnos.tipo_de_calle, alumnos.direccion_completa, alumnos.medio_de_transporte, alumnos.distancia_desde_casa_y_centroeducativo, alumnos.factor_de_riesgo, alumnos.numero_integrantes_familia, alumnos.integrados, alumnos.depende_economicamente_de, alumnos.tiene_hijos, alumnos.trabaja, alumnos.convivencia_con, alumnos.nombre_madre, alumnos.ocupacion_madre, alumnos.lugar_de_trabajo_madre, alumnos.telefono_madre, alumnos.nombre_padre, alumnos.ocupacion_padre, alumnos.lugar_de_trabajo_padre, alumnos.telefono_padre FROM alumnos, nacionalidades, departamentos, municipios, especialidades, centroescolares, zonas, cantones, caserios WHERE alumnos.id_nacionalidad=nacionalidades.id and alumnos.id_departamento_de_nacimiento=departamentos.id and alumnos.id_municipio_de_nacimiento=municipios.id and alumnos.id_especialidad_ingreso=especialidades.id and alumnos.id_centro_escolar_providencia=centroescolares.id and alumnos.id_zona=zonas.id and alumnos.id_departamento_residencia=departamentos.id and alumnos.id_municipio_residencia=municipios.id and alumnos.id_canton=cantones.id and alumnos.id_caserio=caserios.id";
 
-// fileName
-$fileName = $filename ?? "Ficha de $controller_name";
+use FPDF;
 
-// Title
-$title = $title ?? "Ficha de $controller_name";
+$resultado = $conexion->query($sql);
 
-// CSS
-$css = $css ?? 'css/pdf.css';
+$pdf = new FPDF("P", "mm", "letter");
+    $pdf->AddPage();
+    $pdf->Image("img/insoimg.png", 12, 5, 25);
+    $pdf->SetFont("Arial", "B", 12);
+    $pdf->Cell(25);
+    $pdf->Cell(140, 5, "MINISTERIO DE EDUCACION", 0, 1, "C");
+    $pdf->Cell(185, 5, "INSTITUTO NACIONAL DE SONZACATE", 0, 1, "C");
+    $pdf->SetFont("Arial", "", 12);
+    $pdf->Cell(185, 5, "Ficha de Matricula ".date('Y'), 0, 1, "C");
+    
+    $pdf->Ln(4);
+    $pdf->SetFont("Arial", "B", 13);
+    $pdf->Cell(65, 5, "Identificacion del estudiante:", 0, 1, "C");
+    $pdf->SetFont("Arial", "", 10);
 
-// Destination I show in browser  D download
-$destination = isset($download) && $download ? 'D' : 'I';
+    $pdf->Ln(8);
 
-//Activa el almacenamiento en búfer de la salida
-ob_start();
+    
 
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?></title>
-    <link rel="stylesheet" href="css/pdf.css">
-</head>
-<body>
-    <h2>MINISTERIO DE EDUCACION</h2>
-    <h2>INSTITUTO NACIONAL DE SONZACATE</h2>
-</body>
-</html>
-<?php
-$html = ob_get_clean();
-ob_clean();
 
-// Crea una instancia de la clase y le pasa el directorio temporal
-$mpdf = new Mpdf([
-    'tempDir' => APP_PATH . 'temp/mpdf',
-    'format' => 'letter',
-    'title2annots' => true,  // convert headers <hx> in annotations
-    'mirrorMargins' => 0,    // mirror the left and right margin values on odd and even pages 
-    'exposeVersion' => false // security 
-    // more variables in https://mpdf.github.io/reference/mpdf-variables/overview.html
-]);
+    $pdf->SetFont("Arial", "", 9);
 
-// $plantilla = getplantilla();
+    while ($fila = $resultado->fetch_assoc()){
+        // FILA 1
+        $pdf->SetFont("Arial", "B", 9);
 
-// Escribe el contenido HTML (Template + View):
-$mpdf->WriteHTML($html);
+        $pdf->Cell(45, 5, "Primer nombre", 0, 0, "C");
+        $pdf->Cell(45, 5, "Segundo nombre", 0, 0, "C");
+        $pdf->Cell(45, 5, "Primer apellido", 0, 0, "C");
+        $pdf->Cell(45, 5, "Segundo apellido", 0, 1, "C");
+        $pdf->SetFont("Arial", "", 9);
+        $pdf->Cell(45, 5, $fila['primer_nombre'], 0, 0, "C");
+        $pdf->Cell(45, 5, $fila['segundo_nombre'], 0, 0, "C");
+        $pdf->Cell(45, 5, $fila['primer_apellido'], 0, 0, "C");
+        $pdf->Cell(45, 5, $fila['segundo_apellido'], 0, 1, "C");
+        
+    }
+    
+    // $pdf->Ln(5);
+    // $pdf->SetFont("Arial", "B", 9);
+    // $pdf->Cell(45, 5, "FECHA NACIMIENTO", 0, 1, "C");
 
-// Genera el PDF, ya sea para su descarga o visualización en el navegador
-$mpdf->Output("$fileName.pdf", $destination);
+    // while ($fecha = $resultado->fetch_assoc()){
+        
+    //     $pdf->Cell(45, 5, $fecha['fecha_nacimiento'], 0, 0, "C");
+    // }
+
+    $pdf->Output(); 

@@ -377,11 +377,13 @@
                         echo Form::select('alumnos.tiene_hijos',$hijos);
                     ?>
                 </div>
+
                 <div class="input-field col s3">
-                    <i class="material-icons prefix">group</i>
-                    <label for="Cuantos_hijos_tiene">Cuantos hijos tiene:
-                    <?= Form::text('alumnos.numero_de_hijos');?></label>
+                    <i class="material-icons prefix">wc</i>
+                    <label for="Numero_integrantes_familia">Cuantos hijos tiene:
+                    <?= Form::text('alumnos.numero_de_hijos'); ?></label>
                 </div>
+
                 <div class="input-field col s3">
                     <i class="material-icons prefix">build</i>
                     <label for="trabaja">Trabaja:</label><br>

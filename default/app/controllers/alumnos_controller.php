@@ -2,7 +2,6 @@
 
 require_once APP_PATH . '../../vendor/autoload.php';
 
-use Mpdf\Mpdf;
 
 Load::models('alumnos');
 
@@ -14,18 +13,9 @@ class AlumnosController extends AppController{
         $this->listaAlumnos = $alumno->getAlumnos($page);
     }
 
-    
-
     public function pdf($id)
     {
-        //Usa el tempalte 'pdf'
-        View::template('pdf/mpdf');
-        //Modifica el nombre del archivo a descargar
-        $this->fileName = 'user-list';
-        //Modifica el título del documento PDF en la cabecera
-        $this->title = 'Ficha de matricula';
-        $this->listaAlumnos = new Alumnos();
-        $this->download = false;
+        
     }
 
     //REGISTRO DE ALUMNOS
@@ -50,6 +40,7 @@ class AlumnosController extends AppController{
     // BOTON DE EDITAR UN REGISTROS
     public function edit($id){
         View::template('principal');
+        $this->titulo="Actualizando datos del alumno";
         $alumno = new Alumnos();
         if(Input::hasPost('alumnos')){
             if (!$alumno->update(Input::post('alumnos'))) {

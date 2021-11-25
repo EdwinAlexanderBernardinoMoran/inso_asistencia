@@ -14,7 +14,8 @@
     "require": {
         "php": ">=5.4",
         "fpdf/fpdf": "^1.83",
-        "mpdf/mpdf": "^8.0"
+        "mpdf/mpdf": "^8.0",
+        "setasign/fpdf": "^1.8"
     },
     "require-dev": {
         "php": ">=5.4",
