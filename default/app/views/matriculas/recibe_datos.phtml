@@ -1,0 +1,24 @@
+<?php 
+
+include 'conexion2.php';
+
+$id_alumnos = $_POST['id_alumnos'];
+$especialidades = $_POST['especialidades'];
+$seccion = $_POST['seccion'];
+$anio = $_POST['anio'];
+$estado = $_POST['estado'];
+$egresado = $_POST['egresado'];
+$habilitado = $_POST['habilitado'];
+
+$query = "INSERT INTO matriculas(id_alumnos, id_especialidad, id_seccion, anio, estado, egresado, habilitado) VALUES ('$id_alumnos','$especialidades','$seccion','$anio','$estado','$egresado','$habilitado')";
+
+$ejecutar = mysqli_query($conect, $query);
+
+if ($ejecutar) {
+    # code...
+    echo "usuario registrado";
+}else {
+    echo "fallo enel registro";
+}
+
+?>

@@ -32,9 +32,9 @@
 
         if (!empty($_POST['Buscar'])) {
             $Buscar = $_POST['Buscar'];
-            $sql = "SELECT * FROM matriculas WHERE id_alumnos LIKE '%$Buscar%' OR id_especialidad LIKE '%$Buscar%' OR id_seccion LIKE '%$Buscar%'";
+            $sql = "SELECT id, nie, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_especialidad_ingreso, anio_bachillerato FROM alumnos WHERE nie LIKE '%$Buscar%'";
         } else {
-            $sql = "SELECT * FROM matriculas";
+            $sql = "SELECT id, nie, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_especialidad_ingreso, anio_bachillerato FROM alumnos";
         }
 
 
@@ -49,12 +49,14 @@
             <tr>
                 <thead class="blue lighten-4 ">
                     <th>Id</th>
+                    <th>NIE</th>
                     <th>Alumno</th>
                     <th>Especialidad</th>
                     <th>Seccion</th>
                     <th>Año</th>
                     <th>Egresado</th>
                     <th>Estado</th>
+                    <th>Habilitado</th>
                     <th>Acciones</th>
                 </thead>
                 <?php
@@ -66,10 +68,29 @@
 
                 <tr>
                     <td><?php echo $data['id'] ?></td>
-                    <td><?php echo $data['id_alumnos'] ?></td>
-                    <td><?php echo $data['id_especialidad'] ?></td>
-                    <td><?php echo $data['id_seccion'] ?></td>
-                    <td><?php echo $data['anio'] ?></td>
+                    <td><?php echo $data['nie'] ?></td>
+                    <td><?php echo $data['primer_nombre'] . ' ' . $data['segundo_nombre'] . ' ' . $data['primer_apellido'] . ' ' . $data['segundo_apellido'] ?></td>
+                    <td><?php
+                            if ($data['id_especialidad_ingreso'] == 1) {
+                                echo "Técnico vocacional en desarrollo de software";
+                            }
+                            if ($data['id_especialidad_ingreso'] == 2) {
+                                echo "Administrativo contable";
+                            }
+                            if ($data['id_especialidad_ingreso'] == 3) {
+                                echo "Atención primaria en salud";
+                            }
+                            if ($data['id_especialidad_ingreso'] == 4) {
+                                echo "Mecánica automotriz";
+                            }
+                            if ($data['id_especialidad_ingreso'] == 5) {
+                                echo "General";
+                            }
+                        ?></td>
+                    
+                    <td><?php echo $data['anio_bachillerato'] ?></td>
+                    <td><?php echo $data['anio_bachillerato'] ?></td>
+                    <td><?php echo $data['anio_bachillerato'] ?></td>
                     <td><?php
                             if ($data['egresado'] == 1) {
                                 echo "Si";
