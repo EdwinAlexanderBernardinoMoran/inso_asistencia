@@ -43,13 +43,8 @@ if ($ejecutar) {
     <?php echo Tag::js('jquery'); ?>
     <h3 class="center"><b>Matriculas</b></h3>
 
-<<<<<<< HEAD
     <!-- <div class="row section">
-        <div class="col s12">
-=======
-    <div class="row section">
         <div class="col s6">
->>>>>>> 88045268e06a97f82a8ab0a6e3380f9f5098ba11
             <label for="nombre">Nombre del estudiante a buscar.
                 <?php echo Form::text('nombre'); ?>
             </label>
@@ -58,7 +53,7 @@ if ($ejecutar) {
             <div class="" id="resultado">
             </div>
         </div>
-    </div> -->
+    </div>  -->
 
     <form action="" method="post">
             <div class="row">
@@ -122,7 +117,8 @@ if ($ejecutar) {
                 <div class="col s6">
                     <label for="">Nombre del estudiante
 
-                        <input   name="id_alumnos"  type="text" value="<?php echo $data['primer_nombre'] . ' ' . $data['segundo_nombre'] . ' ' . $data['primer_apellido'] . ' ' . $data['segundo_apellido'] ?>">
+                        <input   name="id_alumnos"  type="text" value="<?php
+                         echo $data['id']. ' ' .$data['primer_nombre'] . ' ' . $data['segundo_nombre'] . ' ' . $data['primer_apellido'] . ' ' . $data['segundo_apellido'] ?>">
                     
                     </label>
                     
@@ -134,8 +130,8 @@ if ($ejecutar) {
                                     if ($data['id_especialidad_ingreso'] == 1) {
                                         echo "Técnico vocacional en desarrollo de software";
                                     }
-                                    if ($data['id_especialidad_ingreso'] == 2) {
-                                        echo "Administrativo contable";
+                                    if ($data['id_especialidad_ingreso']== 2 ) {
+                                        echo $data['id_especialidad_ingreso']. ' ' . "Administrativo contable";
                                     }
                                     if ($data['id_especialidad_ingreso'] == 3) {
                                         echo "Atención primaria en salud";
@@ -146,7 +142,7 @@ if ($ejecutar) {
                                     if ($data['id_especialidad_ingreso'] == 5) {
                                         echo "General";
                                     }
-                                ?>">
+                                ?>" value="<?php $data ?>">
                     </label>
                 </div>
                 <div class="col s6">
@@ -219,22 +215,8 @@ if ($ejecutar) {
 
     </div>
 
-<<<<<<< HEAD
     
 
     
    
 
-=======
-    <?php echo Form::close(); ?>
-    <?php $arreglo = (array)$Alumnado ;?>
-</div>
-<script>
-    const buscado = querySelector('#nombre');
-    buscado.keyUp(fucntion(){
-        console.log('presionando');
-    })
-    var listado = <?php echo json_encode($Alumnado);?>;
-    console.log(listado.items[0].primer_nombre);
-</script>
->>>>>>> 88045268e06a97f82a8ab0a6e3380f9f5098ba11
