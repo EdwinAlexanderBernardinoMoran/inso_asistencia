@@ -2,7 +2,7 @@
 <?php
 
 Load::models('matriculas');
-
+Load::models('alumnos');
 class MatriculasController extends AppController
 {
     public function index($page=1)
@@ -21,6 +21,8 @@ class MatriculasController extends AppController
     public function create()
     {
         View::template('principal');
+        $alumnos = new Alumnos();
+        $this->Alumnado = $alumnos->getAlumnos($page=1);
         $this->titulo = "Matriculas";
         if (Input::hasPost('matriculas')) {
             $matricula = new Matriculas(Input::post('matriculas'));
@@ -63,6 +65,11 @@ class MatriculasController extends AppController
         }
 
         return Redirect::to();
+    }
+
+    public function buscaralumno(){
+        View::select(NULL);
+        $this->encontrados = "jodiendo";
     }
 }
 

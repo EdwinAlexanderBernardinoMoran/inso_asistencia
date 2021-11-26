@@ -41,17 +41,22 @@ if ($ejecutar) {
 
     <?php echo View::content(); ?>
     <?php echo Tag::js('jquery'); ?>
-    <?php echo Tag::js('busquedaAlumnos') ;?>
     <h3 class="center"><b>Matriculas</b></h3>
 
+<<<<<<< HEAD
     <!-- <div class="row section">
         <div class="col s12">
+=======
+    <div class="row section">
+        <div class="col s6">
+>>>>>>> 88045268e06a97f82a8ab0a6e3380f9f5098ba11
             <label for="nombre">Nombre del estudiante a buscar.
                 <?php echo Form::text('nombre'); ?>
             </label>
         </div>
         <div class="col s12">
-            <div class="" id="resultado"></div>
+            <div class="" id="resultado">
+            </div>
         </div>
     </div> -->
 
@@ -214,8 +219,22 @@ if ($ejecutar) {
 
     </div>
 
+<<<<<<< HEAD
     
 
     
    
 
+=======
+    <?php echo Form::close(); ?>
+    <?php $arreglo = (array)$Alumnado ;?>
+</div>
+<script>
+    const buscado = querySelector('#nombre');
+    buscado.keyUp(fucntion(){
+        console.log('presionando');
+    })
+    var listado = <?php echo json_encode($Alumnado);?>;
+    console.log(listado.items[0].primer_nombre);
+</script>
+>>>>>>> 88045268e06a97f82a8ab0a6e3380f9f5098ba11
