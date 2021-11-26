@@ -6,7 +6,7 @@
 <?php echo Html::linkAction("create", 'Agregar Alumno +', "class='btn'") ?>
 
 <table class="responsive-table centered table striped">
-    <thead class="blue lighten-3">
+    <thead class="light-blue lighten-1">
         <th>ID</th>
         <th>PRIMER NOMBRE</th>
         <th>SEGUNDO NOMBRE</th>
@@ -25,7 +25,7 @@
             <td><?php echo $item->nie ?></td>
             <td>
                 <?php echo Html::linkAction("edit/$item->id/", 'Editar', 'class="btn "') ?>
-                <?php echo Html::linkAction("pdf/$item->id/", 'Ficha', 'class="btn red"') ?>
+                <?php echo Html::linkAction("pdf/$item->id/", 'Ficha', 'class="btn light-green accent-4"') ?>
                 <?php echo Html::linkAction("del/$item->id/", 'Borrar', 'class="btn red"') ?>
             </td>
         </tr>
