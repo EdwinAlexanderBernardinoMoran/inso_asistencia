@@ -32,11 +32,7 @@
 
         if (!empty($_POST['Buscar'])) {
             $Buscar = $_POST['Buscar'];
-<<<<<<< HEAD
-            $sql = "SELECT id, nie, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_especialidad_ingreso, anio_bachillerato FROM alumnos WHERE nie LIKE '%$Buscar%'";
-=======
             $sql = "SELECT * FROM matriculas WHERE matriculas.id_alumnos=alumnos.id LIKE '%$Buscar%' OR id_especialidad LIKE '%$Buscar%' OR id_seccion LIKE '%$Buscar%'";
->>>>>>> 88045268e06a97f82a8ab0a6e3380f9f5098ba11
         } else {
             $sql = "SELECT id, nie, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_especialidad_ingreso, anio_bachillerato FROM alumnos";
         }
