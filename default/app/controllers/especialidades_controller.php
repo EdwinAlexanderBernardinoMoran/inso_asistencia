@@ -20,7 +20,8 @@ class EspecialidadesController extends AppController{
                 Flash::error('Fallo la operacion');
             }else{
                 Flash::valid('Operacion exitosa');
-                Input::delete();
+                return Redirect::to();
+                // Input::delete();
             }
         }
     }
@@ -39,6 +40,16 @@ class EspecialidadesController extends AppController{
         }else{
             $this->especialidades = $especialidad->find((int) $id);
         }
+    }
+
+    public function del($id){
+        $especialidad = new Especialidades();
+        if(!$especialidad->delete((int)$id)){
+            Flash::error("No se apodido eliminar la especialidad");
+        }else{
+            Flash::valid("Especialidad eliminada con exito");
+        }
+        return Redirect::to();
     }
 }
 

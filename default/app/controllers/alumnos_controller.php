@@ -64,7 +64,6 @@ class AlumnosController extends AppController{
 
     public function pdf($id)
     {   
-        $alumno = new Alumnos();
         require 'connection.php';
 
         ob_end_clean();
@@ -585,8 +584,8 @@ class AlumnosController extends AppController{
 
             }
 
-        $pdf->Output();
-        // ob_end_flush();
+        $pdf->Output('','ficha de matricula.pdf',true);
+        ob_end_flush();
     }
 
     public function barra(){

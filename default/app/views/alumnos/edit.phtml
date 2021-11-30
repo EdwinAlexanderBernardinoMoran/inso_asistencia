@@ -77,10 +77,10 @@
         <div class="section">
             <!-- CAMPO DEPARTAMENTO DE NACIMIENTO -->
             <div class="row">
-                <div class="input-field col s6">
+            <div class="input-field col s6">
                     <i class="material-icons prefix">assignment_ind</i>
-                    <label for="Departamento_nacimiento">Departamento de nacimiento:</label><br>
-                        <?php echo Form::dbSelect('alumnos.id_departamento_de_nacimiento', 'nombre_departamento',  array('departamentos', 'find')); ?>
+                    <label for="alumnos_departamento_nacimiento_id">Departamento de nacimiento:</label><br>
+                        <?php echo Form::dbSelect('alumnos.id_departamento_de_nacimiento', 'nombre_departamento', array('departamentos', 'find'), 'Seleccione'); ?>
                 </div>
                 <!-- CAMPOS DE MUNICIPIO_DE_NACIMIENTO -->
                 <div class="input-field col s6">
