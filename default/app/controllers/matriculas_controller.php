@@ -2,7 +2,6 @@
 <?php
 
 Load::models('matriculas');
-Load::models('alumnos');
 class MatriculasController extends AppController
 {
     public function index($page=1)
@@ -10,9 +9,7 @@ class MatriculasController extends AppController
         View::template('principal');
         $this->titulo = "Matriculas";
         $matricula = new Matriculas();
-        $this->ListaMatriculas = $matricula->getMatriculas($page);
-
-        Flash::info(Input::get('criterio'));
+        $this->listaMatriculas = $matricula->find();
 
     }
 
@@ -20,9 +17,16 @@ class MatriculasController extends AppController
 
     public function create()
     {
+        // Flash::info(Input::get('buscar'));
+
+        if (Input::hasPost('buscar')) {
+            $buscar = Input::post('buscar');
+            $this->matricula = (new Matriculas())->buscar($buscar);
+        } else {
+            $this->matricula = (new Matriculas());
+        }
+
         View::template('principal');
-        $alumnos = new Alumnos();
-        $this->Alumnado = $alumnos->getAlumnos($page=1);
         $this->titulo = "Matriculas";
         if (Input::hasPost('matriculas')) {
             $matricula = new Matriculas(Input::post('matriculas'));
@@ -41,6 +45,7 @@ class MatriculasController extends AppController
         View::template('principal');
         $this->titulo = "Editando matricula";
         $matricula = new Matriculas();
+        $this->listaMatriculas = $matricula->find("conditions: id=$id");
         if (Input::hasPost('matriculas')){
             if (!$matricula->update(Input::post('matriculas'))){
                 Flash::error("No se pudo editar la matricula");
@@ -66,13 +71,5 @@ class MatriculasController extends AppController
 
         return Redirect::to();
     }
-
-    public function buscaralumno(){
-        View::select(NULL);
-        $this->encontrados = "jodiendo";
-    }
 }
-
-
-
 ?>

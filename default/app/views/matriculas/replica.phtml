@@ -1,0 +1,158 @@
+<?php echo View::content()?>
+
+<div class="container">
+    <h4 class="center">LISTADO DE MATRICULAS</h4>
+</div>
+
+<div class="container">
+    <form action="" method="POST">
+        <div class="row">
+            <div class="col s10">
+                <input type="text" name="Buscar" class="form-control" placeholder="Buscar" autocomplete="off">
+            </div>
+
+            <div class="col s2">
+                <button type="submit" class="btn green">Buscar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<?php echo Html::linkAction("create", 'Nueva Matricula +', "class='btn'") ?>
+
+<table class="responsive-table centered table striped">
+    <thead class="light-blue lighten-1">
+        <th>Id</th>
+        <th>NIE</th>
+        <th>ALUMNO</th>
+        <th>ESPECIALIDAD</th>
+        <th>AÑO</th>
+        <th>SECCIÓN</th>
+        <th>EGRESADO</th>
+        <th>ESTADO</th>
+        <th>HABILITADO</th>
+        <th>ACCIONES</th>
+    </thead>
+
+    <?php
+
+        require 'conexion.php';
+        $conexion = conexion();
+
+        if (isset($_POST['Buscar'])) {
+            $Buscar = $_POST['Buscar'];
+            $student = "SELECT * FROM matriculas LIKE '%$Buscar%' OR id_especialidad LIKE '%$Buscar%' OR id_seccion LIKE '%$Buscar%'";
+        } else {
+            $student = "SELECT id, nie, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_especialidad_ingreso, anio_bachillerato FROM alumnos";
+        }
+
+        $query = mysqli_query($conexion, $student);
+        if ($query) {
+                    while ($data = mysqli_fetch_assoc($query)){
+            ?>
+
+            <tr>
+                <td><?php echo $data['id'] ?></td>
+                <td><?php echo $data['nie'] ?></td>
+                <td><?php echo $data['primer_nombre'] . ' ' . $data['segundo_nombre'] . ' ' . $data['primer_apellido'] . ' ' . $data['segundo_apellido'] ?></td>
+                <td>
+                    <?php
+                        if ($data['id_especialidad_ingreso'] == 1) {
+                            echo "Técnico vocacional en desarrollo de software";
+                        }
+                        if ($data['id_especialidad_ingreso'] == 2) {
+                            echo "Administrativo contable";
+                        }
+                        if ($data['id_especialidad_ingreso'] == 3) {
+                            echo "Atención primaria en salud";
+                        }
+                        if ($data['id_especialidad_ingreso'] == 4) {
+                            echo "Mecánica automotriz";
+                        }
+                        if ($data['id_especialidad_ingreso'] == 5) {
+                            echo "General";
+                        }?>
+                </td>
+                <td>
+                    <?php
+                        if ($data['anio_bachillerato'] == "1"){
+                            echo "1°";
+                        }
+                        if ($data['anio_bachillerato'] == "2"){
+                            echo "2°";
+                        }
+                        if ($data['anio_bachillerato'] == "3"){
+                            echo "3°";
+                        }
+                        ?></td>
+                <?php
+
+                $matricul = "SELECT id_seccion, anio, egresado, estado, habilitado FROM matriculas";
+                $consulta = mysqli_query($conexion, $matricul);
+                
+                if ($consulta) {
+                    while ($dato = mysqli_fetch_assoc($consulta)){ ?>
+                <td>
+                    <?php 
+                        if ($dato['id_seccion'] == 1) {
+                            echo "'A'";
+                        }
+                        if ($dato['id_seccion'] == 2) {
+                            echo "'B'";
+                        }
+                        if ($dato['id_seccion'] == 3) {
+                            echo "'C'";
+                        }
+                    ?>
+                </td>
+                <td>
+                    <?php 
+                        if ($dato['egresado'] == 1) {
+                            echo "Egresado";
+                        }
+                        if ($dato['egresado'] == 2) {
+                            echo "No egresado";
+                        }
+                    ?>
+                </td>
+                <td>
+                    <?php 
+                        if ($dato['estado'] == 1) {
+                            echo "Egresado";
+                        }
+                        if ($dato['estado'] == 2) {
+                            echo "No egresado";
+                        }
+                    ?>
+                </td>
+                <td>
+                    <?php 
+                        if ($dato['habilitado'] == 1) {
+                            echo "habilitado";
+                        }
+                        if ($dato['habilitado'] == 2) {
+                            echo "Hinabilitado";
+                        }
+                    ?>
+                </td>
+                    <?php
+                    }
+                        }
+                    ?>
+                <td>
+                    <?php echo Html::linkAction("edit/$data[id]/", "Editar", 'class="btn"') ?>
+                    <?php echo Html::linkAction("del/$data[id]/", "Borrar", 'class="btn red"') ?>
+                </td>
+            </tr>
+
+
+            <?php
+                }
+                    } else {
+            ?>
+            <td colspan="4"> Busqueda Sin Resultados</td>
+
+    <?php
+     }
+        ?>
+</table>

@@ -1,40 +1,34 @@
 <?php echo View::content() ?>
-<h3 class="center"><b>Registro de profesores</b></h3>
+<h3 class="center">Registro de profesores</h3>
 
 <?php echo Html::linkAction('create', 'Nuevo Profesor +', "class='btn green right'")  ?>
 
 <table class="centered table striped">
     <tr>
         <thead class="blue lighten-4 ">
-            <th>Id</th>
-            <th>Primer nombre</th>
-            <th>Segundo nombre</th>
-            <th>Primer apellido</th>
-            <th>Segundo apellido</th>
+            <th>ID</th>
+            <th>PROFESOR/A</th>
             <th>DUI</th>
             <th>NIP</th>
             <th>NIT</th>
-            <th>Activo</th>
-            <th>Acciones</th>
+            <th>HABILITADO</th>
+            <th>ACCIONES</th>
         </thead>
 
         <?php foreach ($ListaProfesores->items as $item) :  ?>
             <tr>
-                <td><?php echo $item->id ?></td>
-                <td><?php echo $item->primer_nombre_profesor ?></td>
-                <td><?php echo $item->segundo_nombre_profesor ?></td>
-                <td><?php echo $item->primer_apellido_profesor?></td>
-                <td><?php echo $item->segundo_apellido_profesor?></td>
-                <td><?php echo $item->dui ?></td>
-                <td><?php echo $item->nip ?></td>
-                <td><?php echo $item->nit ?></td>
+                <td><?= $item->id ?></td>
+                <td><?= $item->primer_nombre_profesor?> <?=$item->segundo_nombre_profesor ?> <?= $item->primer_apellido_profesor?> <?= $item->segundo_apellido_profesor?></td>
+                <td><?= $item->dui ?></td>
+                <td><?= $item->nip ?></td>
+                <td><?= $item->nit ?></td>
                 <td>
                     <?php
-                    if ($item->habilitado == 1) {
-                        echo "Habilitado";
-                    }
                     if ($item->habilitado == 0) {
                         echo "Inhabilitado";
+                    }
+                    if ($item->habilitado == 1) {
+                        echo "Habilitado";
                     }
                     ?>
                 </td>

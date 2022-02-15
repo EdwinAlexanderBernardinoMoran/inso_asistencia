@@ -11,7 +11,7 @@ class AlumnosController extends AppController{
         View::template('principal');
         $this->titulo = "Alumnos";
         $alumno = new Alumnos();
-        $this->listaAlumnos = $alumno->getAlumnos($page);
+        $this->listaAlumnos = (new Alumnos)->find();
     }
 
     
@@ -207,13 +207,32 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Sexo", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(50, 6, $item['sexo'], 1, 1, "C");
+            if ($item['sexo'] == 'M'){
+                echo $pdf->Cell(50, 6, "Masculino", 1, 1, "C");
+            }
+            if ($item['sexo'] == 'F'){
+                echo $pdf->Cell(50, 6, "Femenino", 1, 1, "C");
+            }
 
             // FILA 2
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(45, 6, "Estado familiar", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(45, 6, $item['estado_familiar'], 1, 0, "C");
+            if ($item['estado_familiar'] == 'C'){
+                echo $pdf->Cell(45, 6, "Casado/a", 1, 0, "C");
+            }
+            if ($item['estado_familiar'] == 'V'){
+                echo $pdf->Cell(45, 6, "Viudo/a", 1, 0, "C");
+            }
+            if ($item['estado_familiar'] == 'D'){
+                echo $pdf->Cell(45, 6, "Divorciado/a", 1, 0, "C");
+            }
+            if ($item['estado_familiar'] == 'S'){
+                echo $pdf->Cell(45, 6, "Soltero/a", 1, 0, "C");
+            }
+            if ($item['estado_familiar'] == 'A'){
+                echo $pdf->Cell(45, 6, "Acompañado/a", 1, 0, "C");
+            }
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Discapacidad", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
@@ -423,7 +442,21 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Estado familiar", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(45, 6, $item['estado_familiar_responsable'], 1, 1, "C");
+            if ($item['estado_familiar_responsable'] == 'C'){
+                echo $pdf->Cell(45, 6, "Casado/a", 1, 1, "C");
+            }
+            if ($item['estado_familiar_responsable'] == 'V'){
+                echo $pdf->Cell(45, 6, "Viudo/a", 1, 1, "C");
+            }
+            if ($item['estado_familiar_responsable'] == 'D'){
+                echo $pdf->Cell(45, 6, "Divorciado/a", 1, 1, "C");
+            }
+            if ($item['estado_familiar_responsable'] == 'S'){
+                echo $pdf->Cell(45, 6, "Soltero/a", 1, 1, "C");
+            }
+            if ($item['estado_familiar_responsable'] == 'A'){
+                echo $pdf->Cell(45, 6, "Acompanado/a", 1, 1, "C");
+            }
 
             // DATOS DEL RESPONSABLE
             $pdf->Ln(5);
@@ -540,41 +573,82 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(53, 6, "Partida de nacimiento", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(11, 6, $item['partida_nacimiento'], 1, 0, "C");
+            if ($item['partida_nacimiento'] == 0){
+                echo $pdf->Cell(11, 6, "NO", 1, 0, "C");
+            }
+            if ($item['partida_nacimiento'] == 1){
+                echo $pdf->Cell(11, 6, "SI", 1, 0, "C");
+            }
             // Certificado de notas
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(53, 6, "Certificado de notas", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(11, 6, $item['certificacion_de_notas'], 1, 0, "C");
+            if ($item['certificacion_de_notas'] == 0){
+                echo $pdf->Cell(11, 6, "NO", 1, 0, "C");
+            }
+            if ($item['certificacion_de_notas'] == 1){
+                echo $pdf->Cell(11, 6, "SI", 1, 0, "C");
+            }
+            // $pdf->Cell(11, 6, $item['certificacion_de_notas'], 1, 0, "C");
             // Certififcado
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(51, 6, "Certificado", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(11, 6, $item['certificado'], 1, 1, "C");
+            if ($item['certificado'] == 0){
+                echo $pdf->Cell(11, 6, "NO", 1, 1, "C");
+            }
+            if ($item['certificado'] == 1){
+                echo $pdf->Cell(11, 6, "SI", 1, 1, "C");
+            }
+            // $pdf->Cell(11, 6, $item['certificado'], 1, 1, "C");
 
             // FILA 2
             // Fotos
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(27, 6, "Fotos", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(11, 6, $item['fotos'], 1, 0, "C");
+            if ($item['fotos'] == 0){
+                echo $pdf->Cell(11, 6, "NO", 1, 0, "C");
+            }
+            if ($item['fotos'] == 1){
+                echo $pdf->Cell(11, 6, "SI", 1, 0, "C");
+            }
+            // $pdf->Cell(11, 6, $item['fotos'], 1, 0, "C");
             // Fotocopia de dui
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Fotocopia de dui", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(11, 6, $item['fotocopia_dui'], 1, 0, "C");
+            if ($item['fotocopia_dui'] == 0){
+                echo $pdf->Cell(11, 6, "NO", 1, 0, "C");
+            }
+            if ($item['fotocopia_dui'] == 1){
+                echo $pdf->Cell(11, 6, "SI", 1, 0, "C");
+            }
+            // $pdf->Cell(11, 6, $item['fotocopia_dui'], 1, 0, "C");
             // Constancia de conducta
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Fotocopia de dui", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(11, 6, $item['constancia_de_conducta'], 1, 0, "C");
+            if ($item['constancia_de_conducta'] == 0){
+                echo $pdf->Cell(11, 6, "NO", 1, 0, "C");
+            }
+            if ($item['constancia_de_conducta'] == 1){
+                echo $pdf->Cell(11, 6, "SI", 1, 0, "C");
+            }
+            // $pdf->Cell(11, 6, $item['constancia_de_conducta'], 1, 0, "C");
 
             // FILA 3
             // Carnet de residente
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Carnet Residente", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(10, 6, $item['carnet_residente'], 1, 1, "C");
+            if ($item['carnet_residente'] == 0){
+                echo $pdf->Cell(11, 6, "NO", 1, 1, "C");
+            }
+            if ($item['carnet_residente'] == 1){
+                echo $pdf->Cell(11, 6, "SI", 1, 1, "C");
+            }
+            // $pdf->Cell(10, 6, $item['carnet_residente'], 1, 1, "C");
 
             // Profesor que realiz la matricula
             $pdf->SetFont("Arial", "B", 11);

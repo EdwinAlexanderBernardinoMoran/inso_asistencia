@@ -15,10 +15,7 @@
       </ul>
     </div>
 </div>
-<!-- <div id="test1" class="col s6">Test 1</div>
-    <div id="test2" class="col s12">Test 2</div>
-    <div id="test3" class="col s12">Test 3</div>
-    <div id="test4" class="col s12">Test 4</div> -->
+
     <?php echo Form::open(); ?>
 
     <!-- IDENTIFICACION DEL ESTUDIANTE -->
@@ -69,7 +66,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">people</i>
                     <label for="alumnos_nacionalidad_id">Nacionalidad:</label><br>
-                        <?php echo Form::dbSelect('alumnos.id_nacionalidad', 'nombre_nacionalidad',  array('nacionalidades', 'all'), 'Selecciones'); ?>
+                        <?php echo Form::dbSelect('alumnos.id_nacionalidad', 'nombre_nacionalidad',  array('nacionalidades', 'find'), 'Selecciones'); ?>
                     
                 </div>
             </div>  
@@ -380,7 +377,7 @@
 
                 <div class="input-field col s3">
                     <i class="material-icons prefix">wc</i>
-                    <label for="Numero_integrantes_familia">Cuantos hijos tiene:
+                    <label for="Numero_de_hijos">Cuantos hijos tiene:
                     <?= Form::text('alumnos.numero_de_hijos'); ?></label>
                 </div>
 

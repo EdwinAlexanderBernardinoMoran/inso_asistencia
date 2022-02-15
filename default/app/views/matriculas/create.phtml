@@ -1,222 +1,126 @@
-<?php 
-$server ="localhost";
-$database ="asistencias";
-$user = "root";
-$pass = "";
 
-$conect = new mysqli($server, $user, $pass, $database);
+<div class="row">
+    <?php View::content() ?>
+        <h3 class="center-align">Matriculas</h3>
+</div>
 
-/*if ($conect->connect_errno) {
-    echo "Conexion fallo";
-}else {
-    echo "Conexion nice";
-}*/
-
-
-/*include 'conexion2.php';
-
-$id_alumnos = $_POST['id_alumnos'];
-$especialidades = $_POST['especialidades'];
-$seccion = $_POST['seccion'];
-$anio = $_POST['anio'];
-$estado = $_POST['estado'];
-$egresado = $_POST['egresado'];
-$habilitado = $_POST['habilitado'];
-
-$query = "INSERT INTO matriculas(id_alumnos, id_especialidad, id_seccion, anio, estado, egresado, habilitado) VALUES ('$id_alumnos','$especialidades','$seccion','$anio','$estado','$egresado','$habilitado')";
-
-$ejecutar = mysqli_query($conect, $query);
-
-if ($ejecutar) {
-    # code...
-    echo "usuario registrado";
-}else {
-    echo "fallo en el registro";
-}*/
-
-?>
-
-
-<div class="row section">
-
-    <?php echo View::content(); ?>
-    <?php echo Tag::js('jquery'); ?>
-    <h3 class="center"><b>Matriculas</b></h3>
-
-    <!-- <div class="row section">
-        <div class="col s6">
-            <label for="nombre">Nombre del estudiante a buscar.
-                <?php echo Form::text('nombre'); ?>
-            </label>
+<div class="row">
+    <form method="post">
+        <div class="col s10">
+            <input type="text" name="buscar" placeholder="BUSQUEDA SOLO POR NIE">
         </div>
-        <div class="col s12">
-            <div class="" id="resultado">
+        <div class="col s2">
+            <button type="submit" class="btn green">Buscar</button>
+        </div>
+    </form>
+</div>
+
+
+<?php foreach ($matricula as $item) : ?>
+    <?php echo Form::open(); ?>
+
+    <table class="responsive-table centered table striped">
+        <thead class="light-blue lighten-1">
+            <th>NIE</th>
+            <th>NOMBRE DEL ALUMNO A MATRICULAR</th>
+            <th>ESPECIALIDAD</th>
+            <th>GRADO</th>
+        </thead>
+        <tr>
+            <td><h6><?= $item->nie?></h6></td>
+            <td><h6><?= $item->primer_nombre ?> <?= $item->segundo_nombre ?> <?= $item->primer_apellido ?> <?= $item->segundo_apellido ?></h6></td>
+            <td><h6><?= $item->nombre_especialidad?></h6></td>
+            <td><h6><?= $item->anio_bachillerato?>° año</h6></td>
+        </tr>
+    </table>
+
+    
+    <div class="section">
+        <div class="row">
+            <!-- Campo de nombre del alumno. -->
+            <div class="input-field col s4">
+            <?php echo Form::hidden('matriculas.id_alumnos',"class= 'caja'", $item->id);?>
             </div>
         </div>
-    </div>  -->
-
-    <form action="" method="post">
-            <div class="row">
-                <div class="col s10">
-                    <input type="text" name="Buscar" class="form-control" placeholder="Busqueda por NIE" autocomplete="off">
-                </div>
-
-                <div class="col s2">
-                <?= Form::hidden('alumnos.id'); ?>
-                    <button type="submit" class="btn green">Buscar</button>
-                </div>
-            </div>
-        </form>
-        
-        <?php
-        require 'conexion.php';
-        $conexion = conexion();
-
-        if (!empty($_POST['Buscar'])) {
-            $Buscar = $_POST['Buscar'];
-            $sql = "SELECT id, nie, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_especialidad_ingreso, anio_bachillerato FROM alumnos WHERE nie LIKE '%$Buscar%'";
-        } else {
-            $sql = "...";
-        }
-
-        
-
-        ?>
-
-
-            <?php 
-            if (isset($_POST["id_alumnos"])){
-            $query = 'INSERT INTO matriculas (id_alumnos, id_especialidad, id_seccion, anio, egresado, habilitado, estado)
-            VALUES(\''.$_POST["id_alumnos"].'\',\''.$_POST["especialidades"].'\',\''.$_POST["seccion"].'\',\''.$_POST["anio"].'\',\''.$_POST["estado"].'\',\''.$_POST["egresado"].'\',\''.$_POST["habilitado"].'\')';
-            //$result = mysqli_query($conect,$query) or die (mysqli_error()) ;
-            ?>
-            <div class="card p-3"> 
-            <p class="text-success">
-            <?php if ($result = mysqli_query($conect,$query)=== TRUE){
-            echo 'Los datos se han insertado correctamente!';
-            }else{
-            echo 'Algo ha salido mal!!!!';
-            }
-            ?>
-            </p>
-            </div>
-            <?php } ?>
-
-         
-        <?php echo Form::open(); ?>
-
-        <?php
-                $query = mysqli_query($conexion, $sql);
-                if ($query) {
-                    while ($data = mysqli_fetch_assoc($query)) {
-
-                ?>
-
-            <form action="create.phtml" method="POST">
-
-                <div class="col s6">
-                    <label for="">Nombre del estudiante
-
-                        <input   name="id_alumnos"  type="text" value="<?php
-                         echo $data['id']. ' ' .$data['primer_nombre'] . ' ' . $data['segundo_nombre'] . ' ' . $data['primer_apellido'] . ' ' . $data['segundo_apellido'] ?>">
-                    
-                    </label>
-                    
-                </div>
-
-                <div class="col s6">
-                    <label for="">Ingrese la especialidad
-                    <input name="especialidades" type="text" value="<?php
-                                    if ($data['id_especialidad_ingreso'] == 1) {
-                                        echo "Técnico vocacional en desarrollo de software";
-                                    }
-                                    if ($data['id_especialidad_ingreso']== 2 ) {
-                                        echo $data['id_especialidad_ingreso']. ' ' . "Administrativo contable";
-                                    }
-                                    if ($data['id_especialidad_ingreso'] == 3) {
-                                        echo "Atención primaria en salud";
-                                    }
-                                    if ($data['id_especialidad_ingreso'] == 4) {
-                                        echo "Mecánica automotriz";
-                                    }
-                                    if ($data['id_especialidad_ingreso'] == 5) {
-                                        echo "General";
-                                    }
-                                ?>" value="<?php $data ?>">
-                    </label>
-                </div>
-                <div class="col s6">
-                    <label for="">Ingrese la seccion
-                        <input name="seccion" type="text" value="<?php echo $data['anio_bachillerato'] ?>">
-                    </label>
-                </div>
-
-                <div class="col s6">
-
-                    <?php 
-                        date_default_timezone_set("America/El_Salvador");
-                        
-                        //echo date("Y")+1;
-                    ?>
-
-                    <label for="">Ingrese el Año
-                        <input type="text" name="anio" value="<?php echo date("Y")+1?>"> 
-                    </label>
-                </div>
-
-                <div class="col s6">
-                    <label for="estado">Estado
-                    </label>
-                    <select name="estado" id="">
-                        <option value="0">Inactivo</option>
-                        <option value="1">Activo</option>
-                    </select>
-                </div>
-
-                <div class="col s6">
-                    <label for="egresado">Egresado
-                    </label>
-
-                    <select name="egresado" id="">
-                        <option value="0">No</option>
-                        <option value="1">Si</option>
-                    </select>
-                </div>
-
-                <div class="col s6">
-                    <label for="habilitado">Habilitado
-                    </label>
-                    <select name="habilitado" id="">
-                        <option value="0">Inhabilitado</option>
-                        <option value="1">Habilitado</option>
-                    </select>
-                </div>
-
-
-
-                <div class="col s12">
-                    
-                    
-
-                    <?php echo Form::submit('Guardar', 'class="btn green"') ?>
-                    <?php echo Form::reset('Limpiar', 'class="btn blue"') ?>
-                    <?php echo Html::linkAction('index', 'regresar', "class='btn red darken-1'") ?>
-                </div>
-            </form>
-        <?php
-                    }
-        } else {
-?>
-<td colspan="4"></td>
-    <?php
-                }
-    ?>
-        <?php echo Form::close(); ?>
-
     </div>
 
-    
+    <div class="section">
+        <div class="row">
+            <!-- Campo de especialidad -->
+            <div class="input-field col s4">
+                <i class="material-icons prefix">assignment_ind</i>
+                <label for="id_profesor">Especialidad:</label><br>
+                <?php echo Form::dbSelect('matriculas.id_especialidad', 'nombre_especialidad',  array('especialidades', 'find'))?>
+            </div>
+            <!-- Campo de seccion del alumno -->
+            <div class="input-field col s4">
+                <i class="material-icons prefix">assignment_ind</i>
+                <label for="Seccion">Seccion</label><br>
+                <?php
+                    $seccion = array('1'=>'A', '2'=>'B', '3'=>'C');
+                    echo Form::select('matriculas.secciones',$seccion);
+                ?>
+            </div>
 
-    
-   
+             <!-- campo anio -->
+             <div class="input-field col s4">
+                <?php 
+                    date_default_timezone_set("America/El_Salvador");
+                ?>
+                <label for="">Año:
+                    <?php echo Form::text('matriculas.anio',"class= 'caja'", date("Y")+1);?>
+                </label>
+            </div>
+        </div>
+    </div>
 
+    <div class="section">
+        <div class="row">
+            <!-- Campo de estado -->
+            <div class="input-field col s4">
+                <i class="material-icons prefix">assignment_ind</i>
+                <label for="Estado">Estado</label><br>
+                    <?php
+                        $estado = array('Inactivo','Activo');
+                        echo Form::select('matriculas.estado',$estado);
+                    ?>
+            </div>
+
+            <!-- Campo de egresado -->
+            <div class="input-field col s4">
+                <i class="material-icons prefix">assignment_ind</i>
+                <label for="egresado">Egresado:</label><br>
+                    <?php
+                        $egresado = array('No','Si');
+                        echo Form::select('matriculas.egresado',$egresado);
+                    ?>
+            </div>
+
+            <!-- Campo de habilitado -->
+            <div class="input-field col s4">
+                <i class="material-icons prefix">assignment_ind</i>
+                <label for="Seccion">Habilitado:</label><br>
+                    <?php
+                        $habilitado = array('Inhabilitado', 'Habilitado');
+                        echo Form::select('matriculas.habilitado',$habilitado);
+                    ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="row">
+            <!-- Campo de nombre del grado. -->
+            <div class="input-field col s5">
+                <?php echo Form::hidden('matriculas.id_seccion',"class= 'caja'", $item->anio_bachillerato);?>
+            </div>
+            <div class="input-field col s7">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+                <?= Form::hidden('alumnos.id'); ?> 
+            <?php echo Form::close(); ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
