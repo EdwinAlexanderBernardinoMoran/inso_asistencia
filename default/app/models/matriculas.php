@@ -7,22 +7,15 @@
             $this->belongs_to('Especialidades', 'model: Especialidades', 'fk: id_especialidad');
         }
 
-        public function before_create(){    
-            $resultado = $this->find_first("id_alumnos = $this->id_alumnos");
-            if ($resultado) {
-                Flash::warning("El usuario ya esta registrado con en esta id");
+        public function before_create(){
+
+            if ($matricula1=$this->find_first("conditions: id_alumnos=$this->id_alumnos and id_seccion=$this->id_seccion")) {
+                Flash::warning("El alumno con este ID ya esta matriculado en esta seccion");
                 return 'cancel';
             }
 
-            $resultado = $this->find_first("id_seccion = $this->id_seccion");
-            if ($resultado) {
-                Flash::warning("El usuario ya matriculado en esta seccion");
-                return 'cancel';
-            }
-
-            $resultado = $this->find("anio = $this->anio");
-            if ($resultado) {
-                Flash::warning("No se puede matricular en el mismo año");
+            if ($matricula2=$this->find_first("conditions: id_alumnos=$this->id_alumnos and anio=$this->anio")) {
+                Flash::warning("El alumno no puede matricularse dos veces en el mismo año");
                 return 'cancel';
             }
         }
