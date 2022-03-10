@@ -71,5 +71,10 @@ class MatriculasController extends AppController
 
         return Redirect::to();
     }
+
+    public function registros(){
+        View::template('principal');
+        $this->titulo = "Registro de matriculas";
+    }
 }
 ?>
