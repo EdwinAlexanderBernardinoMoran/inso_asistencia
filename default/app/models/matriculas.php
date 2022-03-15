@@ -9,7 +9,7 @@
 
         public function before_create(){
 
-            if ($matricula1=$this->find_first("conditions: id_alumnos=$this->id_alumnos and id_seccion=$this->id_seccion")) {
+            if ($matricula1=$this->find_first("conditions: id_alumnos=$this->id_alumnos and id_seccion=$this->id_seccion and anio=$this->anio")) {
                 Flash::warning("El alumno con este ID ya esta matriculado en esta seccion");
                 return 'cancel';
             }
@@ -28,6 +28,10 @@
             $sql = "SELECT alumnos.id, alumnos.nie, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, alumnos.anio_bachillerato, especialidades.nombre_especialidad FROM alumnos, especialidades WHERE nie LIKE '%{$buscar}%' AND alumnos.id_especialidad_ingreso=especialidades.id";
             $matricula = (new Matriculas)->find_all_by_sql($sql);
             return $matricula;
+        }
+
+        public function buscar_registros(){
+            
         }
     }
 
