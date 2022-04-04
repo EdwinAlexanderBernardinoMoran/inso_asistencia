@@ -76,5 +76,32 @@ class MatriculasController extends AppController
         View::template('principal');
         $this->titulo = "Registro de matriculas";
     }
+
+    public function barra(){
+        View::template('principal');
+        $this->titulo = "Codigo de Barras";
+    }
+
+    public function pdf_barra($Buscar_especialidad = NULL, $Buscar_seccion = NULL, $Buscar_anio = NULL){
+        View::template('principal');
+        $this->titulo = "Listado de alumnos con codigo de barra";
+
+        ob_end_clean();
+        require_once ('fpdf/fpdf.php');
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->Ln(5);
+        $pdf->Image("img/insoimg.png", 12, 10, 28);
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(25);
+        $pdf->Cell(140, 5, "INSTITUTO NACIONAL DE SONZACATE", 0, 1, "C");
+        $pdf->Cell(185, 5, "(I. N. S. O)", 0, 1, "C");
+        $pdf->SetTitle('Listado de alumnos con codigo de barra');
+        $pdf->SetFont("Arial", "", 12);
+        
+        $pdf->Ln(4);
+        $pdf->Output('','ficha de matricula.pdf',true);
+        ob_end_flush();
+    }
 }
 ?>

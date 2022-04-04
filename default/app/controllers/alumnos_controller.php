@@ -64,8 +64,8 @@ class AlumnosController extends AppController{
 
     public function pdf($id)
     {   
-        require 'connection.php';
-
+        $alumno = new Alumnos();
+        $listaAlumnos = $this->listaAlumnos = $alumno->find("conditions: id=$id");
         ob_end_clean();
         require_once ('fpdf/fpdf.php');
         $pdf = new FPDF();
@@ -83,33 +83,27 @@ class AlumnosController extends AppController{
         
         $pdf->Ln(4);
         $pdf->SetFont("Arial", "B", 12);
-        $pdf->Cell(60, 5, "Identificacion del estudiante:", 0, 1, "C");
+        $pdf->Cell(60, 5, utf8_decode("Identificación del estudiante:"), 0, 1, "C");
         $pdf->SetFont("Arial", "", 10);
 
         $pdf->Ln(5);
 
         $pdf->SetFont("Arial", "", 9);
-        $sql = "SELECT alumnos.id, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, alumnos.fecha_nacimiento, nacionalidades.nombre_nacionalidad, departamentos.nombre_departamento, municipios.nombre_municipio, alumnos.anio_bachillerato, alumnos.nie, alumnos.numero_partida, alumnos.folio_partida, alumnos.libro_partida, alumnos.otro_documento_de_identificacion, alumnos.salvadoreno_por, especialidades.nombre_especialidad, alumnos.estudio_parvularia, alumnos.repite_grado, centroescolares.nombre_centroescolar, alumnos.anio_anterior, alumnos.tipo_de_sangre, alumnos.sexo, alumnos.estado_familiar, alumnos.discapacidad, alumnos.email, alumnos.telefono_fijo, alumnos.celular, zonas.nombre_zona, cantones.nombre_canton, caserios.nombre_caserio, alumnos.tipo_de_calle, alumnos.direccion_completa, alumnos.medio_de_transporte, alumnos.distancia_desde_casa_y_centroeducativo, alumnos.factor_de_riesgo, alumnos.numero_integrantes_familia, alumnos.integrados, alumnos.depende_economicamente_de, alumnos.tiene_hijos, alumnos.trabaja, alumnos.convivencia_con, alumnos.nombre_madre, alumnos.ocupacion_madre, alumnos.lugar_de_trabajo_madre, alumnos.telefono_madre, alumnos.nombre_padre, alumnos.ocupacion_padre, alumnos.lugar_de_trabajo_padre, alumnos.telefono_padre, alumnos.primer_nombre_responsable, alumnos.segundo_nombre_responsable, alumnos.primer_apellido_responsable, alumnos.segundo_apellido_responsable, alumnos.numero_dui_responsable, alumnos.estado_familiar_responsable, alumnos.email_responsable, alumnos.telefono_fijo_encargado, alumnos.celular_encargado, alumnos.tipo_de_calle_responsable, alumnos.direccion_completa_responsable, alumnos.profesion_oficio_responsable, alumnos.celular_responsable, alumnos.escolaridad_responsable, alumnos.factor_de_riesgo_responsable, alumnos.fecha_revision_formulario, alumnos.partida_nacimiento, alumnos.certificacion_de_notas, alumnos.certificado, alumnos.fotos, alumnos.fotocopia_dui, alumnos.constancia_de_conducta, alumnos.carnet_residente, profesores.primer_nombre_profesor, profesores.segundo_nombre_profesor, profesores.primer_apellido_profesor, profesores.segundo_apellido_profesor FROM alumnos, nacionalidades, departamentos, municipios, especialidades, centroescolares, zonas, cantones, caserios, profesores WHERE alumnos.id='$id' and alumnos.id_nacionalidad=nacionalidades.id and alumnos.id_departamento_de_nacimiento=departamentos.id and alumnos.id_municipio_de_nacimiento=municipios.id and alumnos.id_especialidad_ingreso=especialidades.id and alumnos.id_centro_escolar_providencia=centroescolares.id and alumnos.id_zona=zonas.id and alumnos.id_departamento_residencia=departamentos.id and alumnos.id_municipio_residencia=municipios.id and alumnos.id_canton=cantones.id and alumnos.id_caserio=caserios.id and alumnos.id_zona_responsable=zonas.id and alumnos.id_departamento_responsable=departamentos.id and alumnos.id_municipio_responsable=municipios.id and alumnos.id_canton_responsable=cantones.id and alumnos.id_caserio_responsable=caserios.id and alumnos.id_profesor_revision=profesores.id";
-            $resultado = mysqli_query($conn, $sql);
-
-            // while ($fila = $resultado->fetch_assoc())
-         while ($item = $resultado->fetch_assoc()){
-                // FILA 1
-                // Nombre del estudiante
+        foreach ($listaAlumnos as $item){
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Nombre del estudiante", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(140, 6, $item['primer_nombre'].' '.$item['segundo_nombre'].' '.$item['primer_apellido'].' '.$item['segundo_apellido'], 1, 1, "C");
+            $pdf->Cell(140, 6, utf8_decode($item->primer_nombre.' '.$item->segundo_nombre.' '.$item->primer_apellido.' '.$item->segundo_apellido), 1, 1, "C");
             // Fecha de nacimiento
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Fecha de nacimiento", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(40, 6, $item['fecha_nacimiento'], 1, 0, "C");
+            $pdf->Cell(40, 6, $item->fecha_nacimiento, 1, 0, "C");
             // nacionalidad
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Nacionalidad:", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(50, 6, $item['nombre_nacionalidad'], 1, 1, "C");
+            $pdf->Cell(50, 6, utf8_decode($item->getNacionalidad()->nombre_nacionalidad), 1, 1, "C");
 
 
             // FILA 2
@@ -117,84 +111,86 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Departamento de Nac.", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(47, 6, $item['nombre_departamento'], 1, 0, "C");
+            $pdf->Cell(47, 6, utf8_decode($item->getDepartamentonacimiento()->nombre_departamento), 1, 0, "C");
             // municipio de nacimiento
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(43, 6, "Municipio de Nac.", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(50, 6, $item['nombre_municipio'], 1, 1, "C");
+            $pdf->Cell(50, 6, utf8_decode($item->getMunicipionacimiento()->nombre_municipio), 1, 1, "C");
 
             // FILA 3
             // año de bachillerato
             $pdf->SetFont("Arial", "B", 11);
-            $pdf->Cell(50, 6, "Anio de bachillerato:", 1, 0, "C");
+            $pdf->Cell(50, 6, utf8_decode("Año de bachillerato"), 1, 0, "C");
             $pdf->SetFont("Arial", "", 10);
-            $pdf->Cell(47, 6, $item['anio_bachillerato'], 1, 0, "C");
+            $pdf->Cell(47, 6, utf8_decode($item->anio_bachillerato), 1, 0, "C");
             // nie
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(43, 6, "Nie:", 1, 0, "C");
             $pdf->SetFont("Arial", "", 10);
-            $pdf->Cell(50, 6, $item['nie'], 1, 1, "C");
+            $pdf->Cell(50, 6, $item->nie, 1, 1, "C");
 
             // FILA 4
             // partida de nacimiento
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "# Partida.", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(23, 6, $item['numero_partida'], 1, 0, "C");
+            $pdf->Cell(23, 6, $item->numero_partida, 1, 0, "C");
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Folio de partida", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(23, 6, $item['folio_partida'], 1, 0, "C");
+            $pdf->Cell(23, 6, $item->folio_partida, 1, 0, "C");
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Libro de partida", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(24, 6, $item['libro_partida'], 1, 1, "C");
+            $pdf->Cell(24, 6, $item->libro_partida, 1, 1, "C");
 
             // FILA 5
             // otro documento de identificacion
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(60, 6, "Otro documento identificacion", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(45, 6, $item['otro_documento_de_identificacion'], 1, 0, "C");
+            $pdf->Cell(45, 6, utf8_decode($item->otro_documento_de_identificacion), 1, 0, "C");
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(45, 6, "Salvadoreno por", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(40, 6, $item['salvadoreno_por'], 1, 1, "C");
+            $pdf->Cell(40, 6, utf8_decode($item->salvadoreno_por), 1, 1, "C");
 
             // FILA 6
             // Especialidad
             $pdf->SetFont("Arial", "B", 11);
-            $pdf->Cell(35, 6, "Especialidad", 1, 0, "C");
+            $pdf->Cell(55, 6, "Especialidad", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(55, 6, $item['nombre_especialidad'], 1, 0, "C");
-            // Estudio estudio_parvularia
-            $pdf->SetFont("Arial", "B", 11);
-            $pdf->Cell(40, 6, "Estudio parvularia", 1, 0, "C");
-            $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(10, 6, $item['estudio_parvularia'], 1, 0, "C");
-            // Repite grado
-            $pdf->SetFont("Arial", "B", 11);
-            $pdf->Cell(40, 6, "Repite grado", 1, 0, "C");
-            $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(10, 6, $item['repite_grado'], 1, 1, "C");
+            $pdf->Cell(135, 6, utf8_decode($item->getEspecialidades()->nombre_especialidad), 1, 1, "C");
 
             // FILA 7
             // Centro de procedencia
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Centro de procedencia", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(140, 6, $item['nombre_centroescolar'], 1, 1, "C");
+            $pdf->Cell(140, 6, utf8_decode($item->getCentroescolares()->nombre_centroescolar), 1, 1, "C");
+
+            // Estudio estudio_parvularia
             $pdf->SetFont("Arial", "B", 11);
-            $pdf->Cell(60, 6, "Anio que estudio anteriormente", 1, 0, "C");
+            $pdf->Cell(40, 6, "Estudio parvularia", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(130, 6, $item['anio_anterior'], 1, 1, "C");
+            $pdf->Cell(10, 6, utf8_decode($item->estudio_parvularia), 1, 0, "C");
+            // Repite grado
+            $pdf->SetFont("Arial", "B", 11);
+            $pdf->Cell(40, 6, "Repite grado", 1, 0, "C");
+            $pdf->SetFont("Arial", "", 11);
+            $pdf->Cell(10, 6, $item->repite_grado, 1, 0, "C");
+
+            $pdf->SetFont("Arial", "B", 11);
+            $pdf->Cell(70, 6, utf8_decode("Año que estudio anteriormente"), 1, 0, "C");
+            $pdf->SetFont("Arial", "", 11);
+            $pdf->Cell(20, 6, $item->anio_anterior, 1, 1, "C");
 
             // ---------------------------------------------------
             // INFORMACION DEL ESTUDIANTE
             $pdf->Ln(10);
             $pdf->SetFont("Arial", "B", 13);
-            $pdf->Cell(60, 5, "Informacion del estudiante:", 0, 1, "C");
+            $pdf->Cell(60, 5, utf8_decode("Información del estudiante:"), 0, 1, "C");
 
             // FILA 1
             // Tipo de sangre
@@ -202,15 +198,15 @@ class AlumnosController extends AppController{
             $pdf->Ln(5);
             $pdf->Cell(45, 6, "Tipo de sangre", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(55, 6, $item['tipo_de_sangre'], 1, 0, "C");
+            $pdf->Cell(55, 6, utf8_decode($item->tipo_de_sangre), 1, 0, "C");
             // sexo
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Sexo", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            if ($item['sexo'] == 'M'){
+            if ($item->sexo == 'M'){
                 echo $pdf->Cell(50, 6, "Masculino", 1, 1, "C");
             }
-            if ($item['sexo'] == 'F'){
+            if ($item->sexo == 'F'){
                 echo $pdf->Cell(50, 6, "Femenino", 1, 1, "C");
             }
 
@@ -218,25 +214,25 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(45, 6, "Estado familiar", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            if ($item['estado_familiar'] == 'C'){
+            if (utf8_decode($item->estado_familiar) == 'C'){
                 echo $pdf->Cell(45, 6, "Casado/a", 1, 0, "C");
             }
-            if ($item['estado_familiar'] == 'V'){
+            if (utf8_decode($item->estado_familiar) == 'V'){
                 echo $pdf->Cell(45, 6, "Viudo/a", 1, 0, "C");
             }
-            if ($item['estado_familiar'] == 'D'){
+            if (utf8_decode($item->estado_familiar) == 'D'){
                 echo $pdf->Cell(45, 6, "Divorciado/a", 1, 0, "C");
             }
-            if ($item['estado_familiar'] == 'S'){
+            if (utf8_decode($item->estado_familiar) == 'S'){
                 echo $pdf->Cell(45, 6, "Soltero/a", 1, 0, "C");
             }
-            if ($item['estado_familiar'] == 'A'){
+            if (utf8_decode($item->estado_familiar) == 'A'){
                 echo $pdf->Cell(45, 6, "Acompañado/a", 1, 0, "C");
             }
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Discapacidad", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(60, 6, $item['discapacidad'], 1, 1, "C");
+            $pdf->Cell(60, 6, utf8_decode($item->discapacidad), 1, 1, "C");
 
             // ------------------------------------------------------------
             // DATOS DE CONTACTO
@@ -250,7 +246,7 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(45, 6, "Correo electronico", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(145, 6, $item['email'], 1, 1, "C");
+            $pdf->Cell(145, 6, utf8_decode($item->email), 1, 1, "C");
 
 
             // FILA 2
@@ -258,16 +254,16 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(30, 6, "Tel. fijo", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(35, 6, $item['telefono_fijo'], 1, 0, "C");
+            $pdf->Cell(35, 6, $item->telefono_fijo, 1, 0, "C");
             // Telefono celular
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(30, 6, "Celular", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(35, 6, $item['celular'], 1, 0, "C");
+            $pdf->Cell(35, 6, $item->celular, 1, 0, "C");
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(30, 6, "Zona", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(30, 6, $item['nombre_zona'], 1, 1, "C");
+            $pdf->Cell(30, 6, utf8_decode($item->getZonacontacto()->nombre_zona), 1, 1, "C");
             
 
             // FILA 3
@@ -275,37 +271,37 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(45, 6, "Departamento", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(45, 6, $item['nombre_departamento'], 1, 0, "C");
+            $pdf->Cell(45, 6, utf8_decode($item->getDepartamentoresidencia()->nombre_departamento), 1, 0, "C");
             // municipio
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Municipio", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(50, 6, $item['nombre_municipio'], 1, 1, "C");
+            $pdf->Cell(50, 6, utf8_decode($item->getMunicipioresidencia()->nombre_municipio), 1, 1, "C");
 
             // FILA 4
             // canton
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Canton", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(150, 6, $item['nombre_canton'], 1, 1, "C");
+            $pdf->Cell(150, 6, utf8_decode($item->getCantonresidencia()->nombre_canton), 1, 1, "C");
 
             // FILA 5
             // caserio
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(25, 6, "Caserio", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(75, 6, $item['nombre_caserio'], 1, 0, "C");
+            $pdf->Cell(75, 6, utf8_decode($item->getCaserioresidencia()->nombre_caserio), 1, 0, "C");
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Tipo de calle", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(40, 6, $item['tipo_de_calle'], 1, 1, "C");
+            $pdf->Cell(40, 6, utf8_decode($item->tipo_de_calle), 1, 1, "C");
             
 
             // FILA 6
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(70, 6, "Direccion completa del estudiante", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(120, 6, $item['direccion_completa'], 1, 1, "C");
+            $pdf->Cell(120, 6, utf8_decode($item->direccion_completa), 1, 1, "C");
 
             // ---------------------------------------------------------
             // OTROS DATOS
@@ -319,20 +315,20 @@ class AlumnosController extends AppController{
             $pdf->Ln(5);
             $pdf->Cell(70, 6, "Medio de transporte que utilizas", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(120, 6, $item['medio_de_transporte'], 1, 1, "C");
+            $pdf->Cell(120, 6, utf8_decode($item->medio_de_transporte), 1, 1, "C");
 
             // FILA 2
             // Distancia en kilometros de el centro educativo.
             $pdf->SetFont("Arial", "B", 11);
-            $pdf->Cell(90, 6, "Distancia en kilometros al centro educativo", 1, 0, "C");
+            $pdf->Cell(90, 6, utf8_decode("Distancia en kilometros al centro educativo"), 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(100, 6, $item['distancia_desde_casa_y_centroeducativo'], 1, 1, "C");
+            $pdf->Cell(100, 6, $item->distancia_desde_casa_y_centroeducativo, 1, 1, "C");
 
             // FILA 3
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(35, 6, "Factor de riesgo", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(155, 6, $item['factor_de_riesgo'], 1, 1, "C");
+            $pdf->Cell(155, 6, utf8_decode($item->factor_de_riesgo), 1, 1, "C");
 
             // ---------------------------------------------------------
             // GRUPO FAMILIAR
@@ -345,28 +341,28 @@ class AlumnosController extends AppController{
             $pdf->Ln(5);
             $pdf->Cell(80, 5, "# De integrantes de la familia", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(25, 5, $item['numero_integrantes_familia'], 1, 0, "C");
+            $pdf->Cell(25, 5, $item->numero_integrantes_familia, 1, 0, "C");
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(60, 5, "Integrados", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(25, 5, $item['integrados'], 1, 1, "C");
+            $pdf->Cell(25, 5, $item->integrados, 1, 1, "C");
 
             // FILA 2
             // Depende economicamente de
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(60, 6, "Depende economicamente de", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(40, 6, $item['depende_economicamente_de'], 1, 0, "C");
+            $pdf->Cell(40, 6, utf8_decode($item->depende_economicamente_de), 1, 0, "C");
             // Tiene hijos
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(30, 6, "Tiene hijos", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(15, 6, $item['tiene_hijos'], 1, 0, "C");
+            $pdf->Cell(15, 6, $item->tiene_hijos, 1, 0, "C");
             // Trabaja
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(30, 6, "Trabaja", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(15, 6, $item['trabaja'], 1, 1, "C");
+            $pdf->Cell(15, 6, $item->trabaja, 1, 1, "C");
 
 
             // FILA 3
@@ -374,55 +370,68 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(35, 6, "Convivencia con", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(35, 6, $item['convivencia_con'], 1, 0, "C");
+            $pdf->Cell(35, 6, utf8_decode($item->convivencia_con), 1, 0, "C");
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Nombre de la madre", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(80, 6, $item['nombre_madre'], 1, 1, "C");
+            $pdf->Cell(80, 6, utf8_decode($item->nombre_madre), 1, 1, "C");
 
             // FILA 4
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(35, 6, "Lugar de trabajo", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(155, 6, $item['lugar_de_trabajo_madre'], 1, 1, "C");
+            $pdf->Cell(155, 6, utf8_decode($item->lugar_de_trabajo_madre), 1, 1, "C");
 
             // FILA 5
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(35, 6, "Ocupacion", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(65, 6, $item['ocupacion_madre'], 1, 0, "C");
+            $pdf->Cell(65, 6, utf8_decode($item->ocupacion_madre), 1, 0, "C");
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Telefono", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(50, 6, $item['telefono_madre'], 1, 1, "C");
+            $pdf->Cell(50, 6, $item->telefono_madre, 1, 1, "C");
 
+            
             // FILA 6
             // Nombre del padre
+            
+            $pdf->Ln(5);
+            $pdf->SetFont('Arial','B',12);
+            $pdf->Cell(188, 5, "MINISTERIO DE EDUCACION", 0, 1, "C");
+            $pdf->Cell(185, 5, "INSTITUTO NACIONAL DE SONZACATE", 0, 1, "C");
+            $pdf->Cell(185, 5, "(I. N. S. O)", 0, 1, "C");
+            $pdf->SetTitle('Ficha de matricula');
+            $pdf->SetFont("Arial", "", 12);
+            $pdf->Cell(185, 5, "Ficha de Matricula ".date('Y'), 0, 1, "C");
+            $pdf->Ln(10);
+
+            
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(35, 6, "Nombre del padre", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(155, 6, $item['nombre_padre'], 1, 1, "C");
+            $pdf->Cell(155, 6, utf8_decode($item->nombre_padre), 1, 1, "C");
             // Lugar de trabajo del padre
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(35, 6, "Lugar de trabajo", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(155, 6, $item['lugar_de_trabajo_padre'], 1, 1, "C");
+            $pdf->Cell(155, 6, utf8_decode($item->lugar_de_trabajo_padre), 1, 1, "C");
             // Ocupacion del padre
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(35, 6, "Ocupacion", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(65, 6, $item['ocupacion_padre'], 1, 0, "C");
+            $pdf->Cell(65, 6, utf8_decode($item->ocupacion_padre), 1, 0, "C");
             // Telefono del padre
             $pdf->SetFont("Arial", "B", 11);
 
             $pdf->Cell(40, 6, "Telefono", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(50, 6, $item['telefono_padre'], 1, 1, "C");
+            $pdf->Cell(50, 6, $item->telefono_padre, 1, 1, "C");
 
              // IDENTIFICACION DEL RESPONSABLE
              $pdf->Ln(5);
              $pdf->SetFont("Arial", "B", 12);
-             $pdf->Cell(65, 5, "Identificacion Del Responsable:", 0, 1, "C");
+             $pdf->Cell(65, 5, utf8_decode("Identificacion Del Responsable:"), 0, 1, "C");
 
              $pdf->Ln(5);
             //  FILA 1
@@ -430,32 +439,32 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Nombre del responsable", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(140, 6, $item['primer_nombre_responsable'].' '.$item['segundo_nombre_responsable'].' '.$item['primer_apellido_responsable'].' '.$item['segundo_apellido_responsable'], 1, 1, "C");
+            $pdf->Cell(140, 6, utf8_decode($item->primer_nombre_responsable.' '.$item->segundo_nombre_responsable.' '.$item->primer_apellido_responsable.' '.$item->segundo_apellido_responsable), 1, 1, "C");
 
             // FILA 2
             // Numero de dui del responsable
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Numero de dui", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(45, 6, $item['numero_dui_responsable'], 1, 0, "C");
+            $pdf->Cell(45, 6, $item->numero_dui_responsable, 1, 0, "C");
             // Estado familiar del responsable
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Estado familiar", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            if ($item['estado_familiar_responsable'] == 'C'){
-                echo $pdf->Cell(45, 6, "Casado/a", 1, 1, "C");
+            if ($item->estado_familiar_responsable == 'C'){
+                echo $pdf->Cell(45, 6, utf8_decode("Casado/a"), 1, 1, "C");
             }
-            if ($item['estado_familiar_responsable'] == 'V'){
-                echo $pdf->Cell(45, 6, "Viudo/a", 1, 1, "C");
+            if ($item->estado_familiar_responsable == 'V'){
+                echo $pdf->Cell(45, 6, utf8_decode("Viudo/a"), 1, 1, "C");
             }
-            if ($item['estado_familiar_responsable'] == 'D'){
-                echo $pdf->Cell(45, 6, "Divorciado/a", 1, 1, "C");
+            if ($item->estado_familiar_responsable == 'D'){
+                echo $pdf->Cell(45, 6, utf8_decode("Divorciado/a"), 1, 1, "C");
             }
-            if ($item['estado_familiar_responsable'] == 'S'){
-                echo $pdf->Cell(45, 6, "Soltero/a", 1, 1, "C");
+            if ($item->estado_familiar_responsable == 'S'){
+                echo $pdf->Cell(45, 6, utf8_decode("Soltero/a"), 1, 1, "C");
             }
-            if ($item['estado_familiar_responsable'] == 'A'){
-                echo $pdf->Cell(45, 6, "Acompanado/a", 1, 1, "C");
+            if ($item->estado_familiar_responsable == 'A'){
+                echo $pdf->Cell(45, 6, utf8_decode("Acompañado/a"), 1, 1, "C");
             }
 
             // DATOS DEL RESPONSABLE
@@ -469,7 +478,7 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(45, 6, "Correo electronico", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(145, 6, $item['email_responsable'], 1, 1, "C");
+            $pdf->Cell(145, 6, $item->email_responsable, 1, 1, "C");
 
 
             // FILA 2
@@ -477,16 +486,16 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(30, 6, "Tel. fijo", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(35, 6, $item['telefono_fijo_encargado'], 1, 0, "C");
+            $pdf->Cell(35, 6, $item->telefono_fijo_encargado, 1, 0, "C");
             // Telefono celular
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(30, 6, "Celular", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(35, 6, $item['celular_encargado'], 1, 0, "C");
+            $pdf->Cell(35, 6, $item->celular_encargado, 1, 0, "C");
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(30, 6, "Zona", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(30, 6, $item['nombre_zona'], 1, 1, "C");
+            $pdf->Cell(30, 6, utf8_decode($item->getZonaencargado()->nombre_zona), 1, 1, "C");
             
 
             // FILA 3
@@ -494,37 +503,37 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(45, 6, "Departamento", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(45, 6, $item['nombre_departamento'], 1, 0, "C");
+            $pdf->Cell(45, 6, utf8_decode($item->getDepartamentoencargado()->nombre_departamento), 1, 0, "C");
             // municipio
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Municipio", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(50, 6, $item['nombre_municipio'], 1, 1, "C");
+            $pdf->Cell(50, 6, utf8_decode($item->getMunicipioencargado()->nombre_municipio), 1, 1, "C");
 
             // FILA 4
             // canton
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Canton", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(150, 6, $item['nombre_canton'], 1, 1, "C");
+            $pdf->Cell(150, 6, utf8_decode($item->getCantonencargado()->nombre_canton), 1, 1, "C");
 
             // FILA 5
             // caserio
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(25, 6, "Caserio", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(75, 6, $item['nombre_caserio'], 1, 0, "C");
+            $pdf->Cell(75, 6, utf8_decode($item->getCaserioencargado()->nombre_caserio), 1, 0, "C");
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(50, 6, "Tipo de calle", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(40, 6, $item['tipo_de_calle_responsable'], 1, 1, "C");
+            $pdf->Cell(40, 6, utf8_decode($item->tipo_de_calle_responsable), 1, 1, "C");
             
 
             // FILA 6
             $pdf->SetFont("Arial", "B", 11);
-            $pdf->Cell(70, 6, "Direccion completa del estudiante", 1, 0, "C");
+            $pdf->Cell(70, 6, utf8_decode("Dirección completa del estudiante"), 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(120, 6, $item['direccion_completa_responsable'], 1, 1, "C");
+            $pdf->Cell(120, 6, utf8_decode($item->direccion_completa_responsable), 1, 1, "C");
 
             // OTROS DATOS DEL RESPONSABLE
             $pdf->Ln(5);
@@ -538,29 +547,29 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(35, 6, "profesion u oficio", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(35, 6, $item['profesion_oficio_responsable'], 1, 0, "C");
+            $pdf->Cell(35, 6, utf8_decode($item->profesion_oficio_responsable), 1, 0, "C");
             // Celular responsable
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(20, 6, "Celular", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(25, 6, $item['celular_responsable'], 1, 0, "C");
+            $pdf->Cell(25, 6, $item->celular_responsable, 1, 0, "C");
             // Escolaridad responsable
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(35, 6, "Escolaridad", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(40, 6, $item['escolaridad_responsable'], 1, 1, "C");
+            $pdf->Cell(40, 6, utf8_decode($item->escolaridad_responsable), 1, 1, "C");
 
             // FILA 2
             // Factor de riesgo responsable
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(35, 6, "Factor de riesgo", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(65, 6, $item['factor_de_riesgo_responsable'], 1, 0, "C");
+            $pdf->Cell(65, 6, utf8_decode($item->factor_de_riesgo_responsable), 1, 0, "C");
             // Fecha revision formulario
             $pdf->SetFont("Arial", "B", 11);
-            $pdf->Cell(65, 6, "Fecha De Revision del Formulario", 1, 0, "C");
+            $pdf->Cell(65, 6, utf8_decode("Fecha De Revisión del Formulario"), 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(25, 6, $item['fecha_revision_formulario'], 1, 1, "C");
+            $pdf->Cell(25, 6, $item->fecha_revision_formulario, 1, 1, "C");
 
             // OTROS DATOS DEL RESPONSABLE
             $pdf->Ln(7);
@@ -573,98 +582,93 @@ class AlumnosController extends AppController{
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(53, 6, "Partida de nacimiento", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            if ($item['partida_nacimiento'] == 0){
+            if ($item->partida_nacimiento == 0){
                 echo $pdf->Cell(11, 6, "NO", 1, 0, "C");
             }
-            if ($item['partida_nacimiento'] == 1){
+            if ($item->partida_nacimiento == 1){
                 echo $pdf->Cell(11, 6, "SI", 1, 0, "C");
             }
             // Certificado de notas
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(53, 6, "Certificado de notas", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            if ($item['certificacion_de_notas'] == 0){
+            if ($item->certificacion_de_notas == 0){
                 echo $pdf->Cell(11, 6, "NO", 1, 0, "C");
             }
-            if ($item['certificacion_de_notas'] == 1){
+            if ($item->certificacion_de_notas == 1){
                 echo $pdf->Cell(11, 6, "SI", 1, 0, "C");
             }
-            // $pdf->Cell(11, 6, $item['certificacion_de_notas'], 1, 0, "C");
+            // $pdf->Cell(11, 6, $item->certificacion_de_notas, 1, 0, "C");
             // Certififcado
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(51, 6, "Certificado", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            if ($item['certificado'] == 0){
+            if ($item->certificado == 0){
                 echo $pdf->Cell(11, 6, "NO", 1, 1, "C");
             }
-            if ($item['certificado'] == 1){
+            if ($item->certificado == 1){
                 echo $pdf->Cell(11, 6, "SI", 1, 1, "C");
             }
-            // $pdf->Cell(11, 6, $item['certificado'], 1, 1, "C");
+            // $pdf->Cell(11, 6, $item->certificado, 1, 1, "C");
 
             // FILA 2
             // Fotos
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(27, 6, "Fotos", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            if ($item['fotos'] == 0){
+            if ($item->fotos == 0){
                 echo $pdf->Cell(11, 6, "NO", 1, 0, "C");
             }
-            if ($item['fotos'] == 1){
+            if ($item->fotos == 1){
                 echo $pdf->Cell(11, 6, "SI", 1, 0, "C");
             }
-            // $pdf->Cell(11, 6, $item['fotos'], 1, 0, "C");
+            // $pdf->Cell(11, 6, $item->fotos, 1, 0, "C");
             // Fotocopia de dui
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Fotocopia de dui", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            if ($item['fotocopia_dui'] == 0){
+            if ($item->fotocopia_dui == 0){
                 echo $pdf->Cell(11, 6, "NO", 1, 0, "C");
             }
-            if ($item['fotocopia_dui'] == 1){
+            if ($item->fotocopia_dui == 1){
                 echo $pdf->Cell(11, 6, "SI", 1, 0, "C");
             }
-            // $pdf->Cell(11, 6, $item['fotocopia_dui'], 1, 0, "C");
+            // $pdf->Cell(11, 6, $item->fotocopia_dui, 1, 0, "C");
             // Constancia de conducta
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Fotocopia de dui", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            if ($item['constancia_de_conducta'] == 0){
+            if ($item->constancia_de_conducta == 0){
                 echo $pdf->Cell(11, 6, "NO", 1, 0, "C");
             }
-            if ($item['constancia_de_conducta'] == 1){
+            if ($item->constancia_de_conducta == 1){
                 echo $pdf->Cell(11, 6, "SI", 1, 0, "C");
             }
-            // $pdf->Cell(11, 6, $item['constancia_de_conducta'], 1, 0, "C");
+            // $pdf->Cell(11, 6, $item->constancia_de_conducta, 1, 0, "C");
 
             // FILA 3
             // Carnet de residente
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Carnet Residente", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            if ($item['carnet_residente'] == 0){
-                echo $pdf->Cell(11, 6, "NO", 1, 1, "C");
+            if ($item->carnet_residente == 0){
+                echo $pdf->Cell(10, 6, "NO", 1, 1, "C");
             }
-            if ($item['carnet_residente'] == 1){
-                echo $pdf->Cell(11, 6, "SI", 1, 1, "C");
+            if ($item->carnet_residente == 1){
+                echo $pdf->Cell(10, 6, "SI", 1, 1, "C");
             }
-            // $pdf->Cell(10, 6, $item['carnet_residente'], 1, 1, "C");
+            // $pdf->Cell(10, 6, $item->carnet_residente'], 1, 1, "C");
 
             // Profesor que realiz la matricula
             $pdf->SetFont("Arial", "B", 11);
             $pdf->Cell(40, 6, "Nombre Del Profesor", 1, 0, "C");
             $pdf->SetFont("Arial", "", 11);
-            $pdf->Cell(150, 6, $item['primer_nombre_profesor'].' '.$item['segundo_nombre_profesor'].' '.$item['primer_apellido_profesor'].' '.$item['segundo_apellido_profesor'], 1, 1, "C");
+            $pdf->Cell(150, 6, utf8_decode($item->getNombresprofesores()->primer_nombre_profesor.' '.$item->getNombresprofesores()->segundo_nombre_profesor.' '.$item->getNombresprofesores()->primer_apellido_profesor.' '.$item->getNombresprofesores()->segundo_apellido_profesor), 1, 1, "C");
 
             }
 
         $pdf->Output('','ficha de matricula.pdf',true);
         ob_end_flush();
-    }
-
-    public function barra(){
-        View::template('principal');
-        $this->titulo = "Codigo de Barras";
     }
 }
 
