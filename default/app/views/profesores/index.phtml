@@ -8,6 +8,7 @@
         <thead class="blue lighten-4 ">
             <th>ID</th>
             <th>PROFESOR/A</th>
+            <th>ESPECIALIDAD</th>
             <th>DUI</th>
             <th>NIP</th>
             <th>NIT</th>
@@ -19,6 +20,7 @@
             <tr>
                 <td><?= $item->id ?></td>
                 <td><?= $item->primer_nombre_profesor?> <?=$item->segundo_nombre_profesor ?> <?= $item->primer_apellido_profesor?> <?= $item->segundo_apellido_profesor?></td>
+                <td><?= $item->getCarreraprofesor()->nombre_carrera?></td>
                 <td><?= $item->dui ?></td>
                 <td><?= $item->nip ?></td>
                 <td><?= $item->nit ?></td>
@@ -40,4 +42,7 @@
         <?php endforeach ?>
     </tr>
 </table>
+
+<?php if($ListaProfesores->prev) echo Html::linkAction("index/$ListaProfesores->prev", '<< Anterior|') ?>
+<?php if($ListaProfesores->next) echo Html::linkAction("index/$ListaProfesores->next/", 'Próximo >>') ?>
 

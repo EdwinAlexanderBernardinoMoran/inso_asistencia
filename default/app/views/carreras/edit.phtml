@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <?php View::content() ?>
+        <h3 class="center-align">Actualizando Especialidad De Profesores</h3>
+    </div>
+</div>
+
+<?php echo Form::open(); ?>
+
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <!-- NOMBRE CATEGORIA -->
+            <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <label for="Primer_nombre">Especialidad:
+                    <?= Form::text('carreras.nombre_carrera'); ?></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="row">
+            <!-- HABILITADO -->
+            <div class="input-field col s12">
+                <i class="material-icons prefix">content_copy</i>
+                <label for="habilitado">Habilitado:</label><br>
+                    <?php
+                    $arreglo = array('Inhabilitado', 'Habilitado');
+                    echo Form::select('carreras.habilitado', $arreglo);
+                    ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="row">
+            <div class="input-field col s12 center-align">
+            <?php echo Form::hidden('carreras.id'); ?>
+            <?php echo Form::submit('Actualizar',"class='btn green'"); ?>
+            </div> 
+        </div>
+    </div>
+</div>
+
+<?php echo Form::close(); ?>

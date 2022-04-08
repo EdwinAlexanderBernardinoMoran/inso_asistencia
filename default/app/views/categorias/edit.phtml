@@ -1,0 +1,38 @@
+<div class="row">
+    <?php View::content() ?>
+    <h3 class="center-align">Categorias de profesores</h3>
+</div>
+
+<?php echo Form::open(); ?>
+
+<div class="section">
+    <div class="row">
+        <!-- NOMBRE CATEGORIA -->
+        <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <label for="Primer_nombre">Categoria:
+                <?= Form::text('categorias.nombre_categoria'); ?></label>
+        </div>
+
+        <!-- HABILITADO -->
+        <div class="input-field col s6">
+            <i class="material-icons prefix">content_copy</i>
+            <label for="habilitado">Habilitado:</label><br>
+                <?php
+                $arreglo = array('Inhabilitado', 'Habilitado');
+                echo Form::select('categorias.habilitado', $arreglo);
+                ?>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="row">
+        <div class="input-field col s12 center-align">
+            <?php echo Form::hidden('categorias.id'); ?>
+            <?php echo Form::submit('Actualizar',"class='btn green'"); ?>
+        </div> 
+    </div>
+</div>
+
+<?php echo Form::close(); ?>

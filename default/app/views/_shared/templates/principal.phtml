@@ -22,6 +22,9 @@
         <ul id="maestros" class="dropdown-content">
             <li><?php echo Html::Link('profesores','Listado')?></li>
             <li><?php echo Html::Link('profesores/create','Nuevo')?></li>
+            <li><?php echo Html::Link('cargos', 'Cargos Profesores') ?></li>
+            <li><?php echo Html::Link('categorias', 'Categorias Profesores')?></li>
+            <li><?php echo Html::Link('carreras','Carrera Profesores') ?></li>
         </ul>
         <ul id="matriculas" class="dropdown-content">
             <li><?php echo Html::Link('matriculas','Listado') ?></li>
@@ -73,9 +76,5 @@
             $('.dropdown-trigger').dropdown();
         });
     </script>
- 
-
-
 </body>
-
 </html>

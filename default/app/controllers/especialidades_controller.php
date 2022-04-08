@@ -28,6 +28,7 @@ class EspecialidadesController extends AppController{
 
     public function edit($id){
         View::template('principal');
+        $this->titulo = "Actualizando especialidad";
         $especialidad = new Especialidades();
 
         if(Input::hasPost('especialidades')){
