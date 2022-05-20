@@ -12,11 +12,11 @@ return [
         /**
          * username: usuario con permisos en la base de datos
          */
-        'username' => 'root', //no es recomendable usar el usuario root
+        'username' => 'Alexander', //no es recomendable usar el usuario root
         /**
          * password: clave del usuario de la base de datos
          */
-        'password' => '',
+        'password' => 'FrameworkPhp@22',
         /**
          * test: nombre de la base de datos
          */

@@ -1,7 +1,7 @@
 <!-- CODIGO FUNCIONANDO -->
 <?php echo View::content(); ?>
 <?php echo Tag::js('jsbarcode'); ?>
-<h4>IMPRESION DE CODIGO DE BARRA POR CADA ESTUDIANTE.</h4>
+<h4 class="center-align">IMPRESION DE CODIGO DE BARRA POR CADA ESTUDIANTE.</h4>
 
 <!-- ___________________CONEXION A LA BASE DE DATOS_________________________ -->
 
@@ -58,7 +58,9 @@
             </thead>
 
             <?php
+                $arraycodigos = array();
                 foreach ($matriculas as $item) :?>
+                <?php $arraycodigos[] = (String)$item->nie; ?>
         <tr>
         <td><?= $item->id?></td>
             <td><?= $item->nie?></td>
@@ -77,8 +79,10 @@
             ?></td>
             </td>
             <td><?= $item->anio?></td>
-            <td><img id="barcode" alt=""></td>
-            <?php $codigo = $item->nie; ?>
+            <td>
+                <svg id="<?php echo "barcode".$item->nie?>"></svg>
+            </td>
+            
         </tr>
 <?php
     endforeach;
@@ -86,6 +90,28 @@
 </tr>
     </table>
 </div>
-<script>
-    JsBarcode("#barcode", <?php echo $codigo;?>);
+<script type="text/javascript">
+    function arrayjsonbarcode(j){
+        json = JSON.parse(j);
+        arreglo = [];
+        for (let x in json) {
+            arreglo.push(json[x]);
+        }
+
+        return arreglo;
+    }
+
+    jsonvalor = '<?php echo json_encode($arraycodigos)?>';
+    valores = arrayjsonbarcode(jsonvalor);
+
+    for (let i = 0; i < valores.length; i++) {
+        JsBarcode("#barcode" + valores[i], valores[i].toString(),{
+            format: "CODE128",
+            ean128: true,
+            lineColor: "#000",
+            width: 2,
+            height: 95,
+            displayValue: true
+        })
+    }
 </script>
