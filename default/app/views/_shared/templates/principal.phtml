@@ -75,5 +75,31 @@
             $('.dropdown-trigger').dropdown();
         });
     </script>
+
+    <script type="text/javascript">
+        function arrayjsonbarcode(j){
+        json = JSON.parse(j);
+        arreglo = [];
+        for (let x in json) {
+            arreglo.push(json[x]);
+        }
+
+        return arreglo;
+    }
+
+    jsonvalor = '<?php echo json_encode($arraycodigos)?>';
+    valores = arrayjsonbarcode(jsonvalor);
+
+    for (let i = 0; i < valores.length; i++) {
+        JsBarcode("#barcode" + valores[i], valores[i].toString(),{
+            format: "CODE128",
+            ean128: true,
+            lineColor: "#000",
+            width: 2,
+            height: 95,
+            displayValue: true
+        })
+    }
+    </script>
 </body>
 </html>

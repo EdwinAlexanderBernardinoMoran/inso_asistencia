@@ -8,7 +8,7 @@ class MatriculasController extends AppController
         View::template('principal');
         $this->titulo = "Matriculas";
         $matricula = new Matriculas();
-        $this->listaMatriculas = $matricula->find();
+        $this->listaMatriculas = $matricula->getMatriculas($page);
 
     }
 

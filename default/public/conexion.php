@@ -3,8 +3,8 @@
     function conexion()
     {
         $host='localhost';
-        $user='Alexander';
-        $pass='FrameworkPhp@22';
+        $user='root';
+        $pass='';
         $db='asistencias';
 
         $conexion=mysqli_connect($host,$user,$pass,$db);
