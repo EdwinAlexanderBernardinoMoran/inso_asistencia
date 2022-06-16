@@ -1,0 +1,33 @@
+<!-- CODIGO FUNCIONANDO -->
+<?php echo View::content(); ?>
+<?php echo Tag::js('jsbarcode'); ?>
+<h4 class="center-align">FILTRAR DATOS PARA GENERAR CODIGO DE BARRA POR CADA ESTUDIANTE QUE YA SE ENCUENTRE MATRICULADO.</h4>
+
+
+<form method="post" action="codigobarras" target="_blank">
+    <div class="row">
+        <div class="input-field col s5">
+            <i class="material-icons prefix">assignment_ind</i>
+            <label for="Especialidad">Especialidad:</label><br>
+            <?php echo Form::dbSelect('especialidad', 'nombre_especialidad',  array('especialidades', 'find')); ?>
+                
+        </div>
+
+        <div class="input-field col s4">
+            <i class="material-icons prefix">edit</i>
+            <label for="año_de_bachillerato">Año de bachillerto:</label><br>
+                <?php $grado = array(NULL=>'Seleccione', '1'=>'1° Año','2'=>'2° Año','3'=>'3° Año'); echo Form::Select('secciones', $grado); ?>
+        </div>
+
+        <div class="input-field col s3">
+            <i class="material-icons prefix">event</i>
+            <label for="Año">Año:
+                <?= Form::text('anio'); ?></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 center-align">   
+            <?php echo Form::submit('Filtrar Datos',"class='btn green'"); ?>
+        </div>
+    </div>
+</form>

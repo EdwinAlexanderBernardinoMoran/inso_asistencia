@@ -16,7 +16,7 @@
         <ul id="alumnos" class="dropdown-content">
             <li><?php echo Html::Link('alumnos' , 'Listado') ?></li>
             <li><?php echo Html::Link('alumnos/create', 'Nuevo') ?></li>
-            <li><?php echo Html::LInk('matriculas/barra','Codido Barra')?></li>
+            <li><?php echo Html::LInk('matriculas/filtrado','Codido Barra')?></li>
         </ul>
         <ul id="maestros" class="dropdown-content">
             <li><?php echo Html::Link('profesores','Listado')?></li>
@@ -29,6 +29,7 @@
             <li><?php echo Html::Link('matriculas','Listado') ?></li>
             <li><?php echo Html::Link('matriculas/create','Agregar') ?></li>
             <li><?php echo Html::Link('matriculas/registros','Registros') ?></li>
+            <li><?php echo Html::Link('matriculas/comprobante','Compro Matriculas')?></li>
         </ul>
         <ul id="asistencias" class="dropdown-content">
             <li><?php echo Html::Link('asistencias','Asistencia')?></li>
@@ -49,7 +50,7 @@
                 <ul class="left hide-on-med-and-down">
                     <li><a href="#!" class="dropdown-trigger" data-target="alumnos">Alumnos</a></li>
                     <li><a href="#!" class="dropdown-trigger" data-target="maestros">Profesores</a></li>
-                    <li><a href="#!" class="dropdown-trigger" data-target="matriculas">Mastriculas</a></li>
+                    <li><a href="#!" class="dropdown-trigger" data-target="matriculas">Matriculas</a></li>
                     <li><a href="#!" class="dropdown-trigger" data-target="asistencias">Asistencia</a></li>
                     <li><a href="#!" class="dropdown-trigger" data-target="mantenimientos">Mantenimientos</a></li>    
             </div>
@@ -60,8 +61,6 @@
     <div class="container">
         <?php View::content() ?>
     </div>
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 

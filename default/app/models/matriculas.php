@@ -6,7 +6,7 @@
             $this->belongs_to('Alumnos', 'model: Alumnos', 'fk: id_alumnos');
             $this->belongs_to('Especialidades', 'model: Especialidades', 'fk: id_especialidad');
         }
-
+        
         public function before_create(){
 
             if ($matricula1=$this->find_first("conditions: id_alumnos=$this->id_alumnos and id_seccion=$this->id_seccion and anio=$this->anio")) {
@@ -32,36 +32,22 @@
             return $matricula;
         }
         
+        // public function filtros($Buscar_especialidad, $Buscar_seccion, $Buscar_anio){
+        //     $query = "SELECT matriculas.id, matriculas.id_seccion, matriculas.anio, alumnos.nie, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, especialidades.nombre_especialidad FROM matriculas, alumnos, especialidades WHERE nombre_especialidad LIKE '%{$Buscar_especialidad}%' AND id_seccion LIKE '%{$Buscar_seccion}%' AND anio LIKE '%{$Buscar_anio}%' AND matriculas.id_alumnos=alumnos.id AND matriculas.id_especialidad=especialidades.id";
+        //     $matricula = (new Matriculas)->find_all_by_sql($query);
+        //     return $matricula;
+        // }
 
-        public function seccion_anio($Buscar_seccion, $Buscar_anio){
+        // public function otros($Buscar_especialidad, $Buscar_anio){
+        //     $query = "SELECT matriculas.id, matriculas.id_seccion, matriculas.anio, alumnos.nie, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, especialidades.nombre_especialidad FROM matriculas, alumnos, especialidades WHERE nombre_especialidad LIKE '%$Buscar_especialidad%' AND anio LIKE '%$Buscar_anio%' AND matriculas.id_alumnos=alumnos.id AND matriculas.id_especialidad=especialidades.id";
+        //     $matricula = (new Matriculas)->find_all_by_sql($query);
+        //     return $matricula;
+        // }
 
-            $query =  "SELECT matriculas.id, matriculas.id_seccion, matriculas.anio, alumnos.nie, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, especialidades.nombre_especialidad FROM matriculas, alumnos, especialidades WHERE id_seccion LIKE '%{$Buscar_seccion}%' AND anio LIKE '%{$Buscar_anio}%' AND matriculas.id_alumnos=alumnos.id AND matriculas.id_especialidad=especialidades.id";
-            $matricula = (new Matriculas)->find_all_by_sql($query);
-            return $matricula;
-        }
-
-        public function especialidad_anio($Buscar_especialidad, $Buscar_anio){
-            $query = "SELECT matriculas.id, matriculas.id_seccion, matriculas.anio, alumnos.nie, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, especialidades.nombre_especialidad FROM matriculas, alumnos, especialidades WHERE nombre_especialidad LIKE '%{$Buscar_especialidad}%' AND anio LIKE '%{$Buscar_anio}%' AND matriculas.id_alumnos=alumnos.id AND matriculas.id_especialidad=especialidades.id";
-            $matricula = (new Matriculas)->find_all_by_sql($query);
-            return $matricula;
-        }
-
-        public function seccion_especialidad($Buscar_seccion, $Buscar_especialidad){
-            $query = "SELECT matriculas.id, matriculas.id_seccion, matriculas.anio, alumnos.nie, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, especialidades.nombre_especialidad FROM matriculas, alumnos, especialidades WHERE id_seccion LIKE '%{$Buscar_seccion}%' AND nombre_especialidad LIKE '%{$Buscar_especialidad}%' AND matriculas.id_alumnos=alumnos.id AND matriculas.id_especialidad=especialidades.id";
-            $matricula = (new Matriculas)->find_all_by_sql($query);
-            return $matricula;
-        }
-
-        public function filtros($Buscar_especialidad, $Buscar_seccion, $Buscar_anio){
-            $query = "SELECT matriculas.id, matriculas.id_seccion, matriculas.anio, alumnos.nie, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, especialidades.nombre_especialidad FROM matriculas, alumnos, especialidades WHERE nombre_especialidad LIKE '%{$Buscar_especialidad}%' AND id_seccion LIKE '%{$Buscar_seccion}%' AND anio LIKE '%{$Buscar_anio}%' AND matriculas.id_alumnos=alumnos.id AND matriculas.id_especialidad=especialidades.id";
-            $matricula = (new Matriculas)->find_all_by_sql($query);
-            return $matricula;
-        }
-
-        public function campos(){
-            $query = "SELECT matriculas.id, matriculas.id_seccion, matriculas.anio, alumnos.nie, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, especialidades.nombre_especialidad FROM matriculas, alumnos, especialidades WHERE matriculas.id_alumnos=alumnos.id AND matriculas.id_especialidad=especialidades.id";
-            $matricula = (new Matriculas)->find_all_by_sql($query);
-            return $matricula;
-        }
+        // public function campos(){
+        //     $query = "SELECT matriculas.id, matriculas.id_seccion, matriculas.anio, alumnos.nie, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, especialidades.nombre_especialidad FROM matriculas, alumnos, especialidades WHERE matriculas.id_alumnos=alumnos.id AND matriculas.id_especialidad=especialidades.id";
+        //     $matricula = (new Matriculas)->find_all_by_sql($query);
+        //     return $matricula;
+        // }
     }
 ?>
