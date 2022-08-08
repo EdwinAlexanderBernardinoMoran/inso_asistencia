@@ -5,6 +5,7 @@
         public function initialize(){
             $this->belongs_to('Alumnos', 'model: Alumnos', 'fk: id_alumnos');
             $this->belongs_to('Especialidades', 'model: Especialidades', 'fk: id_especialidad');
+            $this->belongs_to('Secciones', 'model: Secciones', 'fk: id_seccion');
         }
         
         public function before_create(){
@@ -43,6 +44,12 @@
         //     $matricula = (new Matriculas)->find_all_by_sql($query);
         //     return $matricula;
         // }
+
+        public function comprobante($nombres, $anio){
+            $query = "SELECT matriculas.id, matriculas.id_seccion, matriculas.anio, alumnos.nie, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, especialidades.nombre_especialidad FROM matriculas, alumnos, especialidades WHERE primer_nombre LIKE '%$nombres%' AND anio LIKE '%$anio%' AND matriculas.id_alumnos=alumnos.id AND matriculas.id_especialidad=especialidades.id";
+            $matricula = (new Matriculas)->find_all_by_sql($query);
+            return $matricula;
+        }
 
         // public function campos(){
         //     $query = "SELECT matriculas.id, matriculas.id_seccion, matriculas.anio, alumnos.nie, alumnos.primer_nombre, alumnos.segundo_nombre, alumnos.primer_apellido, alumnos.segundo_apellido, especialidades.nombre_especialidad FROM matriculas, alumnos, especialidades WHERE matriculas.id_alumnos=alumnos.id AND matriculas.id_especialidad=especialidades.id";

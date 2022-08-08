@@ -1,6 +1,7 @@
 <?php
 
 Load::models('matriculas');
+Load::models('alumnos');
 class MatriculasController extends AppController
 {
     public function index($page=1){
@@ -73,25 +74,57 @@ class MatriculasController extends AppController
         $this->titulo = "Filtrado de datos";
 
     }
-    // $this->matriculas = (new Matriculas())->filtros($Buscar_especialidad, $Buscar_seccion, $Buscar_anio);
 
-    // $listaAlumnos = $this->listaAlumnos = $alumno->find("conditions: id=$id");
+    public function codigobarras(){
+        View::template('reporte');
+        $this->titulo = "Codigo de barras";
 
-    public function codigobarras($Buscar_especialidad = NULL, $Buscar_seccion = NULL, $Buscar_anio = NULL){
 
-        if (Input::hasPost('especialidad') && Input::hasPost('secciones') && Input::hasPost('anio')){
+        if (Input::hasPost('especialidad') && Input::hasPost('secciones') && Input::hasPost('anio')) {
             $this->Buscar_especialidad = $Buscar_especialidad = Input::post('especialidad');
             $this->Buscar_seccion = $Buscar_seccion = Input::post('secciones');
             $this->Buscar_anio = $Buscar_anio = Input::post('anio');
             $this->matriculas = (new Matriculas())->find("conditions: id_especialidad=$Buscar_especialidad and id_seccion=$Buscar_seccion and anio=$Buscar_anio");
-        } else {
-            $this->matriculas = (new Matriculas())->find();
         }
-        View::template('reporte');
-        $this->titulo = "Codigo de barras";
 
         
-        // $this->matriculas = (new Matriculas())->find("conditions: id_especialidad=$Buscar_especialidad and id_seccion=$Buscar_seccion and anio=$Buscar_anio");
+    //    if (empty(Input::hasPost('especialidad'))){
+    //         // $this->Buscar_especialidad = $Buscar_especialidad = Input::post('especialidad');
+    //         $this->Buscar_seccion = $Buscar_seccion = Input::post('secciones');
+    //         $this->Buscar_anio = $Buscar_anio = Input::post('anio');
+    //         $this->matriculas = (new Matriculas())->find("conditions: id_seccion=$Buscar_seccion and anio=$Buscar_anio");
+    //     } else if(empty(Input::hasPost('secciones'))){
+
+    //         $this->Buscar_anio = $Buscar_anio = Input::post('anio');
+    //         $this->Buscar_especialidad = $Buscar_especialidad = Input::post('especialidad');
+    //         $this->matriculas = (new Matriculas())->find("conditions: anio=$Buscar_anio and id_especialidad=$Buscar_especialidad");
+            
+    //     } else {
+    //         $this->Buscar_especialidad = $Buscar_especialidad = Input::post('especialidad');
+    //         $this->Buscar_seccion = $Buscar_seccion = Input::post('secciones');
+    //         $this->Buscar_anio = $Buscar_anio = Input::post('anio');
+    //         $this->matriculas = (new Matriculas())->find("conditions: id_especialidad=$Buscar_especialidad and id_seccion=$Buscar_seccion and anio=$Buscar_anio");
+    //     }
+
+    }
+    
+
+    public function comprobante(){
+        View::template('principal');
+        $this->titulo = "Comprobante de matricula";
+
+        if (Input::hasPost('nombres') && Input::hasPost('anio')){
+            $this->Nombres = $Nombres = Input::post('nombres');
+            $this->Anio = $Anio = Input::post('anio');
+            $this->comprobante = (new Matriculas())->find("conditions: id_alumnos=$Nombres and id_alumnos=$Nombres and id_alumnos=$Nombres and id_alumnos=$Nombres and anio=$Anio");
+        } else {
+            $this->comprobante = (new Matriculas());
+        }
+    }
+
+    public function registros(){
+        View::template('principal');
+        $this->titulo = "Registros de estudiantes";
     }
 }
 ?>

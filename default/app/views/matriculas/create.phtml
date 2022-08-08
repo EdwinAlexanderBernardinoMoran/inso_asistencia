@@ -85,11 +85,8 @@
             <!-- Campo de nombre del grado -->
             <div class="input-field col s4">
                 <i class="material-icons prefix">local_library</i>
-                <label for="id_secciones">Año a matricular:</label><br>
-                <?php
-                    $aniomatricula = array('1'=>'1° Año', '2'=>'2° Año', '3'=>'3° Año');
-                    echo Form::select('matriculas.id_seccion',$aniomatricula);
-                ?>
+                <label for="id_profesor">Secciones:</label><br>
+                <?php echo Form::dbSelect('matriculas.id_seccion', 'nombre_seccion',  array('secciones', 'find'))?>
             </div>
 
             <!-- Campo de habilitado -->

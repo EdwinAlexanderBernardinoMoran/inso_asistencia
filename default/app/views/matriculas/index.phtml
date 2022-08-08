@@ -28,17 +28,7 @@
             <td><?= $item->getAlumnos()->nie?></td>
             <td><?= $item->getAlumnos()->primer_nombre?> <?= $item->getAlumnos()->segundo_nombre?> <?= $item->getAlumnos()->primer_apellido?> <?= $item->getAlumnos()->segundo_apellido?></td>
             <td><?= $item->getEspecialidades()->nombre_especialidad?></td>
-            <td><?php
-            if ($item->id_seccion == 1) {
-                echo '1° Año';
-            }
-            if ($item->id_seccion == 2) {
-                echo '2° Año';
-            } 
-            if ($item->id_seccion == 3) {
-                echo '3° Año';
-            }
-            ?></td>
+            <td><?= $item->getSecciones()->nombre_seccion?></td>
             <td>
                 <?php
                     if ($item->secciones == 1) {

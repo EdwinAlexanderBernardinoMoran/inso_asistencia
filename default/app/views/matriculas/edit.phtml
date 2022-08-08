@@ -17,7 +17,7 @@
             <td><h6><?= $item->getAlumnos()->nie?></h6></td>
             <td><h6><?= $item->getAlumnos()->primer_nombre ?> <?= $item->getAlumnos()->segundo_nombre ?> <?= $item->getAlumnos()->primer_apellido ?> <?= $item->getAlumnos()->segundo_apellido ?></h6></td>
             <td><h6><?= $item->getEspecialidades()->nombre_especialidad?></h6></td>
-            <td><h6><?= $item->getAlumnos()->anio_bachillerato?>° año</h6></td>
+            <td><h6><?= $item->getSecciones()->nombre_seccion?></h6></td>
         </tr>
     </table>
     <?php endforeach; ?>
@@ -76,11 +76,8 @@
             <!-- Campo de nombre del grado. -->
             <div class="input-field col s4">
                 <i class="material-icons prefix">local_library</i>
-                <label for="id_secciones">Año a matricular:</label><br>
-                <?php
-                    $aniomatricula = array('1'=>'1° Año', '2'=>'2° Año', '3'=>'3° Año');
-                    echo Form::select('matriculas.id_seccion',$aniomatricula);
-                ?>
+                <label for="id_seccion">Año a matricular:</label><br>
+                <?php echo Form::dbSelect('matriculas.id_seccion', 'nombre_seccion',  array('secciones', 'find'))?>
             </div>
 
             <!-- Campo de habilitado -->

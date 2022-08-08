@@ -1,8 +1,5 @@
-<!-- CODIGO FUNCIONANDO -->
 <?php echo View::content(); ?>
-<?php echo Tag::js('jsbarcode'); ?>
-<h4 class="center-align">FILTRAR DATOS PARA GENERAR CODIGO DE BARRA POR CADA ESTUDIANTE QUE YA SE ENCUENTRE MATRICULADO.</h4>
-
+<h4 class="center-align">DATOS DE ESTUDIANTES POR SECCIONES</h4>
 
 <form method="post" action="codigobarras" target="_blank">
     <div class="row">
@@ -15,8 +12,13 @@
 
         <div class="input-field col s4">
             <i class="material-icons prefix">edit</i>
-            <label for="Secciones">Secciones:</label><br>
-            <?php echo Form::dbSelect('secciones', 'nombre_seccion',  array('secciones', 'find')); ?>
+            <select name="secciones">
+                <option value="" disabled selected>Elija el año</option>
+                <option value="1">1º Año</option>
+                <option value="1">2º Año</option>
+                <option value="3">3º Año</option>
+              </select>
+              <label>Año:</label>
         </div>
 
         <div class="input-field col s3">
@@ -27,8 +29,7 @@
     </div>
     <div class="row">
         <div class="col s12 center-align">   
-            <button type="submit" class="btn green" name="buscar">Filtrar Datos</button>
-            
+            <?php echo Form::submit('Generar reporte',"class='btn green'"); ?>
         </div>
     </div>
 </form>

@@ -1,20 +1,16 @@
-<div class="container">
-    <div class="row">
-        <?php View::content() ?>
-        <h3 class="center-align">Actualizando Cargo De Profesores</h3>
-    </div>
-</div>
+<?php echo View::content()?>
 
-<?php echo Form::open(); ?>
-
+<h4 class="center-align"> CREANDO NUEVA SECCION</h4>
 <div class="container">
+
+<?php echo Form::open() ;?>
     <div class="section">
         <div class="row">
             <!-- NOMBRE CATEGORIA -->
             <div class="input-field col s12">
                 <i class="material-icons prefix">account_circle</i>
-                <label for="Cargo">Cargo:
-                    <?= Form::text('cargos.nombre_cargo'); ?></label>
+                <label for="Cargo">Seccion:
+                    <?= Form::text('secciones.nombre_seccion'); ?></label>
             </div>
         </div>
     </div>
@@ -23,11 +19,11 @@
         <div class="row">
             <!-- HABILITADO -->
             <div class="input-field col s12">
-                <i class="material-icons prefix">content_copy</i>
+                <i class="material-icons prefix">account_circle</i>
                 <label for="habilitado">Habilitado:</label><br>
                     <?php
                     $arreglo = array('Inhabilitado', 'Habilitado');
-                    echo Form::select('cargos.habilitado', $arreglo);
+                    echo Form::select('secciones.habilitado', $arreglo);
                     ?>
             </div>
         </div>
@@ -36,11 +32,10 @@
     <div class="section">
         <div class="row">
             <div class="input-field col s12 center-align">
-            <?php echo Form::hidden('cargos.id'); ?>
-            <?php echo Form::submit('Actualizar',"class='btn green'"); ?>
-            </div> 
+                <?php echo Form::submit('Enviar',"class='btn green'"); ?>
+                <?php echo Html::linkAction('index', 'Regresar', "class='btn green darken-1'") ?>
+            </div>
         </div>
     </div>
+    <?php echo Form::close(); ?>
 </div>
-
-<?php echo Form::close(); ?>

@@ -5,47 +5,37 @@
 <h4>IMPRESION DE CODIGO DE BARRA POR CADA ESTUDIANTE.</h4>
 
 <table class="centered striped responsive-table">
-        <tr>
-            <thead class="blue lighten-4 ">
-                <th>ID</th>
-                <th>NIE</th>
-                <th>ALUMNO/A</th>
-                <th>ESPECIALIDAD</th>
-                <th>GRADO</th>
-                <th>AÑO</th>
-                <th>CODIGO</th>
-            </thead>
-
-            <?php
-                $arraycodigos = array();
-                foreach ($matriculas as $item) :?>
-                <?php $arraycodigos[] = (String)$item->getAlumnos()->nie; ?>
-        <tr>
+    <thead class="blue lighten-4 ">
+        <th>ID</th>
+        <th>NIE</th>
+        <th>ALUMNO/A</th>
+        <th>ESPECIALIDAD</th>
+        <th>GRADO</th>
+        <th>AÑO</th>
+        <th>CODIGO</th> 
+    </thead>
+    <?php
+        if (isset($matriculas)) {
+            $arraycodigos = array();
+            foreach ($matriculas as $item) :?>
+            <?php $arraycodigos[] = (String)$item->getAlumnos()->nie; ?>
+    <tr>
         <td><?= $item->id?></td>
-            <td><?= $item->getAlumnos()->nie?></td>
-            <td><?= $item->getAlumnos()->primer_nombre ?> <?= $item->getAlumnos()->segundo_nombre ?> <?= $item->getAlumnos()->primer_apellido ?> <?= $item->getAlumnos()->segundo_apellido ?></td>
-            <td ><?= $item->getEspecialidades()->nombre_especialidad?></td>
-            <td><?php
-                if ($item->id_seccion == 1) {
-                    echo '1° Año';
-                }
-                if ($item->id_seccion == 2) {
-                    echo '2° Año';
-                } 
-                if ($item->id_seccion == 3) {
-                    echo '3° Año';
-                }
-            ?></td>
-            </td>
-            <td><?= $item->anio?></td>
-            <td>
-                <svg id="<?php echo "barcode".$item->getAlumnos()->nie?>"></svg>
-            </td>
-            
-        </tr>
-<?php
-    endforeach;
-?>
-</tr>
+        <td><?= $item->getAlumnos()->nie?></td>
+        <td><?= $item->getAlumnos()->primer_nombre ?> <?= $item->getAlumnos()->segundo_nombre ?> <?= $item->getAlumnos()->primer_apellido ?> <?= $item->getAlumnos()->segundo_apellido ?></td>
+        <td ><?= $item->getEspecialidades()->nombre_especialidad?></td>
+        <td><?= $item->getSecciones()->nombre_seccion?></td>
+        </td>
+        <td><?= $item->anio?></td>
+        <td>
+            <svg id="<?php echo "barcode".$item->getAlumnos()->nie?>"></svg>
+        </td>
+    <?php endforeach; ?>
+    </tr>
     </table>
+    <?php
+        } else {
+            echo "<h3>Lo sentimos necesitas filtrar por los tres campos</h3>";
+        }
+    ?>
 </div>

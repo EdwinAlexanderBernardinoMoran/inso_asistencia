@@ -1,0 +1,37 @@
+<?php echo View::content()?>
+
+<h4 class="center">REGISTRO DE SECCIONES</h4>
+
+<?php echo Html::linkAction('create', 'Nueva Seccion +', "class='btn green right'")  ?>
+
+<table class="centered table striped">
+    <tr>
+        <thead class="blue lighten-4 ">
+            <th>ID</th>
+            <th>NOMBRE SECCION</th>
+            <th>HABILITADO</th>
+            <th>ACCIONES</th>
+        </thead>
+
+        <?php foreach ($listaSecciones->items as $item) :  ?>
+            <tr>
+                <td><?php echo $item->id ?></td>
+                <td><?php echo $item->nombre_seccion ?></td>
+                <td>
+                <?php 
+                        if ($item->habilitado == 1) {
+                            echo "Habilitado";
+                        }
+                        if ($item->habilitado == 0) {
+                            echo "Inhabilitado";
+                        }
+                    ?>
+                </td>
+                <td>
+                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                    <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
+                </td>
+            </tr>
+        <?php endforeach ?>
+    </tr>
+</table>
