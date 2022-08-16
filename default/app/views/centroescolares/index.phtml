@@ -1,18 +1,20 @@
 <?php echo View::content() ?>
-<h3 class="center"><b>Lista de centros escolares</b></h3>
+<h4 class="center">LISTA DE CENTROS ESCOLARES</h4>
 
-<?php echo Html::linkAction('create', 'Nuevo centro escolar +', "class='btn green right'")  ?>
+<?php echo Html::linkAction('create', 'Nuevo centro escolar +', "class='btn green accent-4'")  ?>
 
+<br>
+<hr>
 
-<table class="centered table striped">
+<table class="responsive-table centered table striped">
 
     <tr>
             <thead class="blue lighten-4">
-                <th>Id</th>
-                <th>Centro Escolar</th>
-                <th>Codigo Infraestructura</th>
-                <th>Activo</th>
-                <th>Acciones</th>
+                <th>id</th>
+                <th>CENTRO ESCOLAR</th>
+                <th>CODIGO INFRAESTRUCTURA</th>
+                <th>ACTIVO</th>
+                <th>ACCIONES</th>
             </thead>
 
         <?php foreach ($ListaCentroescolares->items as $item) : ?>
@@ -31,7 +33,7 @@
                     ?>
                 </td>
                 <td>
-                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn blue darken-3"') ?>
                     <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
                 </td>
             </tr>

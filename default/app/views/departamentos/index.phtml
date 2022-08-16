@@ -1,18 +1,18 @@
 <?php echo View::content() ?>
-<h3 class="center"><b>Departamentos</b></h3>
+<h4 class="center-align">DEPARTAMENTOS.</h4>
 
+<?php echo Html::linkAction('create', 'Nuevo departamento +', "class='btn green accent-4'") ?>
 
-<?php echo Html::linkAction('create', 'Nuevo departamento +', "class='btn green right'")  ?>
+<br>
+<hr>
 
-<table class="centered">
-    <tr>
-        <thead class="blue lighten-4  ">
-            <th>Id</th>
-            <th>Nombre departamento</th>
-            <th>Activo</th>
-            <th>Acciones</th>
-
-        </thead>
+<table class="responsive-table centered table striped">
+    <thead class="blue lighten-4">
+        <th>ID</th>
+        <th>NOMBRE DEPARTAMENTO</th>
+        <th>ACTIVO</th>
+        <th>ACCIONES</th>
+    </thead>
 
         <?php foreach ($ListaDepartamentos->items as $item) : ?>
     <tr>
@@ -31,7 +31,7 @@
 
         <div class="botones">
             <td>
-                <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn blue darken-3"') ?>
                 <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
             </td>
         </div>

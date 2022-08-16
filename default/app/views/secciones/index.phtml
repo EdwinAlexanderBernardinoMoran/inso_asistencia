@@ -1,12 +1,15 @@
 <?php echo View::content()?>
 
-<h4 class="center">REGISTRO DE SECCIONES</h4>
+<h4 class="center-align">REGISTRO DE SECCIONES</h4>
 
-<?php echo Html::linkAction('create', 'Nueva Seccion +', "class='btn green right'")  ?>
+<?php echo Html::linkAction('create', 'Nueva Seccion +', "class='btn green accent-4'")  ?>
 
-<table class="centered table striped">
+<br>
+<hr>
+
+<table class="responsive-table centered table striped">
     <tr>
-        <thead class="blue lighten-4 ">
+        <thead class="blue lighten-4">
             <th>ID</th>
             <th>NOMBRE SECCION</th>
             <th>HABILITADO</th>
@@ -28,7 +31,7 @@
                     ?>
                 </td>
                 <td>
-                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn blue darken-3"') ?>
                     <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
                 </td>
             </tr>

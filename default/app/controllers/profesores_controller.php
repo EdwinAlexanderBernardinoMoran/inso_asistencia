@@ -61,6 +61,17 @@ class ProfesoresController extends AppController
 
         return Redirect::to();
     }
+
+    // Pdf_All
+
+    public function pdf_All(){
+        View::template('principal');
+        $this->titulo = "Listado de profesores";
+
+        $profesor = new Profesores();
+        $listaProfesores = $this->listaProfesores = $profesor->find();
+
+    }
 }
 
 

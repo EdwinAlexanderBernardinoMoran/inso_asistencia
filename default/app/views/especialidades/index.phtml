@@ -1,11 +1,17 @@
-    <?php echo View::content(); ?>
-        <h3 class="center">LISTADO DE ESPECIALIDADES</h3>
-    <table class="table striped">
-        <thead>
-            <th>id</th>
-            <th>Nombre Especialidad</th>
-            <th>Activo</th>
-            <th>Acciones</th>
+<?php echo View::content(); ?>
+<h4 class="center-align">LISTADO DE ESPECIALIDADES</h4>
+
+<?php echo Html::linkAction('create','Nueva Especialidad +', "class='btn green accent-4'") ?>
+
+<br>
+<hr>
+
+    <table class="responsive-table centered table striped">
+        <thead class="blue lighten-4">
+            <th>ID</th>
+            <th>NOMBRE ESPECIALIDAD</th>
+            <th>ATIVO</th>
+            <th>ACCIONES</th>
         </thead>
         <?php foreach($listaEspecialidades->items as $item) :?>
             <tr>
@@ -22,14 +28,11 @@
                     ?>
                 </td>
                 <td>
-                    <?php echo Html::linkAction('edit/'.$item->id,'Editar',"class='btn info'")  ?>
+                    <?php echo Html::linkAction('edit/'.$item->id,'Editar',"class='btn blue darken-3'")  ?>
                     <?php echo Html::linkAction('del/'.$item->id,'Eliminar', "class='btn red'") ?><br/>
                 </td>
             </tr>
         <?php endforeach; ?>
-        <tr>
-            <td><?php echo Html::linkAction('create','Nueva Especialidad', "class='btn green'") ?></td>
-        </tr>
     </table>
     <?php if($listaEspecialidades->prev) echo Html::linkAction("index/$listaEspecialidades->prev", '<< Anterior|') ?>
     <?php if($listaEspecialidades->next) echo Html::linkAction("index/$listaEspecialidades->next/", 'Próximo >>') ?>

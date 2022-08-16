@@ -1,12 +1,14 @@
 <?php echo View::content() ?>
 
-<h3 class="center">
-    Especialidad de profesores
-</h3>
-<?php echo Html::linkAction("create", 'Agregar Categoria +', "class='btn'") ?>
+<h4 class="center">
+    ESPECIALIDAD DE PROFESORES
+</h4>
+<?php echo Html::linkAction("create", 'Agregar Categoria +', "class='btn green accent-4'") ?>
+<br>
+<br>
 
 <table class="responsive-table centered table striped">
-    <thead class="light-blue lighten-1">
+    <thead class="blue lighten-4">
         <th>ID</th>
         <th>NOMBRE CATEGORIA</th>
         <th>HABILITADO</th>
@@ -27,7 +29,7 @@
                     ?>
                 </td>
                 <td>
-                    <?php echo Html::linkAction('edit/'.$item->id,'Editar',"class='btn info'")  ?>
+                    <?php echo Html::linkAction('edit/'.$item->id,'Editar',"class='btn blue darken-3'")  ?>
                     <?php echo Html::linkAction('del/'.$item->id,'Eliminar', "class='btn red'") ?><br/>
                 </td>
             </tr>

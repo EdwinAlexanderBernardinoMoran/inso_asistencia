@@ -1,10 +1,11 @@
 <?php echo View::content() ?>
 
 <h4 class="center-align">IDENTIFICACION DEL ESTUDIANTE.</h4>
-<?php echo Html::linkAction("create", 'Agregar Alumno +', "class='btn'") ?>
-
+<?php echo Html::linkAction("create", 'Agregar Alumno +', "class='btn green accent-4'") ?>
+<br>
+<hr>
 <table class="responsive-table centered table striped">
-    <thead class="light-blue lighten-1">
+    <thead class="blue lighten-4">
         <th>ID</th>
         <th>NOMBRES</th>
         <th>APELLIDOS</th>
@@ -20,9 +21,9 @@
             <td><?= $item->nie ?></td>
             <td><?= $item->getEspecialidades()->nombre_especialidad?></td>
             <td>
-                <?php echo Html::linkAction("edit/$item->id/", 'Editar', 'class="btn "') ?>
-                <?php echo Html::linkAction("pdf/$item->id/", 'Ficha', 'class="btn light-green accent-4"') ?>
+                <?php echo Html::linkAction("edit/$item->id/", 'Editar', 'class="btn blue darken-3"') ?>
                 <?php echo Html::linkAction("del/$item->id/", 'Borrar', 'class="btn red"') ?>
+                <?php echo Html::linkAction("pdf/$item->id/", 'Ficha', 'class="btn light-green accent-3" target="_blank"') ?>
             </td>
         </tr>
 

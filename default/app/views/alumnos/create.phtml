@@ -1,8 +1,8 @@
 <div class="row">
     <?php View::content() ?>
         <!-- <h3 class="center-align">Ministerio De Educacion</h3> -->
-        <h3 class="center-align">Instituto Nacional De Sonzacate</h3>
-        <h4 class="center-align">Ficha De Matricula <?php echo date('Y'); ?></h4>
+        <h4 class="center-align">INSTITUTO NACIONAL DE SONZACATE</h4>
+        <h5 class="center-align">FICHA DE MATRICULA <?php echo date('Y'); ?></h5>
 </div>
 
 <div class="row">
@@ -97,7 +97,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">local_library</i>
                     <label for="año_de_bachillerato">Año de bachillerto:</label><br>
-                        <?php $grado = array('1'=>'1','2'=>'2','3'=>'3'); echo Form::Select('alumnos.anio_bachillerato', $grado, 'SELECCIONA'); ?>
+                    <?php echo Form::dbSelect('alumnos.anio_bachillerato', 'nombre_seccion',  array('secciones', 'find')); ?>
                 </div>
                 <!-- CAMPOS DE NIE -->
                 <div class="input-field col s6">

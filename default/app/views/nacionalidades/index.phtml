@@ -1,7 +1,13 @@
 <?php echo View::content() ?>
-<h3 class="center-align"><b>Nacionalidades</b></h3>
-<table class="table striped">
-    <thead>
+<h4 class="center-align">NACIONALIDADES</h4>
+
+<?php echo Html::linkAction('create','Nueva Nacionalidad', "class='btn green accent-4'") ?>
+
+<br>
+<hr>
+
+<table class="responsive-table centered table striped">
+    <thead class="blue lighten-4">
         <th>ID</th>
         <th>NACIONALIDAD</th>
         <th>ACTIVO</th>
@@ -22,14 +28,9 @@
             ?>
             </td>
            <td>
-               <?php echo Html::linkAction('edit/'.$item->id, 'Editar', "class='btn'" ) ?>
+               <?php echo Html::linkAction('edit/'.$item->id, 'Editar', "class='btn blue darken-3'" ) ?>
                <?php echo Html::linkAction("del/$item->id/", 'Borrar', 'class="btn red"') ?>
            </td>
         </tr>
     <?php endforeach ?>
-    <tr>
-        <td><?php echo Html::linkAction('create','Nueva Nacionalidad', "class='btn green'") ?></td>
-    </tr>
-
-
 </table>

@@ -20,9 +20,15 @@ class MatriculasController extends AppController
         if (Input::hasPost('buscar')) {
             $buscar = Input::post('buscar');
             $this->matricula = (new Matriculas())->buscar($buscar);
+            $matricula = new Matriculas();
+        // if ($matricula->find_first("conditions: id_alumnos=$this->id_alumnos and id_seccion=$this->id_seccion")) {
+        //     Flash::valid("<h4>Este alumnos debe matricularse en: </h4>");
+        // }
         } else {
             $this->matricula = (new Matriculas());
         }
+
+        
 
         View::template('principal');
         $this->titulo = "Matriculas";

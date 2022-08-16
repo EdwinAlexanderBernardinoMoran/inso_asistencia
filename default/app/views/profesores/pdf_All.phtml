@@ -1,0 +1,70 @@
+<?php echo View::content() ?>
+
+<?php
+    ob_end_clean();
+    require_once ('fpdf/fpdf.php');
+    $pdf = new FPDF();
+    $pdf->AddPage('vertical');
+    $pdf->Ln(5);
+    $pdf->Image("img/insoimg.png", 12, 10, 28);
+    $pdf->SetFont('Arial','B',14);
+    $pdf->Cell(25);
+    $pdf->Cell(240, 7, "MINISTERIO DE EDUCACION", 0, 1, "C");
+    $pdf->Cell(285, 7, "INSTITUTO NACIONAL DE SONZACATE", 0, 1, "C");
+    $pdf->Cell(285, 7, "(I. N. S. O)", 0, 1, "C");
+    $pdf->SetTitle('Listado de Profesores');
+    $pdf->SetFont("Arial", "", 13);
+    $pdf->Cell(285, 5, "Listado de Profesores ".date('Y'), 0, 1, "C");        
+    $pdf->Ln(4);
+
+    $pdf->SetFont("Arial", "B", 8.5);
+    $pdf->Cell(7, 6, "ID", 1, 0, "C");
+    $pdf->SetFont("Arial", "B", 8.5);
+    $pdf->Cell(40, 6, "NOMBRES", 1, 0, "C");
+    $pdf->SetFont("Arial", "B", 8.5);
+    $pdf->Cell(30, 6, "APELLIDOS", 1, 0, "C");
+    $pdf->SetFont("Arial", "B", 8.5);
+    $pdf->Cell(90, 6, "DIRECCION", 1, 1, "C");
+    // $pdf->SetFont("Arial", "B", 8.5);
+    // $pdf->Cell(15, 6, "DUI", 1, 0, "C");
+    // $pdf->SetFont("Arial", "B", 8.5);
+    // $pdf->Cell(15, 6, "NIP", 1, 0, "C");
+    // $pdf->SetFont("Arial", "B", 8.5);
+    // $pdf->Cell(15, 6, "NIT", 1, 0, "C");
+    // $pdf->SetFont("Arial", "B", 8.5);
+    // $pdf->Cell(15, 6, "NUP", 1, 0, "C");
+    // $pdf->SetFont("Arial", "B", 8.5);
+    // $pdf->Cell(20, 6, "CARRERA", 1, 0, "C");
+    // $pdf->SetFont("Arial", "B", 8.5);
+    // $pdf->Cell(20, 6, "CATEGORIA", 1, 0, "C");
+    // $pdf->SetFont("Arial", "B", 8.5);
+    // $pdf->Cell(20, 6, "CARGO", 1, 0, "C");
+    // $pdf->SetFont("Arial", "B", 8.5);
+    // $pdf->Cell(15, 6, "PARTIDA", 1, 0, "C");
+    // $pdf->SetFont("Arial", "B", 8.5);
+    // $pdf->Cell(19, 6, "SUBNIVEL", 1, 0, "C");
+    // $pdf->SetFont("Arial", "B", 8.5);
+    // $pdf->Cell(20, 6, "FECHA", 1, 0, "C");
+    // $pdf->SetFont("Arial", "B", 8.5);
+    // $pdf->Cell(20, 6, "HABILITADO", 1, 1, "C");
+
+    foreach ($listaProfesores as $item){
+        $pdf->SetFont("Arial", "", 8.5);
+        $pdf->Cell(7, 10, utf8_decode($item->id), 1, 0, "C");
+
+        $pdf->SetFont("Arial", "", 8.5);
+        $pdf->Cell(40, 10, utf8_decode($item->primer_nombre_profesor.' '.$item->segundo_nombre_profesor), 1, 0, "C");
+
+        $pdf->SetFont("Arial", "", 8.5);
+        $pdf->Cell(30, 10, utf8_decode($item->primer_apellido_profesor.' '.$item->segundo_apellido_profesor), 1, 0, "C");
+
+        $pdf->Cell(90, 10, utf8_decode($item->direccion), 1, 1, "C");
+
+    }
+    // $pdf->SetFont("Arial", "B", 12);
+    // $pdf->Cell(60, 5, utf8_decode("Identificación del estudiante:"), 0, 1, "C");
+    // $pdf->SetFont("Arial", "", 10);
+    // $pdf->Ln(5);
+
+    $pdf->Output('','Listado de Profesores.pdf',true);
+    ob_end_flush();

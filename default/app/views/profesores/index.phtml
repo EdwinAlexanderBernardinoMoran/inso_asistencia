@@ -1,7 +1,10 @@
 <?php echo View::content() ?>
-<h3 class="center">Registro de profesores</h3>
+<h3 class="center">REGISTRO DE PROFESORES</h3>
 
-<?php echo Html::linkAction('create', 'Nuevo Profesor +', "class='btn green right'")  ?>
+<?php echo Html::linkAction('create', 'Nuevo Profesor +', "class='btn green accent-4'")  ?>
+<?php echo Html::linkAction('pdf_All', 'Generar PDF', "class='btn light-green accent-3  right' target='_blank'")  ?>
+<br>
+<hr>
 
 <table class="centered table striped">
     <tr>
@@ -35,7 +38,7 @@
                     ?>
                 </td>
                 <td>
-                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn"') ?>
+                    <?php echo Html::linkAction("edit/$item->id/", "Editar", 'class="btn blue darken-3"') ?>
                     <?php echo Html::linkAction("del/$item->id/", "Borrar", 'class="btn red"') ?>
                         </td>
             </tr>

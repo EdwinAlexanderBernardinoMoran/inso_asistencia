@@ -10,61 +10,91 @@
     <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
     <title><?php echo $titulo ?></title>
 </head>
 
 <body>
+    <div class="banner">
+        <div>
+            <div class="navbar-fixed">
+                <ul id="alumnos" class="dropdown-content">
+                    <li><?php echo Html::Link('alumnos' , 'Listado') ?></li>
+                    <li><?php echo Html::Link('alumnos/create', 'Nuevo') ?></li>
+                    <li><?php echo Html::LInk('matriculas/filtrado','Codido Barra')?></li>
+                </ul>
+                <ul id="maestros" class="dropdown-content">
+                    <li><?php echo Html::Link('profesores','Listado')?></li>
+                    <li><?php echo Html::Link('profesores/create','Nuevo')?></li>
+                    <li><?php echo Html::Link('cargos', 'Cargos Profesores') ?></li>
+                    <li><?php echo Html::Link('categorias', 'Categorias Profesores')?></li>
+                    <li><?php echo Html::Link('carreras','Carrera Profesores') ?></li>
+                </ul>
+                <ul id="matriculas" class="dropdown-content">
+                    <li><?php echo Html::Link('matriculas','Listado') ?></li>
+                    <li><?php echo Html::Link('matriculas/create','Agregar') ?></li>
+                    <li><?php echo Html::Link('matriculas/registros','Registros') ?></li>
+                    <li><?php echo Html::Link('matriculas/comprobante','Compro Matriculas')?></li>
+                </ul>
+                <ul id="asistencias" class="dropdown-content">
+                    <li><?php echo Html::Link('asistencias','Asistencia')?></li>
+                </ul>
+                <ul id="mantenimientos" class="dropdown-content">
+                    <li><?php echo Html::Link('departamentos','Departamentos')?></li>
+                    <li><?php echo Html::Link('nacionalidades', 'Nacionalidades') ?></li>
+                    <li><?php echo Html::Link('centroescolares', 'Centros Escolares') ?></li>
+                    <li><?php echo Html::Link('zonas', 'Zonas') ?></li>
+                    <li><?php echo Html::Link('cantones', 'Cantones') ?></li>
+                    <li><?php echo Html::Link('caserios', 'Caserios') ?></li>
+                    <li><?php echo Html::Link('municipios', 'Municipios') ?></li>
+                    <li><?php echo Html::Link('especialidades', 'Especialidades') ?></li>
+                    <li><?php echo Html::Link('secciones', 'Secciones') ?></li>
 
-    <div class="navbar-fixed">
-        <ul id="alumnos" class="dropdown-content">
-            <li><?php echo Html::Link('alumnos' , 'Listado') ?></li>
-            <li><?php echo Html::Link('alumnos/create', 'Nuevo') ?></li>
-            <li><?php echo Html::LInk('matriculas/filtrado','Codido Barra')?></li>
-        </ul>
-        <ul id="maestros" class="dropdown-content">
-            <li><?php echo Html::Link('profesores','Listado')?></li>
-            <li><?php echo Html::Link('profesores/create','Nuevo')?></li>
-            <li><?php echo Html::Link('cargos', 'Cargos Profesores') ?></li>
-            <li><?php echo Html::Link('categorias', 'Categorias Profesores')?></li>
-            <li><?php echo Html::Link('carreras','Carrera Profesores') ?></li>
-        </ul>
-        <ul id="matriculas" class="dropdown-content">
-            <li><?php echo Html::Link('matriculas','Listado') ?></li>
-            <li><?php echo Html::Link('matriculas/create','Agregar') ?></li>
-            <li><?php echo Html::Link('matriculas/registros','Registros') ?></li>
-            <li><?php echo Html::Link('matriculas/comprobante','Compro Matriculas')?></li>
-        </ul>
-        <ul id="asistencias" class="dropdown-content">
-            <li><?php echo Html::Link('asistencias','Asistencia')?></li>
-        </ul>
-        <ul id="mantenimientos" class="dropdown-content">
-            <li><?php echo Html::Link('departamentos','Departamentos')?></li>
-            <li><?php echo Html::Link('nacionalidades', 'Nacionalidades') ?></li>
-            <li><?php echo Html::Link('centroescolares', 'Centros Escolares') ?></li>
-            <li><?php echo Html::Link('zonas', 'Zonas') ?></li>
-            <li><?php echo Html::Link('cantones', 'Cantones') ?></li>
-            <li><?php echo Html::Link('caserios', 'Caserios') ?></li>
-            <li><?php echo Html::Link('municipios', 'Municipios') ?></li>
-            <li><?php echo Html::Link('especialidades', 'Especialidades') ?></li>
-            <li><?php echo Html::Link('secciones', 'Secciones') ?></li>
-
-        </ul>
-        <nav class="navbar teal">
-            <div class="container">
-                <ul class="left hide-on-med-and-down">
-                    <li><a href="#!" class="dropdown-trigger" data-target="alumnos">Alumnos</a></li>
-                    <li><a href="#!" class="dropdown-trigger" data-target="maestros">Profesores</a></li>
-                    <li><a href="#!" class="dropdown-trigger" data-target="matriculas">Matriculas</a></li>
-                    <li><a href="#!" class="dropdown-trigger" data-target="asistencias">Asistencia</a></li>
-                    <li><a href="#!" class="dropdown-trigger" data-target="mantenimientos">Mantenimientos</a></li>    
+                </ul>
+                <nav class="navbar blue darken-3">
+                    <div class="nav-wrapper container">
+                    <a href="#!" class="brand-logo right">
+                        <img src="img/Logo_inso.jpg" alt="" height="70px" class="circle z-depth-5">
+                    </a>
+                        <ul class="left hide-on-med-and-down">
+                            <li>
+                                <a href="#!" class="dropdown-trigger" data-target="alumnos">Alumnos
+                                    <i class="material-icons right">arrow_drop_down</i>
+                                </a>     
+                            </li>
+                            <li>
+                                <a href="#!" class="dropdown-trigger" data-target="maestros">Profesores
+                                    <i class="material-icons right">arrow_drop_down</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="dropdown-trigger" data-target="matriculas">Matriculas
+                                    <i class="material-icons right">arrow_drop_down</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="dropdown-trigger" data-target="asistencias">Asistencia
+                                <i class="material-icons right">arrow_drop_down</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!" class="dropdown-trigger" data-target="mantenimientos">Mantenimientos
+                                <i class="material-icons right">arrow_drop_down</i>
+                                </a>
+                            </li> 
+                        </ul>   
+                    </div>
+                </nav>
             </div>
-        </nav>
+
+            <div class="container">
+                <?php View::content() ?>
+            </div>
+        </div>
     </div>
 
 
-    <div class="container">
-        <?php View::content() ?>
-    </div>
+    
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="javascript/jquery-3.6.0.min.js"></script>
