@@ -13,7 +13,7 @@
         <th>ESPECIALIDAD</th>
         <th>ACCIONES</th>
     </thead>
-    <?php foreach ($listaAlumnos as $item) : ?>
+    <?php foreach ($listaAlumnos->items as $item) : ?>
         <tr>
             <td><?= $item->id ?></td>
             <td><?= $item->primer_nombre ?> <?= $item->segundo_nombre ?></td>
@@ -29,3 +29,6 @@
 
     <?php endforeach; ?>
 </table>
+
+<?php if($listaAlumnos->prev) echo Html::linkAction("index/$listaAlumnos->prev", '<< Anterior|', 'class="btn blue darken-3"') ?>
+<?php if($listaAlumnos->next) echo Html::linkAction("index/$listaAlumnos->next/", 'Próximo >>', 'class="btn red right"') ?>

@@ -1,12 +1,30 @@
 <?php echo View::content()?>
 
-<h3 class="center">
-    LISTA DE MATRICULAS.
-</h3>
+<h4 class="center-align">LISTA MATRICULAS</h4>
 
 <?php echo Html::linkAction("create", 'Crear matricula +', "class='btn green accent-4'") ?>
 <br>
-<hr>
+
+<div class="row">
+<form method="post">
+        <div class="col s5">
+        <label for="Especialidad">Especialidad:</label><br>
+            <?php echo Form::dbSelect('especialidad', 'nombre_especialidad',  array('especialidades', 'find')); ?>
+        </div>
+        <div class="col s3">
+            <label for="Secciones">Secciones:</label><br>
+            <?php echo Form::dbSelect('secciones', 'nombre_seccion',  array('secciones', 'find')); ?>
+        </div>
+        <div class="col s3">
+            <?php echo Form::text('anio', 'required placeholder="Escribe el año"')?>
+            <!-- <input type="text" name="anio" placeholder="BUSQUEDA POR AÑO" required> -->
+        </div>
+        <div class="col s1">
+            <button type="submit" class="btn green accent-4" name="Buscar">Buscar</button>
+        </div>
+    </form>
+
+    </div>
 <table class="responsive-table centered table striped">
     <thead class="blue lighten-4">
         <th>ID</th>
@@ -22,7 +40,8 @@
         <th>HABILITADO</th>
         <th>ACCIONES</th>
     </thead>
-    <?php foreach ($listaMatriculas->items as $item) : ?>
+    <?php 
+    foreach ($listaMatriculas as $item) : ?>
         <tr>
             <td><?= $item->id ?></td>
             <td><?= $item->id_alumnos ?></td>
@@ -83,3 +102,4 @@
 
     <?php endforeach; ?>
 </table>
+

@@ -12,6 +12,15 @@ class DepartamentosController extends AppController
         $this->ListaDepartamentos = $departamento->getDepartamentos($page);
     }
 
+    public function before_delete(){
+
+        if($this->id === 21){
+            Flash::error("No se puede borrar Departamento");
+            return 'cancel';
+            }
+            
+    }
+
     //create
 
     public function create()

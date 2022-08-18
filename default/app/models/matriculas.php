@@ -19,12 +19,12 @@
                 Flash::warning("El alumno no puede matricularse dos veces en el mismo año");
                 return 'cancel';
             }
-
             
         }
 
-        public function getMatriculas($page, $ppage=20){
+        public function getMatriculas($page, $ppage=10){
             return $this->paginate("page: $page", "per_page: $ppage", 'order: id desc');
+
         }
 
         public function buscar($buscar){

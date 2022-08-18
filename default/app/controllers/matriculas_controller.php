@@ -4,11 +4,18 @@ Load::models('matriculas');
 Load::models('alumnos');
 class MatriculasController extends AppController
 {
-    public function index($page=1){
+    public function index(){
         View::template('principal');
         $this->titulo = "Matriculas";
         $matricula = new Matriculas();
-        $this->listaMatriculas = $matricula->getMatriculas($page);
+        $this->listaMatriculas = $matricula->find();
+
+        if (Input::hasPost('especialidad') && Input::hasPost('secciones') && Input::hasPost('anio')) {
+            $this->Buscar_especialidad = $Buscar_especialidad = Input::post('especialidad');
+            $this->Buscar_seccion = $Buscar_seccion = Input::post('secciones');
+            $this->Buscar_anio = $Buscar_anio = Input::post('anio');
+            $this->listaMatriculas = (new Matriculas())->find("conditions: id_especialidad=$Buscar_especialidad and id_seccion=$Buscar_seccion and anio=$Buscar_anio");
+        }
 
     }
 

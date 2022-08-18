@@ -11,7 +11,7 @@ class AlumnosController extends AppController{
         View::template('principal');
         $this->titulo = "Alumnos";
         $alumno = new Alumnos();
-        $this->listaAlumnos = (new Alumnos)->find();
+        $this->listaAlumnos = (new Alumnos)->getAlumnos($page);
     }
 
     
