@@ -126,13 +126,18 @@ class MatriculasController extends AppController
         View::template('principal');
         $this->titulo = "Comprobante de matricula";
 
-        if (Input::hasPost('nombres') && Input::hasPost('anio')){
-            $this->Nombres = $Nombres = Input::post('nombres');
-            $this->Anio = $Anio = Input::post('anio');
-            $this->comprobante = (new Matriculas())->find("conditions: id_alumnos=$Nombres and id_alumnos=$Nombres and id_alumnos=$Nombres and id_alumnos=$Nombres and anio=$Anio");
+        if (Input::hasPost('primer_nombre') && Input::hasPost('segundo_nombre') && Input::hasPost('primer_apellido') && Input::hasPost('segundo_apellido') && Input::hasPost('seccion')){
+            $this->primer_nombre = $primer_nombre = Input::post('primer_nombre');
+            $this->segundo_nombre = $segundo_nombre = Input::post('segundo_nombre');
+            $this->primer_apellido = $primer_apellido = Input::post('primer_apellido');
+            $this->segundo_apellido = $segundo_apellido = Input::post('segundo_apellido');
+            $this->seccion = $seccion = Input::post('seccion');
+            $this->comprobante = (new Matriculas())->comprobante($primer_nombre, $segundo_nombre, $primer_apellido, $segundo_apellido,$seccion);
         } else {
             $this->comprobante = (new Matriculas());
         }
+        
+        
     }
 
     public function registros(){

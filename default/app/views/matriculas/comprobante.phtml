@@ -3,19 +3,44 @@
 <h4 class="center-align">COMPROBANTE DE MATRICULA.</h4>
 
 <form action="" method="post">
-    <div class="row">
-        <div class="input-field col s6">
-        <i class="material-icons prefix">event</i>
-            <label for="nombres">Nombre del alumno:
-                <input type="text" name="nombres"></label>
-        </div>
+    <div class="section">
+        <div class="row">
+            <div class="input-field col s3">
+            <i class="material-icons prefix">account_circle</i>
+                <label for="nombres">Primer Nombre:
+                    <?= Form::text('primer_nombre'); ?></label>
+            </div>
 
-        <div class="input-field col s6">
-            <i class="material-icons prefix">edit</i>
-            <label for="Estudio-parvularia">Año:</label><br>
-        <?php $año = array('1'=>'1° Año','2'=>'2° Año', '3'=>'3° Año'); echo Form::Select('anio', $año); ?>
+            <div class="input-field col s3">
+            <i class="material-icons prefix">account_circle</i>
+                <label for="nombres">Segundo Nombre:
+                    <?= Form::text('segundo_nombre'); ?></label>
+            </div>
+
+            <div class="input-field col s3">
+            <i class="material-icons prefix">account_circle</i>
+                <label for="nombres">Primer Apellido:
+                    <?= Form::text('primer_apellido'); ?></label>
+            </div>
+
+            <div class="input-field col s3">
+            <i class="material-icons prefix">account_circle</i>
+                <label for="nombres">Segundo Apellido:
+                    <?= Form::text('segundo_apellido'); ?></label>
+            </div>
         </div>
     </div>
+    
+    <div class="section">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">edit</i>
+                <label for="Secciones">Secciones:</label><br>
+                <?php echo Form::dbSelect('seccion', 'nombre_seccion',  array('secciones', 'find')); ?>
+            </div>
+        </div>
+    </div>
+    
     <div class="row">
         <div class="col s12 center-align">   
             <?php echo Form::submit('Generar Comprobante',"class='btn green'"); ?>
@@ -32,13 +57,30 @@
         <th>GRADO</th>
         <th>SECCION</th>
         <th>AÑO</th>
+        <th>ACCION</th>
     </thead>
     <?php foreach ($comprobante as $item) : ?>
         <tr>
             <td><?= $item->id ?></td>
-            <td><?= $item->getAlumnos()->primer_nombre?> <?= $item->getAlumnos()->segundo_nombre?></td>
-            <td><?= $item->getAlumnos()->primer_apellido?> <?= $item->getAlumnos()->segundo_apellido?></td>
-            <td><?= $item->getEspecialidades()->nombre_especialidad?></td>
+            <td><?= $item->primer_nombre?> <?= $item->segundo_nombre?></td>
+            <td><?= $item->primer_apellido?> <?= $item->segundo_apellido?></td>
+            <td><?= $item->nombre_especialidad?></td>
+            <td><?= $item->nombre_seccion?></td>
+            <td>
+            <?php
+                if ($item->secciones == 1) {
+                    echo "A";
+                }
+                if ($item->secciones == 2) {
+                    echo "B";
+                }
+                if ($item->secciones == 3) {
+                    echo "C";
+                }
+            ?>
+            </td>
+            <td><?= $item->anio?></td>
+            <td><?php echo Html::linkAction("edit/$item->id/", 'Imprimir', 'class="btn blue darken-3"') ?></td>
         </tr>
     <?php endforeach; ?>
 </table>
